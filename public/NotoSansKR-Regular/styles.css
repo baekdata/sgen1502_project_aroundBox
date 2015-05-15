@@ -1,0 +1,10 @@
+
+@font-face {
+  font-family: 'NotoSansKR-Regular-Alphabetic';
+  src: url('NotoSansKR-Regular-Alphabetic.eot?#iefix') format('eot'),  url('NotoSansKR-Regular-Alphabetic.otf')  format('opentype'),
+	     url('NotoSansKR-Regular-Alphabetic.woff') format('woff'), url('NotoSansKR-Regular-Alphabetic.ttf')  format('truetype'), url('NotoSansKR-Regular-Alphabetic.svg#NotoSansKR-Regular-Alphabetic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
