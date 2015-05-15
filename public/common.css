@@ -48,40 +48,24 @@ li {
 	padding: 17px 0px 17px 0px;
 	float: left;
 }
-#title_mail {
+.title_btns {
 	width: 150px;
 	text-align: center;
 	background-color: #0098d8;
 	font-size: 18px;
 	color: #ffffff;
 	padding: 17px 0px 17px 0px;
+}
+#title_mail {
 	float: left;
 }
 #title_calender {
-	width: 150px;
-	text-align: center;
-	background-color: #0098d8;
-	font-size: 18px;
-	color: #ffffff;
-	padding: 17px 0px 17px 0px;
 	float: left;
 }
 #title_me {
-	width: 150px;
-	text-align: center;
-	background-color: #0098d8;
-	font-size: 18px;
-	color: #ffffff;
-	padding: 17px 0px 17px 0px;
 	float: right;
 }
 #title_setting {
-	width: 150px;
-	text-align: center;
-	background-color: #0098d8;
-	font-size: 18px;
-	color: #ffffff;
-	padding: 17px 0px 17px 0px;
 	float: right;
 }
 #text_hello {

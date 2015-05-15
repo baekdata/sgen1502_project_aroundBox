@@ -38,3 +38,12 @@ $(document).ready(function(){
         $("#title_setting").css("background-color", "#0098d8");
     });
 });
+
+$(document).ready(function(){
+    $("#btn_login").mouseover(function(){
+        $("#btn_login").css("background-color", "#002654");
+    });
+    $("#btn_login").mouseout(function(){
+        $("#btn_login").css("background-color", "#0098d8");
+    });
+});
