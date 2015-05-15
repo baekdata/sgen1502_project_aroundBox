@@ -24,6 +24,7 @@ ul, ol{
 li {
 	display: inline;
 }
+
 /*#header*/
 #container, #footer {
 	position: relative;
@@ -42,15 +43,6 @@ li {
 	font-size: 18px;
 	color: #ffffff;
 }
-#title_home {
-	width: 150px;
-	text-align: center;
-	background-color: #0098d8;
-	font-size: 18px;
-	color: #ffffff;
-	padding: 17px 0px 17px 0px;
-	float: left;
-}
 .title_btns {
 	width: 150px;
 	text-align: center;
@@ -58,6 +50,9 @@ li {
 	font-size: 18px;
 	color: #ffffff;
 	padding: 17px 0px 17px 0px;
+}
+#title_home {
+	float: left;
 }
 #title_mail {
 	float: left;
@@ -121,6 +116,17 @@ li {
 	color: #008ed6;
 }
 
-/*title*/
+/* mail */
+#round_icons {
+	height: 100px;
+	background-color: #d3cec4;
+}
+#round_icons_left {
+	width: 300px;
+	background-color: #c4c1ba;
+}
+#round_icons_right {
+
+}
 
 
