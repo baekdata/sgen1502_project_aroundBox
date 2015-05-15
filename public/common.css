@@ -33,11 +33,47 @@ li {
 }
 
 #title_line {
+	height: 61px;
 	text-align: center;
 	background-color: #0098d8;
-	font-size: 25px;
+	font-size: 18px;
 	color: #ffffff;
-	padding: 20px 0px 20px 0px;
+}
+#title_home {
+	width: 150px;
+	text-align: center;
+	background-color: #002654;
+	font-size: 18px;
+	color: #ffffff;
+	padding: 17px 0px 17px 0px;
+	float: left;
+}
+#title_mail {
+	width: 150px;
+	text-align: center;
+	background-color: #0098d8;
+	font-size: 18px;
+	color: #ffffff;
+	padding: 17px 0px 17px 0px;
+	float: left;
+}
+#title_me {
+	width: 150px;
+	text-align: center;
+	background-color: #0098d8;
+	font-size: 18px;
+	color: #ffffff;
+	padding: 17px 0px 17px 0px;
+	float: right;
+}
+#title_setting {
+	width: 150px;
+	text-align: center;
+	background-color: #0098d8;
+	font-size: 18px;
+	color: #ffffff;
+	padding: 17px 0px 17px 0px;
+	float: right;
 }
 #text_hello {
 	margin: 90px 0px 30px 0px;
@@ -56,7 +92,6 @@ li {
 	outline-color: #0098d8;
 }
 .input_box {
-	outline: 0px;
 	padding:13px 0px 13px 0px;
 	width: 300px;
 	font-size: 15px;
@@ -89,5 +124,7 @@ li {
 #join_text {
 	color: #008ed6;
 }
+
+/*title*/
 
 
