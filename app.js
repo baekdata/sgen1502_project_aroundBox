@@ -70,7 +70,7 @@ app.configure('development', function(){
 // app.get('/write', routes.write);
 
 app.get('/', routes.index);
-
+app.get('/title', routes.title);
 
 
 
