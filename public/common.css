@@ -12,6 +12,9 @@ a {
 	color:#727272;
 	outline: 0px;
 }
+.title_btns>a {
+	color: #ffffff;
+}
 a img {
 	border:0px;
 }

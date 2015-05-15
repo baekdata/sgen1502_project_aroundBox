@@ -13,3 +13,6 @@ exports.index = function(req, res){
 exports.title = function(req, res){
   res.render('title', {});
 };
+exports.mail = function(req, res){
+  res.render('mail', {});
+};
