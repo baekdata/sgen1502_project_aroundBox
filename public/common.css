@@ -32,6 +32,28 @@ li {
 	margin: 0 auto;
 }
 
+#timeline2 .wrap {
+	display: table;
+	position: relative;
+	margin:  0 auto;
+	width: 1000px;
+	height: 45px;
+}
+#timeline  .wrap{
+	display: table;
+	position: relative;
+	margin:  0 auto;
+	height:51px;
+	width: 1000px;
+}
+
+#timeline .date {
+	display: table-cell;
+	vertical-align: middle;
+	color: #008ed6;
+	margin-left: 10px;
+}
+
 #header {
 	height:64px;
 }
