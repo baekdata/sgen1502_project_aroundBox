@@ -16,3 +16,6 @@ exports.title = function(req, res){
 exports.mail = function(req, res){
   res.render('mail', {});
 };
+exports.mailview = function(req, res){
+  res.render('mailview', {});
+};

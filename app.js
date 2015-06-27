@@ -72,6 +72,7 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/title', routes.title);
 app.get('/mail', routes.mail);
+app.get('/mailview', routes.mailview);
 
 
 
