@@ -28,7 +28,7 @@ li {
 /*#header*/
 #container, #footer {
 	position: relative;
-	width: 1000px;
+	width: 1200px;
 	margin: 0 auto;
 }
 
@@ -109,9 +109,7 @@ li {
 	width: 300px;
 	font-size: 15px;
 	text-indent: 12px;
-	
 	border-radius: 5px;
-	
 	border:1px solid #0098d8;
 	border-left: 4px solid #0098d8;
 }
@@ -124,7 +122,6 @@ li {
 	text-align: center;
 	width: 300px;
 	padding:13px 0px 13px 0px;
-  	
 	border-radius: 7px;
 	background-color: #008ed6;
 }
@@ -150,5 +147,136 @@ li {
 #round_icons_right {
 
 }
+
+
+
+
+
+
+
+
+/* mail view ay */
+#mail_box {
+	background-color: #c4c1ba;
+	width: 1000px;
+	height: 700px;
+}
+#mail_find {
+	padding-top: 10px;
+	height:45px;
+}
+#mail_find_bg {
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: left;
+	height: 40px;
+	background: #ffffff;
+}
+#search_image{
+	left: 37px;
+	right: 37px;
+}
+input[type=text]{
+	color:#bcbcbc;
+	height: 20px;
+	border: 0px;
+	font-size: 16px;
+}
+
+#mail_view{
+
+}
+#mail_left{
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: left;
+	position: absolute;
+	left: 0%;
+	height: 550px;
+	width: 300px;
+	background: #ffffff;
+}
+#mail_left_btns{
+
+}
+.receive_main_btn_c {
+	color: #808080;
+	font-size: 15px;
+	margin-top: 55px;
+	margin-left: 10px;
+	padding-bottom: 20px;
+}
+#mail_right{
+	margin-left: 10px;
+	margin-right: 10px;
+	position: absolute;
+	left: 320px;
+	height: 550px;
+	width: 660px;
+	background: #ffffff;
+}
+#writeBtn_image{
+	position: absolute;
+	left: 0%;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+#reBtn_image{
+	position: absolute;
+	left: 250px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.mail_left_list_attr_overlay {
+	height: 70px; 
+	padding-left: 10px;
+	background-color: #DFEEF6;
+	border-left: 4px solid #3085CE;
+}
+.list_attr_img {
+	padding-left: 5px;
+}
+.list_attr_img_r {
+	position: absolute; 
+	margin-top: 15px;
+	background-color: #E45064;
+	width: 37px;
+	height: 37px;
+	-webkit-border-radius: 100px;
+}
+.list_attr_img_txt {
+	position: absolute;
+	margin-left: 13px;
+	margin-top: 12px;
+	color: #ffffff;
+}
+.list_attr_title1 {
+	position: absolute;
+    margin-top: 12px;
+    margin-left: 55px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+}
+.list_attr_title2 {
+	position: absolute;
+    color: #2B6DFA;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-left: 200px;
+}
+.list_attr_text1 {
+	position: absolute;
+    margin-top: 32px;
+    margin-left: 55px;
+    margin-right: 16px;
+}
+
+
+
+
+
+
 
 
