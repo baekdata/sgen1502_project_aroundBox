@@ -28,7 +28,7 @@ li {
 /*#header*/
 #container, #footer {
 	position: relative;
-	width: 1000px;
+	width: 1200px;
 	margin: 0 auto;
 }
 
@@ -250,7 +250,7 @@ input[type=text]{
 	margin-top: 12px;
 	color: #ffffff;
 }
-.list_attr_img_title1 {
+.list_attr_title1 {
 	position: absolute;
     margin-top: 12px;
     margin-left: 55px;
@@ -258,13 +258,19 @@ input[type=text]{
     font-weight: bold;
     color: #000000;
 }
-.list_attr_img_title2 {
+.list_attr_title2 {
 	position: absolute;
     color: #2B6DFA;
     font-weight: bold;
     font-size: 12px;
     margin-top: 12px;
     margin-left: 200px;
+}
+.list_attr_text1 {
+	position: absolute;
+    margin-top: 32px;
+    margin-left: 55px;
+    margin-right: 16px;
 }
 
 
