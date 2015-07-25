@@ -259,7 +259,12 @@ input[type=text]{
     color: #000000;
 }
 .list_attr_img_title2 {
-
+	position: absolute;
+    color: #2B6DFA;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-left: 200px;
 }
 
 
