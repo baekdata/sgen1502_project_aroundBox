@@ -109,9 +109,7 @@ li {
 	width: 300px;
 	font-size: 15px;
 	text-indent: 12px;
-	
 	border-radius: 5px;
-	
 	border:1px solid #0098d8;
 	border-left: 4px solid #0098d8;
 }
@@ -124,7 +122,6 @@ li {
 	text-align: center;
 	width: 300px;
 	padding:13px 0px 13px 0px;
-  	
 	border-radius: 7px;
 	background-color: #008ed6;
 }
@@ -199,6 +196,16 @@ input[type=text]{
 	width: 300px;
 	background: #ffffff;
 }
+#mail_left_btns{
+
+}
+.receive_main_btn_c {
+	color: #808080;
+	font-size: 15px;
+	margin-top: 55px;
+	margin-left: 10px;
+	padding-bottom: 20px;
+}
 #mail_right{
 	margin-left: 10px;
 	margin-right: 10px;
@@ -220,7 +227,26 @@ input[type=text]{
 	margin-top: 10px;
 	margin-left: 10px;
 }
-
+.mail_left_list_attr {
+	padding-left: 10px;
+	border-left: 4px solid #3085CE;
+}
+.list_attr_img {
+	padding-left: 5px;
+}
+.list_attr_img_txt {
+	position: absolute;
+	margin-left: 13px;
+	margin-top: 12px;
+	color: #ffffff;
+}
+.list_attr_img_r {
+	position: absolute; 
+	background-color: #E45064;
+	width: 37px;
+	height: 37px;
+	-webkit-border-radius: 100px;
+}
 
 
 
