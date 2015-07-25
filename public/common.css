@@ -227,12 +227,22 @@ input[type=text]{
 	margin-top: 10px;
 	margin-left: 10px;
 }
-.mail_left_list_attr {
+.mail_left_list_attr_overlay {
+	height: 70px; 
 	padding-left: 10px;
+	background-color: #DFEEF6;
 	border-left: 4px solid #3085CE;
 }
 .list_attr_img {
 	padding-left: 5px;
+}
+.list_attr_img_r {
+	position: absolute; 
+	margin-top: 15px;
+	background-color: #E45064;
+	width: 37px;
+	height: 37px;
+	-webkit-border-radius: 100px;
 }
 .list_attr_img_txt {
 	position: absolute;
@@ -240,12 +250,16 @@ input[type=text]{
 	margin-top: 12px;
 	color: #ffffff;
 }
-.list_attr_img_r {
-	position: absolute; 
-	background-color: #E45064;
-	width: 37px;
-	height: 37px;
-	-webkit-border-radius: 100px;
+.list_attr_img_title1 {
+	position: absolute;
+    margin-top: 12px;
+    margin-left: 55px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+}
+.list_attr_img_title2 {
+
 }
 
 
