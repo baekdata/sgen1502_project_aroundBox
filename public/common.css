@@ -227,6 +227,12 @@ input[type=text]{
 	margin-top: 10px;
 	margin-left: 10px;
 }
+.mail_left_list_attr {
+	height: 70px; 
+	padding-left: 10px;
+	background-color: #ffffff;
+	border-left: 4px solid #ffffff;
+}
 .mail_left_list_attr_overlay {
 	height: 70px; 
 	padding-left: 10px;
@@ -244,11 +250,29 @@ input[type=text]{
 	height: 37px;
 	-webkit-border-radius: 100px;
 }
+.list_attr_img_b {
+	position: absolute; 
+	margin-top: 15px;
+	background-color: #3085ce;
+	width: 37px;
+	height: 37px;
+	-webkit-border-radius: 100px;
+}
+.list_attr_img_g {
+	position: absolute; 
+	margin-top: 15px;
+	background-color: #7eba19;
+	width: 37px;
+	height: 37px;
+	-webkit-border-radius: 100px;
+}
 .list_attr_img_txt {
-	position: absolute;
-	margin-left: 13px;
-	margin-top: 12px;
-	color: #ffffff;
+	text-align: center;
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 12px;
+    color: #ffffff;
 }
 .list_attr_title1 {
 	position: absolute;
