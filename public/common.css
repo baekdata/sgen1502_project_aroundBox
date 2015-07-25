@@ -156,7 +156,6 @@ li {
 
 
 
-
 /* mail view ay */
 #mail_box {
 	background-color: #c4c1ba;
@@ -200,9 +199,9 @@ input[type=text]{
 	background: #ffffff;
 }
 #mail_left_btns{
-
+    margin-top: 5px;
 }
-.receive_main_btn_c {
+.receive_mail_btn_c {
 	color: #808080;
 	font-size: 15px;
 	margin-top: 55px;
@@ -213,8 +212,21 @@ input[type=text]{
 
 }
 .receive_main_list {
-
+	margin-left: 160px;
+    font-size: 12px;
+    color: #000000;
 }
+#mailNextL_image {
+    position: absolute;
+    margin-left: 18px;
+    margin-top: 3px;
+}
+#mailNextR_image {
+    position: absolute;
+    margin-left: 37px;
+    margin-top: 3px;
+}
+
 #mail_right{
 	margin-top: 10px;
 	margin-left: 105px;
@@ -226,30 +238,39 @@ input[type=text]{
 	background: #ffffff;
 }
 #writeBtn_image{
-	position: absolute;
-	left: 0%;
-	margin-top: 10px;
-	margin-left: 10px;
+    position: absolute;
+    left: 0%;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 260px;
 }
 #reBtn_image{
-	position: absolute;
-	left: 250px;
-	margin-top: 10px;
-	margin-left: 10px;
+    position: absolute;
+    left: 340px;
+    margin-top: 16px;
+    margin-left: 10px;
+}
+#mail_left_menu {
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+    width: 400px;
 }
 
 /*스크롤이 들어가는 부분 attr의 list*/
 .mail_left_content_list {
-
+    position: absolute;
+    margin-top: 100px;
+    width: 400px;
 }
 .mail_left_list_attr {
-	height: 70px; 
+	height: 100px; 
 	padding-left: 10px;
 	background-color: #ffffff;
 	border-left: 4px solid #ffffff;
 }
 .mail_left_list_attr_overlay {
-	height: 70px; 
+	height: 100px; 
 	padding-left: 10px;
 	background-color: #DFEEF6;
 	border-left: 4px solid #3085CE;
@@ -305,11 +326,16 @@ input[type=text]{
     margin-top: 12px;
     margin-left: 200px;
 }
+.list_attr_time {
+	position: absolute;
+    margin-top: 12px;
+    margin-left: 315px;
+}
 .list_attr_text1 {
 	position: absolute;
     margin-top: 32px;
     margin-left: 55px;
-    margin-right: 16px;
+    margin-right: 20px;
 }
 
 
