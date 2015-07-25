@@ -183,10 +183,11 @@ input[type=text]{
 	border: 0px;
 	font-size: 16px;
 }
-
 #mail_view{
 
 }
+
+/*left*/
 #mail_left{
 	margin-top: 10px;
 	margin-left: 10px;
@@ -204,7 +205,7 @@ input[type=text]{
 .receive_mail_btn_c {
 	color: #808080;
 	font-size: 15px;
-	margin-top: 55px;
+	margin-top: 12px;
 	margin-left: 10px;
 	padding-bottom: 20px;
 }
@@ -226,19 +227,8 @@ input[type=text]{
     margin-left: 37px;
     margin-top: 3px;
 }
-
-#mail_right{
-	margin-top: 10px;
-	margin-left: 105px;
-	margin-right: 10px;
-	position: absolute;
-	left: 320px;
-	height: 550px;
-	width: 765px;
-	background: #ffffff;
-}
 #writeBtn_image{
-    position: absolute;
+    /*position: absolute;*/
     left: 0%;
     margin-top: 10px;
     margin-left: 20px;
@@ -256,11 +246,10 @@ input[type=text]{
     position: absolute;
     width: 400px;
 }
-
 /*스크롤이 들어가는 부분 attr의 list*/
 .mail_left_content_list {
     position: absolute;
-    margin-top: 100px;
+    margin-top: 60px;
     width: 400px;
 }
 .mail_left_list_attr {
@@ -338,7 +327,23 @@ input[type=text]{
     margin-right: 20px;
 }
 
+/*right*/
+#mail_right{
+	margin-top: 10px;
+	margin-left: 105px;
+	margin-right: 10px;
+	position: absolute;
+	left: 320px;
+	height: 550px;
+	width: 765px;
+	background: #ffffff;
+}
+#mail_right_top {
 
+}
+#right_clip_image{
+
+}
 
 
 
