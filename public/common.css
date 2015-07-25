@@ -59,7 +59,7 @@ li {
 }
 
 #title_line {
-	height: 61px;
+	height: 64px;
 	text-align: center;
 	background-color: #0098d8;
 	font-size: 18px;
@@ -155,10 +155,12 @@ li {
 
 
 
+
+
 /* mail view ay */
 #mail_box {
 	background-color: #c4c1ba;
-	width: 1000px;
+	width: 1200px;
 	height: 700px;
 }
 #mail_find {
@@ -187,13 +189,14 @@ input[type=text]{
 
 }
 #mail_left{
+	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
 	text-align: left;
 	position: absolute;
 	left: 0%;
 	height: 550px;
-	width: 300px;
+	width: 400px;
 	background: #ffffff;
 }
 #mail_left_btns{
@@ -206,13 +209,20 @@ input[type=text]{
 	margin-left: 10px;
 	padding-bottom: 20px;
 }
+.receive_main_cnt {
+
+}
+.receive_main_list {
+
+}
 #mail_right{
-	margin-left: 10px;
+	margin-top: 10px;
+	margin-left: 105px;
 	margin-right: 10px;
 	position: absolute;
 	left: 320px;
 	height: 550px;
-	width: 660px;
+	width: 765px;
 	background: #ffffff;
 }
 #writeBtn_image{
@@ -226,6 +236,11 @@ input[type=text]{
 	left: 250px;
 	margin-top: 10px;
 	margin-left: 10px;
+}
+
+/*스크롤이 들어가는 부분 attr의 list*/
+.mail_left_content_list {
+
 }
 .mail_left_list_attr {
 	height: 70px; 
