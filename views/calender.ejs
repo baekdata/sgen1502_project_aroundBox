@@ -1,8 +1,11 @@
 <!doctype html>
-<head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title>Basic initialization</title>
-</head>
+	<head>
+		<title>Band mail</title>
+		<link rel="stylesheet" href="./common.css"></link>
+		<link rel="stylesheet" href="./NotoSansKR-Regular/styles.css"></link>
+		<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>	
+		<script type="text/javascript" src="./js/sgen.js"></script>	
+	</head>
 	<script src="codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
@@ -39,8 +42,34 @@
 	// }
 </script>
 
-<body onload="init();">
-	<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+<body onload="init();" style="background:#e0e0e0;">
+    		<div id="wrapper">
+			<div id="header">
+				<div id="title_line">
+					<div id="title_home" class="title_btns">
+						<a href="/title"> HOME </a>
+					</div>
+					<div id="title_mail" class="title_btns">
+						<a href="/mail"> MAIL </a>
+					</div>
+					<div id="title_calender" class="title_btns">
+						CALENDER
+					</div>
+					<div id="title_me" class="title_btns">
+						ME
+					</div>
+					<div id="title_setting" class="title_btns">
+						SETTING
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+    
+
+	<div id="scheduler_here" class="dhx_cal_container" style='width:1200px; height:100%;    margin-left: auto;
+    margin-right: auto;
+'>
 
 
 		<div class="dhx_cal_navline">
