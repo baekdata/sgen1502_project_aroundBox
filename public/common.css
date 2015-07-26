@@ -16,7 +16,7 @@ a {
 	color: #ffffff;
 }
 a img {
-	border:0px;
+	border: 0px;
 }
 ul, ol{
 	list-style:none;
@@ -138,11 +138,12 @@ li {
 /* mail */
 #round_icons {
 	height: 100px;
-	background-color: #d3cec4;
+	background-color: #ededed;
+	border-bottom: 1px solid #d0d0d0;
 }
 #round_icons_left {
 	width: 300px;
-	background-color: #c4c1ba;
+	background-color: #ededed;
 }
 #round_icons_right {
 
@@ -153,12 +154,9 @@ li {
 
 
 
-
-
-
 /* mail view ay */
 #mail_box {
-	background-color: #c4c1ba;
+	background-color: #ededed;
 	width: 1200px;
 	height: 700px;
 }
@@ -184,7 +182,6 @@ input[type=text]{
 	font-size: 16px;
 }
 #mail_view{
-
 }
 
 /*left*/
@@ -257,11 +254,13 @@ input[type=text]{
 	padding-left: 10px;
 	background-color: #ffffff;
 	border-left: 4px solid #ffffff;
+	border-top: 1px solid #dddddd;
 }
 .mail_left_list_attr_overlay {
 	height: 100px; 
 	padding-left: 10px;
 	background-color: #DFEEF6;
+	border-top: 1px solid #dddddd;
 	border-left: 4px solid #3085CE;
 }
 .list_attr_img {
@@ -281,7 +280,7 @@ input[type=text]{
 	background-color: #3085ce;
 	width: 37px;
 	height: 37px;
-	-webkit-border-radius: 100px;
+	border-radius: 100px;
 }
 .list_attr_img_g {
 	position: absolute; 
@@ -289,7 +288,7 @@ input[type=text]{
 	background-color: #7eba19;
 	width: 37px;
 	height: 37px;
-	-webkit-border-radius: 100px;
+	border-radius: 100px;
 }
 .list_attr_img_txt {
 	text-align: center;
@@ -325,6 +324,7 @@ input[type=text]{
     margin-top: 32px;
     margin-left: 55px;
     margin-right: 20px;
+	font-size: 12px;
 }
 
 /*right*/
@@ -339,14 +339,99 @@ input[type=text]{
 	background: #ffffff;
 }
 #mail_right_top {
-
+	position: absolute;
+	margin-top: 22px;
+    margin-left: 18px;
 }
 #right_clip_image{
-
+    width: 28px;
+    height: 28px;
+    position: absolute;
 }
-
-
-
+.right_clip_text{
+    position: absolute;
+    width: 200px;
+    text-align: left;
+    margin-left: 31px;
+    margin-top: 7px;
+    font-size: 14px;
+    font-weight: 100;
+}
+.right_star_image {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-top: -3px;
+    margin-left: 576px;
+}
+.right_like_image {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-top: -2px;
+    margin-left: 540px;
+}
+.right_left_image {
+    position: absolute;
+    width: 60px;
+    height: 35px;
+    margin-top: 0px;
+    margin-left: 631px;
+}
+.right_right_image {
+    position: absolute;
+    width: 30px;
+    height: 34px;
+    margin-top: 1px;
+    margin-left: 689px;
+}
+#mail_right_content_top {
+	position: absolute;
+}
+.right_top_title{
+	position: absolute;
+}
+.right_top_title_text {
+    position: absolute;
+    width: 400px;
+    font-size: 21px;
+    margin-top: 60px;
+    margin-left: -28px;
+    color: #000000;
+}
+.right_top_people {
+	position: absolute;
+}
+.right_top_people_img {
+    position: absolute;
+    width: 33px;
+    border-radius: 150px;
+    border: 2px solid #ededed;
+    margin-top: 103px;
+    margin-left: 22px;
+}
+.right_top_sender {
+    position: absolute;
+    width: 300px;
+    margin-top: 105px;
+    margin-left: 27px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.right_top_receiver{
+    position: absolute;
+    width: 300px;
+    margin-top: 125px;
+    margin-left: 34px;
+    font-size: 13px;
+    font-weight: 200;
+}
+#mail_right_content_middle {
+	position: absolute;
+}
+#mail_right_content_bottom {
+	position: absolute;
+}
 
 
 
