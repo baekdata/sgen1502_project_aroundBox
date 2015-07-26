@@ -321,7 +321,7 @@ input[type=text]{
 }
 .list_attr_text1 {
 	position: absolute;
-    margin-top: 32px;
+    margin-top: 35px;
     margin-left: 55px;
     margin-right: 20px;
 	font-size: 12px;
@@ -429,7 +429,43 @@ input[type=text]{
 #mail_right_content_middle {
 	position: absolute;
 }
+/*메일 내용*/
+.right_middle_text{
+	position: absolute;
+    margin-top: 170px;
+    margin-left: 45px;
+    width: 700px;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+	font-weight: 100;
+}
 #mail_right_content_bottom {
+	position: absolute;
+}
+/*첨부파일*/
+.right_middle_files {
+	position: absolute;
+}
+.right_middle_file {
+    position: absolute;
+    border: 1px solid #cfcfcf;
+    width: 200px;
+    height: 25px;
+    border-radius: 10px;
+}
+.right_file_img {
+	position: absolute;
+}
+.right_file_img_btn {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+}
+.right_file_text {
+	position: absolute;
+}
+.right_file_size {
 	position: absolute;
 }
 
