@@ -407,7 +407,7 @@ input[type=text]{
     width: 33px;
     border-radius: 150px;
     border: 2px solid #ededed;
-    margin-top: 103px;
+    margin-top: 105px;
     margin-left: 22px;
 }
 .right_top_sender {
@@ -428,6 +428,14 @@ input[type=text]{
 }
 #mail_right_content_middle {
 	position: absolute;
+	margin-top: 15px;
+}
+.mailview_hr {
+	position: absolute;
+	border: 1px solid #e0e0e0;
+	margin-top: 160px;
+	margin-left: 4px;
+	width: 758px;
 }
 /*메일 내용*/
 .right_middle_text{
@@ -470,8 +478,8 @@ input[type=text]{
 }
 .right_file_text_value {
 	position: absolute;
-    font-size: 14px;
-    margin-top: 4px;
+    font-size: 13px;
+    margin-top: 5px;
     margin-left: 33px;
     width: 200px;
     letter-spacing: 0.5px;
