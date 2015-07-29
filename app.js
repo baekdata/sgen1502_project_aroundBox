@@ -7,15 +7,18 @@
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
-  
+  , path = require('path')
+  , calender = require('./routes/calendar')
+  , mail = require('./routes/mail');
+
 //WWARRING!!!
 //몽고  디비 설치필요
-// var db = require('mongoskin').db("localhost/testDB", { w: 0});
-//     db.bind('event');
+var db = require('mongoskin').db("mongodb://localhost:27017/bandbox", { w: 0});
+    db.bind('event');
+    db.bind('mail');
 
 
-// var md5 = require('MD5');
+var md5 = require('MD5');
 var fs = require('fs');
 
 
@@ -31,6 +34,11 @@ var user = require('./routes/user')
 
 var app = express();
 var swig  = require('swig');
+// 파일 다운로드 라이브러
+var multer = require('multer');
+var upload = multer({ dest: './uploads/' })
+
+
 
 // view engine setup
 app.engine('ejs', swig.renderFile);  
@@ -41,8 +49,9 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 // app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(express.logger('dev'));
+// app.use(express.bodyParser()); 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -68,6 +77,45 @@ app.configure('development', function(){
 });
 
 
+//메일 보낼경우 
+app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
+  	
+		var title  = req.param('title');
+	    var message  = req.param('message');
+	    var sender = req.param('sender');
+	    var receiveMember = req.param('receve_member');
+	    var cc = req.param('cc');
+	    var star = req.param('star');
+	    var like = req.param('like');
+	    //파일고유 id
+	    var attachid = req.file.filename;
+	    //사용자들에게 보여줄 진짜이름
+	    var attach =req.file.originalname;
+
+		db.mail.insert({
+	        title : title,
+	        message :message,
+	        sender : sender,
+	        receiveMember :receiveMember,
+	        cc:cc,
+	        star:star,
+	        like:like,
+	        attachid:attachid,
+	        attach:attach
+		}, function(err, result) {
+		    if (err) throw err;
+		    if (result) {
+		    	console.log('Added!');
+		    	 res.send({
+		    	 	code:200,
+		    	 	result:result
+		    	 })
+
+		    }
+		});
+	
+	
+});
 // app.get('/write', routes.write);
 
 app.get('/', routes.index);
@@ -76,102 +124,16 @@ app.get('/mail', routes.mail);
 app.get('/mailview', routes.mailview);
 app.get('/calender',routes.calender);
 
-// //데이터 추가해놓기.
-// app.get('/init', function(req, res){
-	
-// 	//인설트 문 그대로 넣는다. 개쉬움.
-// 	db.event.insert({ 
-// 		text:"My test event A", 
-// 		start_date: new Date(2013,8,1),
-// 		end_date:	new Date(2013,8,5)
-// 	});
-// 	db.event.insert({ 
-// 		text:"My test event B", 
-// 		start_date: new Date(2013,8,19),
-// 		end_date:	new Date(2013,8,24)
-// 	});
-// 	db.event.insert({ 
-// 		text:"Morning event", 
-// 		start_date: new Date(2013,8,4,4,0),
-// 		end_date:	new Date(2013,8,4,14,0)
-// 	});
-// 	db.event.insert({ 
-// 		text:"One more test event", 
-// 		start_date: new Date(2013,8,3),
-// 		end_date:	new Date(2013,8,8),
-// 		color: "#DD8616"
-// 	});
+//보여주기 내부 에서 수정해줘야됨..구찬으니 그대로쓰기로..
+app.post('/data',calender.insert_data);
+app.get('/data',calender.get_data);
 
-// 	res.send("Test events were added to the database")
-// });
+//회원가입
+app.post('/user/signin',user.signin);
+app.post('/user/singup',user.signup);
 
-
-
-
-
-// //넣은 데이터를 조회한다.
-// app.get('/data', function(req, res){
-	
-// 	db.event.find().toArray(function(err, data){
-// 		//set id property for all records
-// 		for (var i = 0; i < data.length; i++){
-// 			data[i].id = data[i]._id;
-// 		}
-		
-// 		//output response
-// 		res.send(data);
-// 	});
-// });
-
-
-// app.post('/data', function(req, res){
-// 	console.log('/data post is Detected');
-
-// 	var data = req.body;
-// 	var mode = data["!nativeeditor_status"];
-// 	var sid = data.id;
-// 	var tid = sid;
-
-// 	delete data.id;
-// 	delete data.gr_id;
-// 	delete data["!nativeeditor_status"];
-	
-
-// 	//결과를 리턴해주는 함수.
-// 	function update_response(err, result){
-// 		console.log('/data Update_response is Detected');
-// 		if (err)
-// 			mode = "error";
-// 		else if (mode == "inserted")
-// 			tid = data._id;
-
-// 		res.setHeader("Content-Type","text/xml");
-// 		res.send("<data><action type='"+mode+"' sid='"+sid+"' tid='"+tid+"'/></data>");
-// 	}
-
-// 	if (mode == "updated"){
-// 		console.log('/data Update_response is Detected');
-
-// 		db.event.updateById( sid, data, update_response);
-// 	}
-// 	else if (mode == "inserted"){
-// 		console.log('/data insert is Detected');
-// 		console.log('INSERT DATA IS ====> ' + data.start_date);
-		
-// 		data.start_date = new Date(data.start_date);
-// 		data.end_date = new Date(data.end_date);
-
-// 		db.event.insert(data, update_response);
-// }
-// 	else if (mode == "deleted"){
-// 		db.event.removeById( sid, update_response);
-// 	}
-// 	else{
-// 		res.send("Not supported operation");
-// 	}
-// });
-
-
+//지금안씀 위에 업로드로 이용함
+// app.post('/mail/insert_mailinfo',mail.insert_mailinfo);
 
 
 
