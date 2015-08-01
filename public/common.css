@@ -686,6 +686,13 @@ li {
   }
 }
 #files {
-	margin-left: 600px;
-	width: 500px;
+    margin-left: 88px;
+    width: 500px;
+    margin-top: -13px;
+}
+.file_name {
+	float: left;
+	margin-right: 10px;
+	font-size: 11px;
+    color: #9e9e9e;
 }
