@@ -69,9 +69,9 @@ li {
 	width: 150px;
 	text-align: center;
 	background-color: #0098d8;
-	font-size: 18px;
+	font-size: 14px;
 	color: #ffffff;
-	padding: 9px 0px 8px 0px;
+	padding:11px 0px 8px 0px;
 }
 #title_home {
 	float: left;
@@ -148,14 +148,18 @@ li {
 	background-color: #ededed;
 	position: relative;
 	padding-top: 16px;
-	border-right: 1px solid  #bdbdbd
-}
-#round_icons_right {
-
 }
 .round_icons_img {
 	margin-right: 23px;
 	size: 100px;
+}
+#round_icons_bar {
+	position: relative;
+	height: 50px;
+	border-left: 1px solid #bdbdbd;
+}
+#round_icons_right {
+
 }
 
 
