@@ -19,9 +19,6 @@ exports.detail = function(req, res){
 exports.mail = function(req, res){
   res.render('mail', {});
 };
-exports.mailview = function(req, res){
-  res.render('mailview', {});
-};
 exports.calender = function(req, res){
   res.render('calender',{});
 };
