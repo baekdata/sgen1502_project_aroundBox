@@ -167,6 +167,9 @@ li {
     border: 2px solid #0098d8;
     border-radius: 26px;
 }
+.round_icons_img:focus {
+	outline: none;
+}
 #round_icons_right {
 	position: absolute;
     margin-top: 16px;
@@ -277,9 +280,10 @@ li {
 }
 
 #writeBtn_image {
-    width: 273px;
+    width: 260px;
     height: 42px;
     margin: 8px 11px 0px 30px;
+    border-radius: 2px;
 }
 #mail_left_menu {
     margin-top: 10px;
@@ -381,7 +385,7 @@ li {
 }
 
 /*right*/
-#mail_right{
+.mail_right{
 	margin-top: 10px;
 	margin-left: 105px;
 	margin-right: 10px;
@@ -444,7 +448,7 @@ li {
     width: 400px;
     font-size: 21px;
     margin-top: 60px;
-    margin-left: -28px;
+    margin-left: 26px;
     color: #000000;
 }
 .right_top_people {
@@ -462,7 +466,7 @@ li {
     position: absolute;
     width: 300px;
     margin-top: 105px;
-    margin-left: 27px;
+    margin-left: 75px;
     font-size: 14px;
     font-weight: 600;
 }
@@ -470,7 +474,7 @@ li {
     position: absolute;
     width: 300px;
     margin-top: 125px;
-    margin-left: 34px;
+    margin-left: 74px;
     font-size: 13px;
     font-weight: 200;
 }
@@ -631,7 +635,54 @@ li {
     cursor: pointer;
 }
 
-.dropdown-menu .dropdown-lit {
-	width:141px;
-	border:1px solid #828282;
+.dropdown-menu .dropdown-list {
+    position: absolute;
+    top: 42px;
+    left: 9px;
+    z-index: 999;
+    width: 141px;
+    height: 110px;
+    border: 1px solid #cdcccc;
+    background-color: #fff;
+    border-radius: 4px;
+    display: none;
+}
+
+.dropdown-list .items {
+	width:121px;
+	padding: 10px;
+}
+.dropdown-list .items.active {
+	background-color: #f2f2f2;
+}
+
+#maillist_out, #maillist_star, #mail_right_write {
+	display: none;
+}
+
+/* file upload button */
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
 }

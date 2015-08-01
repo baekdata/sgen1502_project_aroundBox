@@ -62,4 +62,28 @@ $(document).ready(function(){
     },function() {
         $(this).find(".tooltip_menu").hide();
     });
+
+    $("#dropdown-mailbox").click(function() {
+        if($(this).find('.dropdown-list').css('display') === 'none' ) {
+            $(this).find('.dropdown-list').show();    
+        } else {
+            $(this).find('.dropdown-list').hide();
+        }
+    });
+
+    $("#dropdown-mailbox .items").click(function() {
+        $("#dropdown-mailbox .items").removeClass('active');
+        $(this).addClass("active");
+
+        $(".dropdown-text").html($(this).html());
+
+        $("#mail_left").find('.mail_left_content_list').css('display', 'none');
+        $("#mail_left").find('#maillist_'+$(this).attr('val')).css('display','block');
+    });
+        
+
+    $("#writeBtn_image").click(function() {
+        $(".mail_right").css('display', 'none');
+        $("#mail_right_write").show();
+    });
 });

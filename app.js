@@ -58,6 +58,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 
 // var app = express();
@@ -81,6 +82,8 @@ app.configure('development', function(){
 });
 
 ////testLogic
+// 60초 로그인 
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 
 app.get("/mTest",function(req,res){
    db.user_info.find({user_id: '123'}).toArray(function (err, result) {
@@ -99,7 +102,34 @@ app.get("/mTest",function(req,res){
 
 });
 
-///
+app.post("/pTest",function(req,res){
+	
+	var title  = req.param('title');
+	// var title1 [];
+	console.log('title =='+title[0]);
+	console.log('title =='+title[1]);
+
+
+
+});
+
+function checkTitleFileType(obj){ 
+
+pathpoint = obj.lastIndexOf('.'); 
+filepoint = obj.substring(pathpoint+1,obj.length); 
+filetype = filepoint;
+  console.log(filetype);
+  // if (filetype == 'TXT'){
+  //   console.log('return ' +0);
+  //   return 0; 
+  // }else if (filetype =='txt'){
+  //   console.log('return ' +1);
+  //   return 1; 
+  // } else{
+  //   console.log('return ' +2);
+  //   return 2;
+  // }
+}
 
 //메일 보낼경우 
 app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
@@ -111,10 +141,26 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 	    var cc = req.param('cc');
 	    var star = req.param('star');
 	    var like = req.param('like');
+        
+        
 	    //파일고유 id
-	    var attachid = req.file.filename;
-	    //사용자들에게 보여줄 진짜이름
+	    if(req.file){
+    	var attachid = req.file.filename;
+    	console.log(req.file);
+    	
+		//사용자들에게 보여줄 진짜이름
 	    var attach =req.file.originalname;
+	    	if(req.file.mimetype = 'image/png'){
+	    		console.log('[type mimtype]===> '+ req.file.mimetype);
+	    	}else{
+	    		console.log('[type data]===> '+ req.file.mimetype);
+	    	}
+
+
+	    }else{
+	    	attachid =null;
+	    	attach = null;
+	    }
         var date = Math.round(+new Date()/1000);
 
 		db.mail.insert({
