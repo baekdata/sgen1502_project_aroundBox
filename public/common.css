@@ -158,7 +158,25 @@ li {
 	size: 100px;
 }
 #round_icons_right {
-
+	position: absolute;
+}
+.icons_img_r {
+	position: relative; 
+	margin-right: 10px;
+	background-color: #E45064;
+	width: 49px;
+	height: 49px;
+	-webkit-border-radius: 100px;
+}
+.icons_img_txt {
+	text-align: center;
+    display: block;
+    float: left;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 12px;
+    color: #ffffff;
+    font-size: 13px;
 }
 
 
@@ -541,11 +559,10 @@ li {
 }
 .reply_img_btn {
     position: relative;
-    margin-top: 13px;
-    margin-left: 477px;
-    width: 200px;
+    margin-top: 10px;
+    margin-left: 621px;
+    width: 55px;
 }
-
 #search_text {
 	color: #bcbcbc;
     border: 0px;
@@ -554,9 +571,9 @@ li {
     float: left;
     padding: 12px;
 }
-
 #search_text:focus{
     outline: 0;
 }
+
 
 
