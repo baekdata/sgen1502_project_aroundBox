@@ -117,6 +117,7 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 	    var attachid = req.file.filename;
 	    //사용자들에게 보여줄 진짜이름
 	    var attach =req.file.originalname;
+        var date = Math.round(+new Date()/1000);
 
 		db.mail.insert({
 	        title : title,
@@ -127,7 +128,8 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 	        star:star,
 	        like:like,
 	        attachid:attachid,
-	        attach:attach
+	        attach:attach,
+	        date:date
 		}, function(err, result) {
 		    if (err) throw err;
 		    if (result) {
@@ -155,7 +157,7 @@ app.get('/data',calender.get_data);
 
 //회원가입
 app.post('/user/signin',user.signin);
-app.post('/user/singup',user.signup);
+app.post('/user/signup',user.signup);
 
 //지금안씀 위에 업로드로 이용함
 // app.post('/mail/insert_mailinfo',mail.insert_mailinfo);
