@@ -15,6 +15,7 @@ exports.signup = function(req,res,err){
     var userPw  = req.param('user_pw');
     var userName = req.param('user_name')
 	db.user_info.insert({
+        idx : {$inc:{seq:1}},
         user_id : userId,
         userpw : userPw,
         name : userName	
