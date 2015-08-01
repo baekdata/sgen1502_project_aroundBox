@@ -1,4 +1,4 @@
-var db = require('mongoskin').db("mongodb://localhost:27017/bandbox", { w: 0});
+var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
     db.bind('mail');
 
     //사용안함
