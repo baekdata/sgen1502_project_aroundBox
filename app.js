@@ -16,6 +16,7 @@
 var db = require('mongoskin').db("mongodb://localhost:27017/bandbox", { w: 0});
     db.bind('event');
     db.bind('mail');
+    db.bind('user_info');
 
 
 var md5 = require('MD5');
@@ -79,6 +80,26 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+////testLogic
+
+app.get("/mTest",function(req,res){
+   db.user_info.find({user_id: '123'}).toArray(function (err, result) {
+    if (err) {
+      console.log(err);
+    } else if (result.length) {
+        res.send({
+          code:200,
+          row:result
+        });
+
+    } else {
+      console.log('No document(s) found with defined "find" criteria!');
+    }
+  });
+
+});
+
+///
 
 //메일 보낼경우 
 app.post("/mail/uploadFile",upload.single('attach'),function(req,res){

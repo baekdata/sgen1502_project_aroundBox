@@ -607,3 +607,16 @@ li {
     margin-left: 13px;
     margin-top: 11px;
 }
+.send_img_btn {
+    /*position: relative;*/
+    margin-top: 20px;
+    margin-left: -600px;
+    margin-bottom: 20px;
+    width: 55px;
+ }
+.receive_mail_btn_c .dropdown-menu {
+	background-image: url("/images/mail-dropdown.png");
+	background-repeat: no-repeat;
+}
+
+
