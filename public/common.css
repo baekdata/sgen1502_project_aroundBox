@@ -383,24 +383,24 @@ li {
 }
 .right_star_image {
     position: absolute;
-    width: 21px;
+    width: 22px;
     height: 21px;
-    margin-top: -3px;
-    margin-left: 576px;
+    margin-top: 1px;
+    margin-left: 625px;
 }
 .right_like_image {
     position: absolute;
     width: 21px;
     height: 21px;
-    margin-top: -2px;
-    margin-left: 540px;
+    margin-top: 2px;
+    margin-left: 594px;
 }
 .right_left_image {
     position: absolute;
     width: 50px;
     height: 27px;
     margin-top: 0px;
-    margin-left: 631px;
+    margin-left: 670px;
 }
 #mail_right_content_top {
 	position: absolute;
