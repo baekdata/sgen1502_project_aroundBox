@@ -145,9 +145,6 @@ li {
 }
 #round_icons_left {
 	width: 300px;
-	background-color: #ededed;
-	position: relative;
-	padding-top: 16px;
 	position: absolute;
     margin-top: 16px;
 	border-right: 1px solid  #bdbdbd
@@ -184,10 +181,8 @@ li {
 	height: 40px;
 	background: #ffffff;
 }
-#search_image{
-	left: 37px;
-	right: 37px;
-	padding: 2px;
+.search_image{
+	margin:13px 16px 10px 10px;
     float: right;
 }
 .round_icons_img {
