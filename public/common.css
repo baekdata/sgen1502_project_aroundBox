@@ -223,7 +223,7 @@ li {
     margin-left: 37px;
     margin-top: 3px;
 }
-#8{
+#writeBtn_image{
     /*position: absolute;*/
     left: 0%;
     margin-top: 10px;
@@ -232,9 +232,15 @@ li {
 }
 #reBtn_image{
     position: absolute;
-    left: 340px;
+    left: 326px;
     margin-top: 16px;
     margin-left: 10px;
+}
+
+#writeBtn_image {
+    width: 273px;
+    height: 42px;
+    margin: 8px 11px 0px 30px;
 }
 #mail_left_menu {
     margin-top: 10px;
