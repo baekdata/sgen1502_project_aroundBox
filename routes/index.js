@@ -8,7 +8,16 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', {});
+    var sess;
+    sess = req.session;
+    
+    //userId가 존재한다면 바로 redirect
+    if(sess.userId){
+      console.log('[session] ===> session Alive!');
+      res.redirect('/title');
+    }else{
+	  res.render('index', {});
+	}
 };
 exports.title = function(req, res){
   res.render('title', {});

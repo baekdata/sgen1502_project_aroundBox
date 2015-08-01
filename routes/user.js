@@ -37,20 +37,36 @@ exports.signin = function(req,res,err){
 
     var userId  = req.param('user_id');
     var userPw  = req.param('user_pw');
+    var sess;
+    sess = req.session;
+    
+    //userId가 존재한다면 바로 redirect
+    
+      db.user_info.find({user_id: '123'}).toArray(function (err, result) {
+        if (err) {
+          console.log(err);
+        } else if (result.length) {
+            var rUserId = result[0]['user_id'];
+          // console.log(rUserId);
+          
+            
+            console.log('[session] ===> add userId to Session!');
+            //아이디가 없다면 해당 아이디를 세션에 저
+            sess.userId = userId;
+            console.log(sess);
+            //200이 떨어지면  로그인 처리
+            res.send({
+              code:200,
+              row:result
+            });
+          
+
+        } else {
+          console.log('No document(s) found with defined "find" criteria!');
+        }
+      });
+    
 
 
-    db.user_info.find({user_id: '123'}).toArray(function (err, result) {
-      if (err) {
-        console.log(err);
-      } else if (result.length) {
-        console.log('Found:', result);
-        res.send({
-        	code:200,
-        	row:result
-        });
-      } else {
-        console.log('No document(s) found with defined "find" criteria!');
-      }
-    });
 
 };
