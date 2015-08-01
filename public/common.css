@@ -150,6 +150,7 @@ li {
 	padding-top: 16px;
 }
 .round_icons_img {
+	position: relative;
 	margin-right: 23px;
 	size: 100px;
 }
