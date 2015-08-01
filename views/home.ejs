@@ -291,24 +291,6 @@
 	//.on("mouseover", nodeOver)
 	//.on("mouseout", nodeOut);
 
-	var alert_circles = cw_data.append("circle")
-	.attr("r", function(d){
-		return (d.priority == 1 ? radii.alert_big : radii.alert_small);
-	})
-	.attr("cx", function (d,i) { 
-		if(d.priority == 1){
-			return radii.orbit_small*Math.cos(pos_small[i]*45/180*3.1415926)+20;}
-			else{
-				return radii.orbit_big*Math.cos(pos_big[i]*45/180*3.1415926)+16;}
-				;})
-	.attr("cy", function (d,i) { 
-		if(d.priority == 1){
-			return radii.orbit_small*Math.sin(pos_small[i]*45/180*3.1415926)-20;}
-			else {
-				return radii.orbit_big*Math.sin(pos_big[i]*45/180*3.1415926)-16;}
-				;})
-	.style("fill", "red");
-
 
 	var alert_text = cw_data.append("text")
 	.attr("x", function (d,i) { 
