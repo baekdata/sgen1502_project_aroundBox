@@ -3,6 +3,7 @@
 	<head>
 		<title>Band title</title>
 		<link rel="stylesheet" href="./common.css"></link>
+		<link rel="stylesheet" href="./common_ay.css"></link>
 		<link rel="stylesheet" href="./NotoSansKR-Regular/styles.css"></link>
 		<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>	
 		<script type="text/javascript" src="./js/sgen.js"></script>	
@@ -46,7 +47,7 @@
 				</div>
 			</div>
 
-			<div id="container" style="text-align:center;">
+			<div id="container">
 				<div id="round_icons">
 					<div id="round_icons_left">
 						<div class="round_img left-margin">
@@ -106,9 +107,7 @@
 					<div id="mail_view">
 						<div id="mail_left">
 							<div id="mail_left_btns">
-								<a href="/mailWrite">
-									<input type="image" src="./images/writeBtn.png" id="writeBtn_image" ></input>
-								</a>
+								<input type="image" src="./images/writeBtn.png" id="writeBtn_image" ></input>
 								<a href="/mail">
 									<input type="image" src="./images/reBtn.png" id="reBtn_image" ></input>
 								</a>
@@ -297,7 +296,7 @@
 								</div>
 							</div>
 						</div>
-						<div id="mail_right">
+						<div id="mail_right_view" class="mail_right">
 							<div id="mail_right_top">
 								<img src="./images/right_clip.png" id="right_clip_image"/>
 								<span class="right_clip_text"> 5월16일 토요일 23:54 </span>
@@ -375,6 +374,38 @@
 										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+
+
+						<div id="mail_right_write" class="mail_right">
+							<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">
+							<hr class="mailwrite_hr">
+							<div id="sender_boxes">
+								<div class="sender_box">
+									<span class="sender_box_text_1"> 받는 사람 </span>
+									<div id='sender_box_content_1'>
+										<input type="text" id='sender_box_get_1' class='sender_box_input_0' />
+									</div>
+									<div id='sender_box_content_2'>
+										<input type="image" class='sender_box_input_0_btn' src='./images/triBtn.png' />
+									</div>
+								</div>
+								<div class="sender_box">
+									<span class="sender_box_text_2"> 참조 </span>
+									<input type="text" id='sender_box_get_2' class='sender_box_input_1' />
+								</div>
+								<div class="sender_box">
+									<span class="sender_box_text_2"> 제목 </span>
+									<input type="text" id='sender_box_get_3' class='sender_box_input_1' />
+								</div>
+								<div class="sender_box">
+									<span class="sender_box_text_1"> 파일 첨부 </span>
+									<input type='image' src="./images/plusBtn.png" id="sender_box_plus_btn" />
+								</div>
+							</div>
+							<div id="sender_content">
+								<textarea id="sender_content_tt" rows=13 cols=97></textarea>
 							</div>
 						</div>
 					</div>

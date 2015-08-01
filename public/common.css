@@ -384,7 +384,7 @@ li {
 }
 
 /*right*/
-#mail_right{
+.mail_right{
 	margin-top: 10px;
 	margin-left: 105px;
 	margin-right: 10px;
@@ -655,6 +655,6 @@ li {
 	background-color: #f2f2f2;
 }
 
-#maillist_out, #maillist_star {
+#maillist_out, #maillist_star, #mail_right_write {
 	display: none;
 }

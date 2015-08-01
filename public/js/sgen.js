@@ -81,4 +81,9 @@ $(document).ready(function(){
         $("#mail_left").find('#maillist_'+$(this).attr('val')).css('display','block');
     });
         
+
+    $("#writeBtn_image").click(function() {
+        $(".mail_right").css('display', 'none');
+        $("#mail_right_write").show();
+    });
 });
