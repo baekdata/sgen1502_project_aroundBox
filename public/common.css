@@ -59,8 +59,7 @@ li {
 }
 
 #title_line {
-	/*height: 64px;*/
-	padding: 18px;
+	height: 44px;
 	text-align: center;
 	background-color: #0098d8;
 	font-size: 18px;
@@ -72,10 +71,11 @@ li {
 	background-color: #0098d8;
 	font-size: 18px;
 	color: #ffffff;
-	padding: 17px 0px 17px 0px;
+	padding: 9px 0px 8px 0px;
 }
 #title_home {
 	float: left;
+    margin-left: 190px;	
 }
 #title_mail {
 	float: left;
@@ -85,6 +85,7 @@ li {
 }
 #title_me {
 	float: right;
+	margin-right: 190px;
 }
 #title_setting {
 	float: right;
