@@ -554,12 +554,12 @@ li {
 }
 
 #search_text {
-	color:#bcbcbc;
-	border: 0px;
-	font-size: 16px;
+	color: #bcbcbc;
+    border: 0px;
+    font-size: 13px;
     text-indent: 12px;
     float: left;
-    padding: 10px;
+    padding: 12px;
 }
 
 #search_text:focus{
