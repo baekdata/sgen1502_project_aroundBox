@@ -146,27 +146,19 @@ li {
 #round_icons_left {
 	width: 300px;
 	background-color: #ededed;
-<<<<<<< HEAD
 	position: relative;
 	padding-top: 16px;
-=======
 	position: absolute;
     margin-top: 16px;
 	border-right: 1px solid  #bdbdbd
 }
 #round_icons_right {
 
->>>>>>> be5b76fca7b41e6f27fd624c918a5c15beddb1a2
 }
 .round_icons_img {
 	position: relative;
 	margin-right: 23px;
 	size: 100px;
-}
-#round_icons_bar {
-	position: relative;
-	height: 50px;
-	border-left: 1px solid #bdbdbd;
 }
 #round_icons_right {
 
