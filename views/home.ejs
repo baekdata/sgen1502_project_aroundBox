@@ -63,7 +63,9 @@
 				"orbit_small" : radius / 4,
 				"cw_tall" : radius / 25,
 				"cw_grande" : radius / 20,
-				"cw_venti" : radius / 15
+				"cw_venti" : radius / 15,
+				"alert_big" : 10,
+				"alert_small" : 8
 			};
 
 			var jsonCircles = [
@@ -210,13 +212,14 @@
 
 
 
+	
 	// coworker's circles
-	var cw_circles = svg_around.selectAll(".co_workers")
+	var cw_data = svg_around.selectAll(".co_workers")
 	.data(jsonCircles)
 	.enter()
 	.append("a")
-	.attr("xlink:href", function(d) { return d.link; })
-	.append("circle");
+	.attr("xlink:href", function(d) { return d.link; });
+
 
 	var defs = svg_around.selectAll(".cw_imgs")
 	.data(jsonCircles)
@@ -267,7 +270,7 @@
 
 
 
-	var circlesAttribute = cw_circles	
+	var cw_circles = cw_data.append("circle")
 	.attr("r", function(d){
 		return (d.priority == 1 ? radii.cw_grande : radii.cw_tall);
 	})
@@ -286,9 +289,46 @@
 	.style("fill", function (d,i) {
 		return "url(#catpatterns_" + i + ")";
 	})
-	.style("stroke", "black")
-	.on("mouseover", nodeOver)
-	.on("mouseout", nodeOut);
+	.style("stroke", "black");
+	//.on("mouseover", nodeOver)
+	//.on("mouseout", nodeOut);
+
+	var alert_circles = cw_data.append("circle")
+	.attr("r", function(d){
+		return (d.priority == 1 ? radii.alert_big : radii.alert_small);
+	})
+	.attr("cx", function (d,i) { 
+		if(d.priority == 1){
+			return radii.orbit_small*Math.cos(pos_small[i]*45/180*3.1415926)+20;}
+			else{
+				return radii.orbit_big*Math.cos(pos_big[i]*45/180*3.1415926)+16;}
+				;})
+	.attr("cy", function (d,i) { 
+		if(d.priority == 1){
+			return radii.orbit_small*Math.sin(pos_small[i]*45/180*3.1415926)-20;}
+			else {
+				return radii.orbit_big*Math.sin(pos_big[i]*45/180*3.1415926)-16;}
+				;})
+	.style("fill", "red");
+
+
+	var alert_text = cw_data.append("text")
+	.attr("x", function (d,i) { 
+		if(d.priority == 1){
+			return radii.orbit_small*Math.cos(pos_small[i]*45/180*3.1415926)+16;}
+			else{
+				return radii.orbit_big*Math.cos(pos_big[i]*45/180*3.1415926)+12;}
+				;})
+	.attr("y", function (d,i) { 
+		if(d.priority == 1){
+			return radii.orbit_small*Math.sin(pos_small[i]*45/180*3.1415926)-16;}
+			else {
+				return radii.orbit_big*Math.sin(pos_big[i]*45/180*3.1415926)-12;}
+				;})
+	.text(function(d){
+		return d.alert_num;
+	})
+	.attr("fill","white");
 
 
 
@@ -309,9 +349,7 @@
 				return radii.cw_tall;
 		})
 	}
-
 	</script>
-
 
 </div>
 <div id="timeline2">
