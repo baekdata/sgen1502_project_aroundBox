@@ -685,13 +685,13 @@ li {
     height: 100%;
   }
 }
-#files {
+.files {
     margin-left: 88px;
     width: 610px;
     height: 15px;
-    margin-top: -13px;
-    overflow-x: scroll;
-    overflow-y: hidden; 
+    margin-top: -15px;
+    overflow-x: hidden;
+    overflow-y: scroll; 
 }
 .file_name {
 	float: left;
