@@ -1,0 +1,107 @@
+body{
+	width: 100%;
+	height: 100%;
+}
+
+.in_container{
+	height: 100%;
+}
+
+.in_noti{
+	background-color: #ffffff;
+	width: 320px;
+	margin: 0 auto;
+}
+
+#home_search{
+	width:100%;
+	height:45px;
+	background-color: #bdbdbd;
+	padding-top: 7px;
+}
+
+#home_search_form{
+	background-color: #ffffff;
+	margin: 0 auto;
+	height: 37px;
+	width: 96%;
+}
+
+#home_search_text {
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: left;
+	height: 30px;
+}
+.search_image{
+	margin:13px 16px 10px 10px;
+    float: right;
+}
+
+#home_search_input {
+	color: #bcbcbc;
+    border: 0px;
+    font-size: 13px;
+    text-indent: 12px;
+    float: left;
+    padding: 10px;
+}
+
+#home_search_text:focus{
+    outline: 0;
+}
+
+
+#home_container{
+	width: 100%;
+	height: 545px;
+	margin:0 auto;
+}
+
+#home_noti{
+	float:left;
+	width: 30%;
+	overflow-y: scroll;
+}
+
+#home_around{
+	float:left;
+	width: 70%;
+	background: #ffffff;
+}
+
+#noti_form{
+	margin : 0 auto;
+	width: 360px;
+	height: 50px;
+	padding-top:20px;
+}
+#today{
+	float:left;
+}
+#show_date{
+	float: left;
+	margin-left: 10px;
+}
+#img_refresh{
+    float: right;
+}
+#noti_msg{
+	height: 300px;
+	margin-bottom: 10px;
+}
+#noti_meeting{
+	height :300px;
+}
+#around_form{
+	width:100%;
+	height:10%;
+}
+#svg_around{
+	margin: 0 auto;
+}
+#around{
+	width:100%;
+	height:90%;
+	margin:0 auto;
+}
