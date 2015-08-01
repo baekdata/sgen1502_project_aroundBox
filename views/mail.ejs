@@ -1,417 +1,435 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-	<head>
-		<title>Band title</title>
-		<link rel="stylesheet" href="./common.css"></link>
-		<link rel="stylesheet" href="./common_ay.css"></link>
-		<link rel="stylesheet" href="./NotoSansKR-Regular/styles.css"></link>
-		<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>	
-		<script type="text/javascript" src="./js/sgen.js"></script>	
+<head>
+	<title>Band title</title>
+	<link rel="stylesheet" href="./common.css"></link>
+	<link rel="stylesheet" href="./common_ay.css"></link>
+	<link rel="stylesheet" href="./NotoSansKR-Regular/styles.css"></link>
+	<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>	
+	<script type="text/javascript" src="./js/sgen.js"></script>	
 
 
-		<link href="css/jquery-ui.css" rel="stylesheet" />
-        <link href="css/jquery.ui.theme.css" rel="stylesheet" />
+	<link href="css/jquery-ui.css" rel="stylesheet" />
+	<link href="css/jquery.ui.theme.css" rel="stylesheet" />
 
-        <link href="css/timelineScheduler.css" rel="stylesheet" />
-        <link href="css/timelineScheduler.styling.css" rel="stylesheet" />
-        <link href="css/calendar.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="css/selectize.css" />
+	<link href="css/timelineScheduler.css" rel="stylesheet" />
+	<link href="css/timelineScheduler.styling.css" rel="stylesheet" />
+	<link href="css/calendar.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/selectize.css" />
 
-        <script src="js/moment.min.js"></script>
-        
-        <script src="js/jquery-ui-1.10.2.min.js"></script>
-    
-        <script src="js/timelineScheduler.js"></script>
-        <script src="js/calendar.js"></script>
-        <script type="text/javascript" src="js/selectize.js"></script>
-	</head>
-	<body style="background:#e0e0e0;">
-		<div id="wrapper">
-			<div id="header">
-				<div id="title_line">
-					<div id="title_home" class="title_btns">
-						<a href="/home"> HOME </a>
-					</div>
-					<div id="title_mail" class="title_btns">
-						<a href="/mail"> MAIL </a>
-					</div>
-					<div id="title_calender" class="title_btns">
-						<a href="/calender"> CALENDER </a>
-					</div>
-					<div id="title_me" class="title_btns">
-						<a href="/#"> ME </a>
-					</div>
-					<div id="title_setting" class="title_btns">
-						<a href="/#"> SETTING </a>
-					</div>
+	<script src="js/moment.min.js"></script>
+
+	<script src="js/jquery-ui-1.10.2.min.js"></script>
+
+	<script src="js/timelineScheduler.js"></script>
+	<script src="js/calendar.js"></script>
+	<script type="text/javascript" src="js/selectize.js"></script>
+</head>
+<body style="background:#e0e0e0;">
+	<div id="wrapper">
+		<div id="header">
+			<div id="title_line">
+				<div id="title_home" class="title_btns">
+					<a href="/home"> HOME </a>
+				</div>
+				<div id="title_mail" class="title_btns">
+					<a href="/mail"> MAIL </a>
+				</div>
+				<div id="title_calender" class="title_btns">
+					<a href="/calender"> CALENDER </a>
+				</div>
+				<div id="title_me" class="title_btns">
+					<a href="/#"> ME </a>
+				</div>
+				<div id="title_setting" class="title_btns">
+					<a href="/#"> SETTING </a>
 				</div>
 			</div>
+		</div>
 
-			<div id="container">
-				<div id="round_icons">
-					<div id="round_icons_left">
-						<div class="round_img left-margin">
-							<input type='image' src='./images/cirBtn_box.png' class='round_icons_img'/>
-						</div>
-						<div class="round_img">
-							<input type='image' src='./images/cirBtn_person.png' class='round_icons_img'/>
-						</div>
-						<div class="round_img">
-							<input type='image' src='./images/cirBtn_people.png' class='round_icons_img'/>
+		<div id="container">
+			<div id="round_icons">
+				<div id="round_icons_left">
+					<div class="round_img left-margin">
+						<input type='image' src='./images/cirBtn_box.png' class='round_icons_img'/>
+					</div>
+					<div class="round_img">
+						<input type='image' src='./images/cirBtn_person.png' class='round_icons_img'/>
+					</div>
+					<div class="round_img">
+						<input type='image' src='./images/cirBtn_people.png' class='round_icons_img'/>
+					</div>
+				</div>
+				<div id='round_icons_right'>
+					<div class='round_icons_p'>
+						<img src="./images/people/p1.png" class="icons_img_p" />
+						<div class="tooltip_menu">
+							<img class="tooltip_compose" src="/images/email_bt.png" />
+							<img class="tooltip_inform"src="/images/information_bt.png" />
 						</div>
 					</div>
-					<div id='round_icons_right'>
-						<div class='round_icons_p'>
-							<img src="./images/people/p1.png" class="icons_img_p" />
-							<div class="tooltip_menu">
-								<img class="tooltip_compose" src="/images/email_bt.png" />
-								<img class="tooltip_inform"src="/images/information_bt.png" />
-							</div>
-						</div>
-						<div class='round_icons_p'>
-							<img src="./images/people/p2.png" class="icons_img_p" />
-							<div class="tooltip_menu">
-								<img class="tooltip_compose" src="/images/email_bt.png" />
-								<img class="tooltip_inform"src="/images/information_bt.png" />
-							</div>
-						</div>
-						<div class='round_icons_p'>
-							<img src="./images/people/p3.png" class="icons_img_p" />
-							<div class="tooltip_menu">
-								<img class="tooltip_compose" src="/images/email_bt.png" />
-								<img class="tooltip_inform"src="/images/information_bt.png" />
-							</div>
-						</div>
-						<div class='round_icons_p'>
-							<img src="./images/people/p4.png" class="icons_img_p" />
-							<div class="tooltip_menu">
-								<img class="tooltip_compose" src="/images/email_bt.png" />
-								<img class="tooltip_inform"src="/images/information_bt.png" />
-							</div>
+					<div class='round_icons_p'>
+						<img src="./images/people/p2.png" class="icons_img_p" />
+						<div class="tooltip_menu">
+							<img class="tooltip_compose" src="/images/email_bt.png" />
+							<img class="tooltip_inform"src="/images/information_bt.png" />
 						</div>
 					</div>
-				</div>	
-
-<!-- make mailview ay -->
-				<div id="mail_box">
-					<div id ="mail_find">
-						<div id ="mail_find_bg">
-						<form>
-							<input id="search_text" type="text" placeholder="검색어를 입력하세요" size="92px" class="serach_bar"></input>
-							<input type="image" src="./images/searchBtn.png" class="search_image" ></input>
-						</form>
+					<div class='round_icons_p'>
+						<img src="./images/people/p3.png" class="icons_img_p" />
+						<div class="tooltip_menu">
+							<img class="tooltip_compose" src="/images/email_bt.png" />
+							<img class="tooltip_inform"src="/images/information_bt.png" />
 						</div>
 					</div>
-
-					<!-- mail boxes -->
-					<div id="mail_view">
-						<div id="mail_left">
-							<div id="mail_left_btns">
-								<input type="image" src="./images/writeBtn.png" id="writeBtn_image" ></input>
-								<a href="/mail">
-									<input type="image" src="./images/reBtn.png" id="reBtn_image" ></input>
-								</a>
-							</div>
-							<div id="mail_left_menu"> 
-								<div class="receive_mail_btn_c">
-									<div id="dropdown-mailbox" class="dropdown-menu">
-										<div class="dropdown-text">받은 편지함 ( 662 )</div>
-										<div class="dropdown-list">
-											<div class="items active" val="in">
-												받은 편지함 (662)
-											</div>
-											<div class="items" val="out">
-												보낸 편지함 (662)
-											</div>
-											<div class="items" val="star">
-												별표 편지함 (662)
-											</div>
-										</div>
-									</div>
-									<div class="page_naviagtion">
-										<span class="receive_main_list"> 1 - 3 </span>
-										<input type="image" src="./images/mailNextL.png" id="mailNextL_image" ></input>
-										<input type="image" src="./images/mailNextR.png" id="mailNextR_image" ></input>
-									</div>
-									
-								</div>
-							</div>
-							<div id="maillist_in" class="mail_left_content_list">
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr overlay">
-										<div class="list_attr_img">
-											<div class="list_attr_img_r">
-												<span class="list_attr_img_txt">32</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">윤석호, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr">
-										<div class="list_attr_img">
-											<div class="list_attr_img_b">
-												<span class="list_attr_img_txt">82</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">이아, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr">
-										<div class="list_attr_img">
-											<div class="list_attr_img_g">
-												<span class="list_attr_img_txt">109</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">이아영, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09  13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽</span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div id="maillist_out" class="mail_left_content_list">
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr overlay">
-										<div class="list_attr_img">
-											<div class="list_attr_img_r">
-												<span class="list_attr_img_txt">33</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">윤석호, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr">
-										<div class="list_attr_img">
-											<div class="list_attr_img_b">
-												<span class="list_attr_img_txt">82</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">이아, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr">
-										<div class="list_attr_img">
-											<div class="list_attr_img_g">
-												<span class="list_attr_img_txt">109</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">이아영, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09  13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽</span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div id="maillist_star" class="mail_left_content_list">
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr overlay">
-										<div class="list_attr_img">
-											<div class="list_attr_img_r">
-												<span class="list_attr_img_txt">34</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">윤석호, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr">
-										<div class="list_attr_img">
-											<div class="list_attr_img_b">
-												<span class="list_attr_img_txt">82</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">이아, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-								<div class="mail_left_content">
-									<div class="mail_left_list_attr">
-										<div class="list_attr_img">
-											<div class="list_attr_img_g">
-												<span class="list_attr_img_txt">109</span>
-											</div>
-										</div>
-										<div class="list_attr_title">
-											<span class="list_attr_title1">이아영, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09  13:23 </span>
-										</div>
-										<div class="list_attr_text">
-											<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽</span>
-										</div>
-										<div class="list_attr_time">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="mail_right_view" class="mail_right">
-							<div id="mail_right_top">
-								<img src="./images/right_clip.png" id="right_clip_image"/>
-								<span class="right_clip_text"> 5월16일 토요일 23:54 </span>
-								<from>
-									<input type="image" src="./images/right_star.png" class="right_star_image"></input>
-								</from>
-								<from>
-									<input type="image" src="./images/right_like.png" class="right_like_image"></input>
-								</from>
-								<from>
-									<input type="image" src="./images/right_left.png" class="right_left_image"></input>
-								</from>
-							</div>
-							<div id="mail_right_content">
-								<div id="mail_right_content_top">
-									<div class="right_top_title">
-										<span class="right_top_title_text">sGen club 4번째 프로젝트 [i office]</span>
-									</div>
-									<div class="right_top_people">
-										<img src="./images/people/people1.png" class="right_top_people_img" />
-										<span class="right_top_sender">윤석호 seukho.yoon@naver.com</span>
-										<span class="right_top_receiver">윤정훈, 이아영, 김동억, 백종수, 최평강 에게</span>
-									</div>
-								</div>
-								<hr class="mailview_hr">
-								<div id="mail_right_content_middle">
-									<div class="right_middle_text">
-										D3의 설계결함으로 보이지만, 이는 의도된 동작이다. <br>
-										각기 다른 뷰를 실행하는 여러 버튼이 있고 사용자가 이 버튼들을 연속해서 재빨리 눌렀다고 가정하자. 먼저 선택한<br>
-										트랜지션이 아닌 마지막으로 선택한 트랜지션이 동작하는 게 옳은 동작 방식이다. <br><br>
-										제이쿼리에 익숙한 개발자라면, 여기서 차이점을 느끼게 된다. 기본적으로 제이쿼리는 트랜젝션을 큐에 쌓는다.<Br>
-										그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
-										트랜지션이 아닌 마지막으로 선택한 트랜지션이 동작하는 게 옳은 동작 방식이다. <br><br>
-										제이쿼리에 익숙한 개발자라면, 여기서 차이점을 느끼게 된다. 기본적으로 제이쿼리는 트랜젝션을 큐에 쌓는다.<Br>
-										그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
-
-										<div class="right_middle_files">
-											<div class="right_middle_file">
-												<div class="right_file_img">
-													<form>
-														<input type="image" class="right_file_img_btn" src="./images/file_download.png"/>
-													</form>
-												</div>
-												<div class="right_file_text">
-													<span class="right_file_text_value">업무_분담표.PDF</span>
-												</div>
-												<div class="right_file_size">
-													<span class="right_file_size_value">3.45M</span>
-												</div>
-											</div>
-											<div class="right_middle_file">
-												<div class="right_file_img">
-													<form>
-														<input type="image" class="right_file_img_btn" src="./images/file_download.png"/>
-													</form>
-												</div>
-												<div class="right_file_text">
-													<span class="right_file_text_value">업무_분담표_2.PDF</span>
-												</div>
-												<div class="right_file_size">
-													<span class="right_file_size_value">7.89M</span>
-												</div>
-												<!-- 하단 답장 보내는 부분... -->
-												<div id="mail_right_content_bottom">
-													<hr class="mailview_hr2">
-													<img src="./images/people/people1.png" class="right_top_people_img_2" />
-													<div class="mail_right_reply_box">
-														<textarea class="reply_box_tt" rows=8 cols=88 placeholder="답장하실려면 클릭하세요 "></textarea>
-														<from>
-															<input type="image" class="reply_img_btn" src="./images/reply_sendBtn.png">
-														</from>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-						<div id="mail_right_write" class="mail_right">
-							<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">
-							<hr class="mailwrite_hr">
-							<div id="sender_boxes">
-								<div class="sender_box">
-									<span class="sender_box_text_1"> 받는 사람 </span>
-									<div id='sender_box_content_1'>
-										<input type="text" id='sender_box_get_1' class='sender_box_input_0' />
-									</div>
-									<div id='sender_box_content_2'>
-										<input type="image" class='sender_box_input_0_btn' src='./images/triBtn.png' />
-									</div>
-								</div>
-								<div class="sender_box">
-									<span class="sender_box_text_2"> 참조 </span>
-									<input type="text" id='sender_box_get_2' class='sender_box_input_1' />
-								</div>
-								<div class="sender_box">
-									<span class="sender_box_text_2"> 제목 </span>
-									<input type="text" id='sender_box_get_3' class='sender_box_input_1' />
-								</div>
-								<div class="sender_box">
-									<span class="sender_box_text_1"> 파일 첨부 </span>
-									<input type='image' src="./images/plusBtn.png" id="sender_box_plus_btn" />
-								</div>
-							</div>
-							<div id="sender_content">
-								<textarea id="sender_content_tt" rows=13 cols=97></textarea>
-							</div>
+					<div class='round_icons_p'>
+						<img src="./images/people/p4.png" class="icons_img_p" />
+						<div class="tooltip_menu">
+							<img class="tooltip_compose" src="/images/email_bt.png" />
+							<img class="tooltip_inform"src="/images/information_bt.png" />
 						</div>
 					</div>
 				</div>
 			</div>	
-		</div>
+
+			<!-- make mailview ay -->
+			<div id="mail_box">
+				<div id ="mail_find">
+					<div id ="mail_find_bg">
+						<form>
+							<input id="search_text" type="text" placeholder="검색어를 입력하세요" size="92px" class="serach_bar"></input>
+							<input type="image" src="./images/searchBtn.png" class="search_image" ></input>
+						</form>
+					</div>
+				</div>
+
+				<!-- mail boxes -->
+				<div id="mail_view">
+					<div id="mail_left">
+						<div id="mail_left_btns">
+							<input type="image" src="./images/writeBtn.png" id="writeBtn_image" ></input>
+							<a href="/mail">
+								<input type="image" src="./images/reBtn.png" id="reBtn_image" ></input>
+							</a>
+						</div>
+						<div id="mail_left_menu"> 
+							<div class="receive_mail_btn_c">
+								<div id="dropdown-mailbox" class="dropdown-menu">
+									<div class="dropdown-text">받은 편지함 ( 662 )</div>
+									<div class="dropdown-list">
+										<div class="items active" val="in">
+											받은 편지함 (662)
+										</div>
+										<div class="items" val="out">
+											보낸 편지함 (662)
+										</div>
+										<div class="items" val="star">
+											별표 편지함 (662)
+										</div>
+									</div>
+								</div>
+								<div class="page_naviagtion">
+									<span class="receive_main_list"> 1 - 3 </span>
+									<input type="image" src="./images/mailNextL.png" id="mailNextL_image" ></input>
+									<input type="image" src="./images/mailNextR.png" id="mailNextR_image" ></input>
+								</div>
+
+							</div>
+						</div>
+						<div id="maillist_in" class="mail_left_content_list">
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr overlay">
+									<div class="list_attr_img">
+										<div class="list_attr_img_r">
+											<span class="list_attr_img_txt">32</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">윤석호, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr">
+									<div class="list_attr_img">
+										<div class="list_attr_img_b">
+											<span class="list_attr_img_txt">82</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">이아, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr">
+									<div class="list_attr_img">
+										<div class="list_attr_img_g">
+											<span class="list_attr_img_txt">109</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">이아영, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09  13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽</span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="maillist_out" class="mail_left_content_list">
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr overlay">
+									<div class="list_attr_img">
+										<div class="list_attr_img_r">
+											<span class="list_attr_img_txt">33</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">윤석호, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr">
+									<div class="list_attr_img">
+										<div class="list_attr_img_b">
+											<span class="list_attr_img_txt">82</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">이아, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr">
+									<div class="list_attr_img">
+										<div class="list_attr_img_g">
+											<span class="list_attr_img_txt">109</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">이아영, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09  13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽</span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="maillist_star" class="mail_left_content_list">
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr overlay">
+									<div class="list_attr_img">
+										<div class="list_attr_img_r">
+											<span class="list_attr_img_txt">34</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">윤석호, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr">
+									<div class="list_attr_img">
+										<div class="list_attr_img_b">
+											<span class="list_attr_img_txt">82</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">이아, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09 13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 </span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+							<div class="mail_left_content">
+								<div class="mail_left_list_attr">
+									<div class="list_attr_img">
+										<div class="list_attr_img_g">
+											<span class="list_attr_img_txt">109</span>
+										</div>
+									</div>
+									<div class="list_attr_title">
+										<span class="list_attr_title1">이아영, 김도윤, 김동억, 백종수</span> <span class="list_attr_title2">외 2명</span> <span class="list_attr_time"> 5.09  13:23 </span>
+									</div>
+									<div class="list_attr_text">
+										<span class="list_attr_text1">햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽 햇살 머금은 맛 그대로 에스젠 클럽 헷살 머금은 맛 그대로 에스젠 클럽</span>
+									</div>
+									<div class="list_attr_time">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="mail_right_view" class="mail_right">
+						<div id="mail_right_top">
+							<img src="./images/right_clip.png" id="right_clip_image"/>
+							<span class="right_clip_text"> 5월16일 토요일 23:54 </span>
+							<from>
+								<input type="image" src="./images/right_star.png" class="right_star_image"></input>
+							</from>
+							<from>
+								<input type="image" src="./images/right_like.png" class="right_like_image"></input>
+							</from>
+							<from>
+								<input type="image" src="./images/right_left.png" class="right_left_image"></input>
+							</from>
+						</div>
+						<div id="mail_right_content">
+							<div id="mail_right_content_top">
+								<div class="right_top_title">
+									<span class="right_top_title_text">sGen club 4번째 프로젝트 [i office]</span>
+								</div>
+								<div class="right_top_people">
+									<img src="./images/people/people1.png" class="right_top_people_img" />
+									<span class="right_top_sender">윤석호 seukho.yoon@naver.com</span>
+									<span class="right_top_receiver">윤정훈, 이아영, 김동억, 백종수, 최평강 에게</span>
+								</div>
+							</div>
+							<hr class="mailview_hr">
+							<div id="mail_right_content_middle">
+								<div class="right_middle_text">
+									D3의 설계결함으로 보이지만, 이는 의도된 동작이다. <br>
+									각기 다른 뷰를 실행하는 여러 버튼이 있고 사용자가 이 버튼들을 연속해서 재빨리 눌렀다고 가정하자. 먼저 선택한<br>
+									트랜지션이 아닌 마지막으로 선택한 트랜지션이 동작하는 게 옳은 동작 방식이다. <br><br>
+									제이쿼리에 익숙한 개발자라면, 여기서 차이점을 느끼게 된다. 기본적으로 제이쿼리는 트랜젝션을 큐에 쌓는다.<Br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+									트랜지션이 아닌 마지막으로 선택한 트랜지션이 동작하는 게 옳은 동작 방식이다. <br><br>
+									제이쿼리에 익숙한 개발자라면, 여기서 차이점을 느끼게 된다. 기본적으로 제이쿼리는 트랜젝션을 큐에 쌓는다.<Br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+									트랜지션이 아닌 마지막으로 선택한 트랜지션이 동작하는 게 옳은 동작 방식이다. <br><br>
+									제이쿼리에 익숙한 개발자라면, 여기서 차이점을 느끼게 된다. 기본적으로 제이쿼리는 트랜젝션을 큐에 쌓는다.<Br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+									트랜지션이 아닌 마지막으로 선택한 트랜지션이 동작하는 게 옳은 동작 방식이다. <br><br>
+									제이쿼리에 익숙한 개발자라면, 여기서 차이점을 느끼게 된다. 기본적으로 제이쿼리는 트랜젝션을 큐에 쌓는다.<Br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+									트랜지션이 아닌 마지막으로 선택한 트랜지션이 동작하는 게 옳은 동작 방식이다. <br><br>
+									제이쿼리에 익숙한 개발자라면, 여기서 차이점을 느끼게 된다. 기본적으로 제이쿼리는 트랜젝션을 큐에 쌓는다.<Br>
+									그래서 트랜지션은 차례대로 실행되고, 실행 중엔 신규 트랜지션이 임의로 끼어들지 않는다. <br>
+
+									<div class="right_middle_files">
+										<div class="right_middle_file">
+											<div class="right_file_img">
+												<form>
+													<input type="image" class="right_file_img_btn" src="./images/file_download.png"/>
+												</form>
+											</div>
+											<div class="right_file_text">
+												<span class="right_file_text_value">업무_분담표.PDF</span>
+											</div>
+											<div class="right_file_size">
+												<span class="right_file_size_value">3.45M</span>
+											</div>
+										</div>
+										<div class="right_middle_file">
+											<div class="right_file_img">
+												<form>
+													<input type="image" class="right_file_img_btn" src="./images/file_download.png"/>
+												</form>
+											</div>
+											<div class="right_file_text">
+												<span class="right_file_text_value">업무_분담표_2.PDF</span>
+											</div>
+											<div class="right_file_size">
+												<span class="right_file_size_value">7.89M</span>
+											</div>
+											<!-- 하단 답장 보내는 부분... -->
+											<div id="mail_right_content_bottom">
+												<hr class="mailview_hr2">
+												<div class="mail_right_reply_box">
+													<img src="./images/people/people1.png" class="right_top_people_img_2" />
+													<textarea class="reply_box_tt" rows=8 cols=88 placeholder="답장하실려면 클릭하세요 "></textarea>
+													<from>
+														<input type="image" class="reply_img_btn" src="./images/reply_sendBtn.png">
+													</from>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div id="mail_right_write" class="mail_right">
+						<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">
+						<hr class="mailwrite_hr">
+						<div id="sender_boxes">
+							<div class="sender_box">
+								<span class="sender_box_text_1"> 받는 사람 </span>
+								<div id='sender_box_content_1'>
+									<input type="text" id='sender_box_get_1' class='sender_box_input_0' />
+								</div>
+								<div id='sender_box_content_2'>
+									<input type="image" class='sender_box_input_0_btn' src='./images/triBtn.png' />
+								</div>
+							</div>
+							<div class="sender_box">
+								<span class="sender_box_text_2"> 참조 </span>
+								<input type="text" id='sender_box_get_2' class='sender_box_input_1' />
+							</div>
+							<div class="sender_box">
+								<span class="sender_box_text_2"> 제목 </span>
+								<input type="text" id='sender_box_get_3' class='sender_box_input_1' />
+							</div>
+							<div class="sender_box">
+								<span class="sender_box_text_1"> 파일 첨부 </span>
+								<span class="btn btn-success fileinput-button">
+									<image src="./images/plusBtn.png"/>
+									<input id="fileupload" type="file" name="files[]" multiple>
+								</span>
+								<!-- <input type='image' src="./images/plusBtn.png" id="sender_box_plus_btn" /> -->
+								<div id="files" class='files'></div>
+							</div>
+
+						</div>
+						<div id="sender_content">
+							<textarea id="sender_content_tt" rows=13 cols=97></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
 
 	<div id="timeline2">
 		<div class="wrap">
@@ -426,19 +444,44 @@
 		</div>
 	</div>
 
+
+<script src="./js/jquery.fileupload.js"></script>
+<script>
+/*jslint unparam: true */
+/*global window, $ */
+$(function () {
+    'use strict';
+    // Change this to the location of your server-side upload handler:
+    // var url = window.location.hostname === 'blueimp.github.io' ?
+    var url = window.location.hostname ?
+                '//jquery-file-upload.appspot.com/' : 'server/php/';
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<div class="file_name" />').text(file.name).appendTo('#files');
+            });
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+});
+</script>
+
+
 	<script>
-		$( document ).ready( function(){	
-			$('#search_text').selectize({
-			    delimiter: ',',
-			    persist: false,
-			    create: function(input) {
-			        return {
-			            value: input,
-			            text: input
-			        }
-			    }
-			});
+	$( document ).ready( function(){	
+		$('#search_text').selectize({
+			delimiter: ',',
+			persist: false,
+			create: function(input) {
+				return {
+					value: input,
+					text: input
+				}
+			}
 		});
+	});
 	</script>
-	</body>
+</body>
 </html>

@@ -52,121 +52,152 @@
 
 		<div id="home_container" style="text-align:center;">
 			<div id="home_search">
-			<div id ="home_search_form">
-				<div id ="home_search_text">
-					<form>
-						<input id="home_search_input" type="text" placeholder="검색어를 입력하세요" size="70px" ></input>
-						<input type="image" src="./images/searchBtn.png" class="search_image" ></input>
-					</form>
+				<div id ="home_search_form">
+					<div id ="home_search_text">
+						<form>
+							<input id="home_search_input" type="text" placeholder="검색어를 입력하세요" size="70px" ></input>
+							<input type="image" src="./images/searchBtn.png" class="search_image" ></input>
+						</form>
+					</div>
 				</div>
+			</div>
+
+		<div id="home_noti" class="in_container"> 
+			<div id="noti_form">
+				<h3 id="today"> TODAY </h3>
+				<p id="show_date"> Have to set the date </p>
+				<input type="image" src="./images/refresh.png"id="img_refresh" ></input>
+			</div>
+			<div id="noti_msg" class="in_noti">
+				<div id="msg_text">
+					<h2> 안읽은 메시지 </h2>
+					<h3> AM 14:00 </h3>
+				</div>
+				<div id="msg_drawing">
+				</div>
+			</div>
+			<div id="noti_meeting" class="in_noti" >
+				<div id="meeting_text">
+					<h2> 다음 미팅 </h2>
+					<div id="time_left">
+						<p id="min"> 15 </p>
+						<p id="min_text"> 분 후 </p>
+					</div>
+				</div>
+				<div id="meeting_schedule">
+					<div class="meeting_info">
+						<p> 마게팅 미팅 </p>
+						<p> 5월 9일 오후 3:00 </p>
+					</div>
+					<div class="meeting_info">
+						<p> 마게팅 미팅 </p>
+						<p> 5월 9일 오후 3:00 </p>
+					</div>
+					<div class="meeting_info">
+						<p> 마게팅 미팅 </p>
+						<p> 5월 9일 오후 3:00 </p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="home_around" class="in_container"> 
+			<div id="around_form">
+				<h2> 업무 흐름도 </h2>
+				<h3> 윤석호, 김동억, 백종수 외 13명 </h3>
+			</div>
+			<div id="around">
+				<svg id="svg_around"></svg>
 			</div>
 		</div>
-			
-			<div id="home_noti" class="in_container"> 
-				<div id="noti_form">
-						<h3 id="today"> TODAY </h3>
-						<p id="show_date"> Have to set the date </p>
-					<input type="image" src="./images/refresh.png"id="img_refresh" ></input>
-				</div>
-				<div id="noti_msg" class="in_noti"></div>
-				<div id="noti_meeting" class="in_noti" ></div>
 
-			</div>
-			<div id="home_around" class="in_container"> 
-				<div id="around_form">
-				</div>
-				<div id="around">
-					<svg id="svg_around"></svg>
-				</div>
-			</div>
+		<script>
 
-			<script>
+		var width = 600,
+		height = 600,
+		radius = Math.min(width, height);
 
-			var width = 540,
-			height = 540,
-			radius = Math.min(width, height);
+		var radii = {
+			"user" : radius / 12,
+			"orbit_big" : radius / 2.5,
+			"orbit_small" : radius / 4,
+			"cw_tall" : radius / 25,
+			"cw_grande" : radius / 20,
+			"cw_venti" : radius / 15,
+			"alert_big" : 10,
+			"alert_small" : 8
+		};
 
-			var radii = {
-				"user" : radius / 12,
-				"orbit_big" : radius / 2.5,
-				"orbit_small" : radius / 4,
-				"cw_tall" : radius / 25,
-				"cw_grande" : radius / 20,
-				"cw_venti" : radius / 15,
-				"alert_big" : 10,
-				"alert_small" : 8
-			};
+		var jsonCircles = [
+		{
+			"name" : "Donguk",
+			"priority" : 1,
+			"alert_num" : 4,
+			"color" : "orange",
+			"link" : "http://www.daum.net",
+			"img_link" : "/test1.png"
 
-			var jsonCircles = [
-			{
-				"name" : "Donguk",
-				"priority" : 1,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.daum.net",
-				"img_link" : "/test1.png"
-				
-			},
-			{
-				"name" : "Lina",
-				"priority" : 1,
-				"alert_num" : 3,
-				"color" : "yellow",
-				"link" : "http://www.naver.com",
-				"img_link" : "/test2.png"
+		},
+		{
+			"name" : "Lina",
+			"priority" : 1,
+			"alert_num" : 3,
+			"color" : "yellow",
+			"link" : "http://www.naver.com",
+			"img_link" : "/test2.png"
 
-				
-			},
-			{
-				"name" : "Penguin",
-				"priority" : 1,
-				"alert_num" : 4,
-				"color" : "red",
-				"link" : "http://www.google.com",
-				"img_link" : "/test3.jpg"
 
-			},
-			{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://en.wikipedia.org/",
-				"img_link" : "/test1.png"
-				
-			},
-			{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.babbel.com",
-				"img_link" : "/test1.png"
-				
-			},{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.cgv.co.kr",
-				"img_link" : "/test1.png"
-				
-			},{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.facebook.com",
-				"img_link" : "/test1.png"
-				
-			}
-			];
+		},
+		{
+			"name" : "Penguin",
+			"priority" : 1,
+			"alert_num" : 4,
+			"color" : "red",
+			"link" : "http://www.google.com",
+			"img_link" : "/test3.jpg"
 
-			var user_info = [{
-				"name" : "JH",
-				"link" : "http://www.nate.com",
-				"img_link" : "/test4.png"
-			}];
+		},
+		{
+			"name" : "Donguk",
+			"priority" : 2,
+			"alert_num" : 4,
+			"color" : "orange",
+			"link" : "http://en.wikipedia.org/",
+			"img_link" : "/test1.png"
+
+		},
+		{
+			"name" : "Donguk",
+			"priority" : 2,
+			"alert_num" : 4,
+			"color" : "orange",
+			"link" : "http://www.babbel.com",
+			"img_link" : "/test1.png"
+
+		},{
+			"name" : "Donguk",
+			"priority" : 2,
+			"alert_num" : 4,
+			"color" : "orange",
+			"link" : "http://www.cgv.co.kr",
+			"img_link" : "/test1.png"
+
+		},{
+			"name" : "Donguk",
+			"priority" : 2,
+			"alert_num" : 4,
+			"color" : "orange",
+			"link" : "http://www.facebook.com",
+			"img_link" : "/test1.png"
+
+		}
+		];
+
+		var user_info = [{
+			"name" : "JH",
+			"link" : "http://www.nate.com",
+			"img_link" : "/test4.png"
+		}];
 
 
 			//var around = d3.select("#around");
@@ -184,7 +215,8 @@
 			.attr("class", "smallOrbit")
 			.attr("r", radii.orbit_small)
 			.style("fill", "none")
-			.style("stroke","gray");
+			.style("stroke","gray")
+			.style("stroke-dasharray", "5 5 5 5");;
 
 
 			// big orbit
@@ -192,7 +224,8 @@
 			.attr("class", "bigOrbit")
 			.attr("r", radii.orbit_big)
 			.style("fill", "none")
-			.style("stroke","gray");
+			.style("stroke","gray")
+			.style("stroke-dasharray", "5 5 5 5");
 
 
 			// user circle
@@ -225,7 +258,7 @@
 			.attr("xlink:href", function(d) { return d.link; })
 			.append("circle")
 			.attr("r",radii.user)
-			.attr("stroke", "black")
+			//.attr("stroke", "black")
 			.style("fill", "url(#catpattern_user)");
 			
 
@@ -318,8 +351,8 @@
 						;})
 			.style("fill", function (d,i) {
 				return "url(#catpatterns_" + i + ")";
-			})
-			.style("stroke", "black");
+			});
+			//.style("stroke", "black");
 			//.on("mouseover", nodeOver)
 			//.on("mouseout", nodeOut);
 
@@ -407,4 +440,4 @@
 	});
 	</script>
 </body>
-</html>
+</html>	
