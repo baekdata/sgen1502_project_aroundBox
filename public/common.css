@@ -244,7 +244,7 @@ li {
 
 .page_naviagtion {
 	float: right;
-    margin-right: 80px;
+    margin: 3px 80px 0px 0px;
 }
 .receive_main_list {
 	float: left;
@@ -624,7 +624,14 @@ li {
 	background-image: url("/images/mail-dropdown.png");
 	background-repeat: no-repeat;
 	height:30px;
+	width:141px;
     font-size: 13px;
     padding: 6px;
     float: left;
+    cursor: pointer;
+}
+
+.dropdown-menu .dropdown-lit {
+	width:141px;
+	border:1px solid #828282;
 }
