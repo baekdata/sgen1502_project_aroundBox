@@ -54,13 +54,11 @@ app.set('view engine', 'ejs');
 // app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(express.logger('dev'));
 // app.use(express.bodyParser()); 
-
-// 60초 로그인 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // var app = express();
 var port = process.env.PORT || 3000;
