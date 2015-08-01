@@ -167,6 +167,9 @@ li {
     border: 2px solid #0098d8;
     border-radius: 26px;
 }
+.round_icons_img:focus {
+	outline: none;
+}
 #round_icons_right {
 	position: absolute;
     margin-top: 16px;

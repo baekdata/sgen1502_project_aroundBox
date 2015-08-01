@@ -72,7 +72,6 @@ $(document).ready(function(){
     });
 
     $("#dropdown-mailbox .items").click(function() {
-        // console.log("--", $(this).attr('val'));
         $("#dropdown-mailbox .items").removeClass('active');
         $(this).addClass("active");
 
