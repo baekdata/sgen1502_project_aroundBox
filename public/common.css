@@ -71,7 +71,7 @@ li {
 	background-color: #0098d8;
 	font-size: 14px;
 	color: #ffffff;
-	padding:11px 0px 8px 0px;
+	padding:11px 0px 11px 0px;
 }
 #title_home {
 	float: left;
@@ -282,6 +282,10 @@ li {
     width: 400px;
 }
 /*스크롤이 들어가는 부분 attr의 list*/
+
+.mail_left_content {
+	cursor: pointer;
+}
 .mail_left_content_list {
     position: absolute;
     margin-top: 60px;
@@ -294,11 +298,8 @@ li {
 	border-left: 4px solid #ffffff;
 	border-top: 1px solid #dddddd;
 }
-.mail_left_list_attr_overlay {
-	height: 100px; 
-	padding-left: 10px;
+.mail_left_list_attr.overlay {
 	background-color: #DFEEF6;
-	border-top: 1px solid #dddddd;
 	border-left: 4px solid #3085CE;
 }
 .list_attr_img {
@@ -590,6 +591,7 @@ li {
     width: 54px;
 	background-image: url("/images/dialogbox.png");
 	background-repeat: no-repeat;
+	    z-index: 9999;
 }
 
 .tooltip_compose {
