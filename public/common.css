@@ -447,7 +447,7 @@ li {
     width: 400px;
     font-size: 21px;
     margin-top: 60px;
-    margin-left: -28px;
+    margin-left: 26px;
     color: #000000;
 }
 .right_top_people {
@@ -465,7 +465,7 @@ li {
     position: absolute;
     width: 300px;
     margin-top: 105px;
-    margin-left: 27px;
+    margin-left: 75px;
     font-size: 14px;
     font-weight: 600;
 }
@@ -473,7 +473,7 @@ li {
     position: absolute;
     width: 300px;
     margin-top: 125px;
-    margin-left: 34px;
+    margin-left: 74px;
     font-size: 13px;
     font-weight: 200;
 }
