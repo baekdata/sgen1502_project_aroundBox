@@ -241,11 +241,17 @@ li {
 .receive_main_cnt {
 
 }
-.receive_main_list {
-	margin-left: 160px;
-    font-size: 12px;
-    color: #000000;
+
+.page_naviagtion {
+	float: right;
+    margin-right: 80px;
 }
+.receive_main_list {
+	float: left;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
 #mailNextL_image {
     position: absolute;
     margin-left: 18px;
@@ -617,6 +623,8 @@ li {
 .receive_mail_btn_c .dropdown-menu {
 	background-image: url("/images/mail-dropdown.png");
 	background-repeat: no-repeat;
+	height:30px;
+    font-size: 13px;
+    padding: 6px;
+    float: left;
 }
-
-
