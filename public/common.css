@@ -677,7 +677,6 @@ li {
   direction: ltr;
   cursor: pointer;
 }
-
 /* Fixes for IE < 8 */
 @media screen\9 {
   .fileinput-button input {
@@ -685,4 +684,8 @@ li {
     font-size: 100%;
     height: 100%;
   }
+}
+#files {
+	margin-left: 600px;
+	width: 500px;
 }
