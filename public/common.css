@@ -631,7 +631,27 @@ li {
     cursor: pointer;
 }
 
-.dropdown-menu .dropdown-lit {
-	width:141px;
-	border:1px solid #828282;
+.dropdown-menu .dropdown-list {
+    position: absolute;
+    top: 42px;
+    left: 9px;
+    z-index: 999;
+    width: 141px;
+    height: 110px;
+    border: 1px solid #cdcccc;
+    background-color: #fff;
+    border-radius: 4px;
+    display: none;
+}
+
+.dropdown-list .items {
+	width:121px;
+	padding: 10px;
+}
+.dropdown-list .items.active {
+	background-color: #f2f2f2;
+}
+
+#maillist_out, #maillist_star {
+	display: none;
 }
