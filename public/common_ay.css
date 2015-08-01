@@ -69,6 +69,8 @@
 	margin-top: 1px;
 }
 #sender_content {
+	position: relative;
+	margin-top: 4px;
 
 }
 #sender_content_tt {
