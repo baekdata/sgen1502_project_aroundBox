@@ -59,7 +59,8 @@ li {
 }
 
 #title_line {
-	height: 64px;
+	/*height: 64px;*/
+	padding: 18px;
 	text-align: center;
 	background-color: #0098d8;
 	font-size: 18px;
@@ -298,32 +299,40 @@ input[type=text]{
     margin-top: 12px;
     color: #ffffff;
 }
+.list_attr_title {
+	margin-top: 22px;
+    margin-left: 55px;	
+}
+
 .list_attr_title1 {
-	position: absolute;
-    margin-top: 12px;
-    margin-left: 55px;
+	position: relative;
+	float: left;
     font-size: 12px;
     font-weight: bold;
     color: #000000;
 }
 .list_attr_title2 {
-	position: absolute;
+	position: relative;
+	float:left;
+	margin-left: 3px;
     color: #2B6DFA;
     font-weight: bold;
     font-size: 12px;
-    margin-top: 12px;
-    margin-left: 200px;
 }
 .list_attr_time {
-	position: absolute;
-    margin-top: 12px;
-    margin-left: 315px;
+	position: relative;
+	float: right;
+	margin-right: 20px;
+}
+
+.list_attr_text {
+	margin-top: 53px;
+    margin-left: 55px;
+    width: 307px;
 }
 .list_attr_text1 {
-	position: absolute;
-    margin-top: 35px;
-    margin-left: 55px;
-    margin-right: 20px;
+	position: relative;
+
 	font-size: 12px;
 }
 
