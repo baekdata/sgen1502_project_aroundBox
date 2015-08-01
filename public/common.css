@@ -624,7 +624,7 @@ li {
     margin-bottom: 20px;
     width: 55px;
  }
-.receive_mail_btn_c .dropdown-menu {
+.receive_mail_btn_c ._dropdown-menu {
 	background-image: url("/images/mail-dropdown.png");
 	background-repeat: no-repeat;
 	height:30px;
@@ -635,7 +635,7 @@ li {
     cursor: pointer;
 }
 
-.dropdown-menu .dropdown-list {
+._dropdown-menu .dropdown-list {
     position: absolute;
     top: 42px;
     left: 9px;
