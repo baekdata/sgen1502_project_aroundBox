@@ -225,7 +225,6 @@
 			.attr("xlink:href", function(d) { return d.link; })
 			.append("circle")
 			.attr("r",radii.user)
-			.attr("stroke", "black")
 			.style("fill", "url(#catpattern_user)");
 			
 
@@ -318,8 +317,7 @@
 						;})
 			.style("fill", function (d,i) {
 				return "url(#catpatterns_" + i + ")";
-			})
-			.style("stroke", "black");
+			});
 			//.on("mouseover", nodeOver)
 			//.on("mouseout", nodeOut);
 
