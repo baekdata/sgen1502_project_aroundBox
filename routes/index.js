@@ -14,7 +14,7 @@ exports.index = function(req, res){
     //userId가 존재한다면 바로 redirect
     if(sess.userId){
       console.log('[session] ===> session Alive!');
-      res.redirect('/title');
+      res.redirect('/mail');
     }else{
 	  res.render('index', {});
 	}
