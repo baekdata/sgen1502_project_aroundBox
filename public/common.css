@@ -149,13 +149,23 @@ li {
     margin-top: 16px;
 	border-right: 1px solid  #bdbdbd
 }
-#round_icons_right {
+#round_icons_left .round_img{
+	position: relative;
+	float: left;
+	margin-right: 23px;
+}
 
+#round_icons_left .left-margin {
+	margin-left: 50px;
 }
 .round_icons_img {
-	position: relative;
-	margin-right: 23px;
 	size: 100px;
+}
+
+.round_icons_img:hover {
+	margin: -2px;
+    border: 2px solid #0098d8;
+    border-radius: 26px;
 }
 #round_icons_right {
 
@@ -558,5 +568,3 @@ li {
 #search_text:focus{
     outline: 0;
 }
-
-
