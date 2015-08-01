@@ -418,6 +418,7 @@
 									<input id="fileupload" type="file" name="files[]" multiple>
 								</span>
 								<!-- <input type='image' src="./images/plusBtn.png" id="sender_box_plus_btn" /> -->
+								<div id="files" class='files'></div>
 							</div>
 
 						</div>
@@ -442,6 +443,30 @@
 			</div>
 		</div>
 	</div>
+
+
+<script src="./js/jquery.fileupload.js"></script>
+<script>
+/*jslint unparam: true */
+/*global window, $ */
+$(function () {
+    'use strict';
+    // Change this to the location of your server-side upload handler:
+    var url = window.location.hostname === 'blueimp.github.io' ?
+                '//jquery-file-upload.appspot.com/' : 'server/php/';
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+});
+</script>
+
 
 	<script>
 	$( document ).ready( function(){	
