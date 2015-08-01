@@ -519,16 +519,15 @@ li {
 .mail_right_reply_box {
 	position: absolute;
 }
-.mail_right_reply_text {
-    position: absolute;
-    margin-top: 100px;
+.reply_box_tt {
+	position: relative;
     border-radius: 5px;
     border: 1px solid #dedede;
-    margin-left: 50px;
     font-size: 13px;
     color: #7e7e7e;
+    margin-top: 98px;
+    margin-left: 40px;
 }
-
 
 #search_text {
 	color:#bcbcbc;
