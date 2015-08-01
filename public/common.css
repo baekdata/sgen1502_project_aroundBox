@@ -146,8 +146,8 @@ li {
 #round_icons_left {
 	width: 300px;
 	background-color: #ededed;
-	position: relative;
-	padding-top: 16px;
+	position: absolute;
+    margin-top: 16px;
 	border-right: 1px solid  #bdbdbd
 }
 #round_icons_right {
