@@ -175,13 +175,10 @@ li {
 #search_image{
 	left: 37px;
 	right: 37px;
+	padding: 2px;
+    float: right;
 }
-input[type=text]{
-	color:#bcbcbc;
-	height: 20px;
-	/*border: 0px;*/
-	font-size: 16px;
-}
+
 #mail_view{
 }
 
@@ -530,6 +527,22 @@ input[type=text]{
     margin-left: 50px;
     font-size: 13px;
     color: #7e7e7e;
+}
+
+
+#search_text {
+	color:#bcbcbc;
+	height: 20px;
+	border: 0px;
+	font-size: 16px;
+    text-indent: 12px;
+    float: left;
+    padding: 12px;
+
+}
+
+#search_text:focus{
+    outline: 0;
 }
 
 
