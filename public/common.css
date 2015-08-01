@@ -139,16 +139,23 @@ li {
 
 /* mail */
 #round_icons {
-	height: 90px;
+	height: 84px;
 	background-color: #ededed;
 	border-bottom: 1px solid #d0d0d0;
 }
 #round_icons_left {
 	width: 300px;
 	background-color: #ededed;
+	position: relative;
+	padding-top: 16px;
+	border-right: 1px solid  #bdbdbd
 }
 #round_icons_right {
 
+}
+.round_icons_img {
+	margin-right: 23px;
+	size: 100px;
 }
 
 
@@ -178,10 +185,10 @@ li {
     float: right;
 }
 .round_icons_img {
-	width: 100px;
+	height: 49px;
 }
-
 #mail_view{
+
 }
 
 /*left*/
