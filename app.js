@@ -122,9 +122,9 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 // app.get('/write', routes.write);
 
 app.get('/', routes.index);
-app.get('/title', routes.title);
+app.get('/home', routes.home);
+app.get('/detail',routes.detail);
 app.get('/mail', routes.mail);
-app.get('/mailview', routes.mailview);
 app.get('/calender',routes.calender);
 
 //보여주기 내부 에서 수정해줘야됨..구찬으니 그대로쓰기로..

@@ -37,7 +37,7 @@ li {
 	position: relative;
 	margin:  0 auto;
 	width: 1000px;
-	height: 45px;
+	height: 25px;
 }
 #timeline  .wrap{
 	display: table;
@@ -55,11 +55,11 @@ li {
 }
 
 #header {
-	height:64px;
+	height:44px;
 }
 
 #title_line {
-	height: 64px;
+	height: 44px;
 	text-align: center;
 	background-color: #0098d8;
 	font-size: 18px;
@@ -69,12 +69,13 @@ li {
 	width: 150px;
 	text-align: center;
 	background-color: #0098d8;
-	font-size: 18px;
+	font-size: 14px;
 	color: #ffffff;
-	padding: 17px 0px 17px 0px;
+	padding:11px 0px 8px 0px;
 }
 #title_home {
 	float: left;
+    margin-left: 190px;	
 }
 #title_mail {
 	float: left;
@@ -84,6 +85,7 @@ li {
 }
 #title_me {
 	float: right;
+	margin-right: 190px;
 }
 #title_setting {
 	float: right;
@@ -137,13 +139,23 @@ li {
 
 /* mail */
 #round_icons {
-	height: 100px;
+	height: 84px;
 	background-color: #ededed;
 	border-bottom: 1px solid #d0d0d0;
 }
 #round_icons_left {
 	width: 300px;
-	background-color: #ededed;
+	position: absolute;
+    margin-top: 16px;
+	border-right: 1px solid  #bdbdbd
+}
+#round_icons_right {
+
+}
+.round_icons_img {
+	position: relative;
+	margin-right: 23px;
+	size: 100px;
 }
 #round_icons_right {
 
@@ -152,13 +164,11 @@ li {
 
 
 
-
-
 /* mail view ay */
 #mail_box {
 	background-color: #ededed;
-	width: 1200px;
-	height: 700px;
+    width: 1200px;
+    height: 525px;
 }
 #mail_find {
 	padding-top: 10px;
@@ -171,17 +181,15 @@ li {
 	height: 40px;
 	background: #ffffff;
 }
-#search_image{
-	left: 37px;
-	right: 37px;
+.search_image{
+	margin:13px 16px 10px 10px;
+    float: right;
 }
-input[type=text]{
-	color:#bcbcbc;
-	height: 20px;
-	border: 0px;
-	font-size: 16px;
+.round_icons_img {
+	height: 49px;
 }
 #mail_view{
+
 }
 
 /*left*/
@@ -192,7 +200,7 @@ input[type=text]{
 	text-align: left;
 	position: absolute;
 	left: 0%;
-	height: 550px;
+	height: 450px;
 	width: 400px;
 	background: #ffffff;
 }
@@ -233,9 +241,15 @@ input[type=text]{
 }
 #reBtn_image{
     position: absolute;
-    left: 340px;
+    left: 326px;
     margin-top: 16px;
     margin-left: 10px;
+}
+
+#writeBtn_image {
+    width: 273px;
+    height: 42px;
+    margin: 8px 11px 0px 30px;
 }
 #mail_left_menu {
     margin-top: 10px;
@@ -298,32 +312,40 @@ input[type=text]{
     margin-top: 12px;
     color: #ffffff;
 }
+.list_attr_title {
+	margin-top: 22px;
+    margin-left: 55px;	
+}
+
 .list_attr_title1 {
-	position: absolute;
-    margin-top: 12px;
-    margin-left: 55px;
+	position: relative;
+	float: left;
     font-size: 12px;
     font-weight: bold;
     color: #000000;
 }
 .list_attr_title2 {
-	position: absolute;
+	position: relative;
+	float:left;
+	margin-left: 3px;
     color: #2B6DFA;
     font-weight: bold;
     font-size: 12px;
-    margin-top: 12px;
-    margin-left: 200px;
 }
 .list_attr_time {
-	position: absolute;
-    margin-top: 12px;
-    margin-left: 315px;
+	position: relative;
+	float: right;
+	margin-right: 20px;
+}
+
+.list_attr_text {
+	margin-top: 53px;
+    margin-left: 55px;
+    width: 307px;
 }
 .list_attr_text1 {
-	position: absolute;
-    margin-top: 35px;
-    margin-left: 55px;
-    margin-right: 20px;
+	position: relative;
+
 	font-size: 12px;
 }
 
@@ -334,9 +356,11 @@ input[type=text]{
 	margin-right: 10px;
 	position: absolute;
 	left: 320px;
-	height: 550px;
+	height: 450px;
 	width: 765px;
 	background: #ffffff;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 #mail_right_top {
 	position: absolute;
@@ -359,31 +383,24 @@ input[type=text]{
 }
 .right_star_image {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    margin-top: -3px;
-    margin-left: 576px;
+    width: 22px;
+    height: 21px;
+    margin-top: 1px;
+    margin-left: 625px;
 }
 .right_like_image {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    margin-top: -2px;
-    margin-left: 540px;
+    width: 21px;
+    height: 21px;
+    margin-top: 2px;
+    margin-left: 594px;
 }
 .right_left_image {
     position: absolute;
-    width: 60px;
-    height: 35px;
+    width: 50px;
+    height: 27px;
     margin-top: 0px;
-    margin-left: 631px;
-}
-.right_right_image {
-    position: absolute;
-    width: 30px;
-    height: 34px;
-    margin-top: 1px;
-    margin-left: 689px;
+    margin-left: 670px;
 }
 #mail_right_content_top {
 	position: absolute;
@@ -407,7 +424,7 @@ input[type=text]{
     width: 33px;
     border-radius: 150px;
     border: 2px solid #ededed;
-    margin-top: 103px;
+    margin-top: 105px;
     margin-left: 22px;
 }
 .right_top_sender {
@@ -428,20 +445,25 @@ input[type=text]{
 }
 #mail_right_content_middle {
 	position: absolute;
+	margin-top: 15px;
+}
+.mailview_hr {
+	position: absolute;
+	border: 1px solid #e0e0e0;
+	margin-top: 170px;
+	margin-left: 4px;
+	width: 758px;
 }
 /*메일 내용*/
 .right_middle_text{
 	position: absolute;
-    margin-top: 170px;
+    margin-top: 190px;
     margin-left: 45px;
     width: 700px;
     text-align: left;
     font-size: 14px;
     letter-spacing: 0.5px;
 	font-weight: 100;
-}
-#mail_right_content_bottom {
-	position: absolute;
 }
 /*첨부파일*/
 .right_middle_files {
@@ -470,8 +492,8 @@ input[type=text]{
 }
 .right_file_text_value {
 	position: absolute;
-    font-size: 14px;
-    margin-top: 4px;
+    font-size: 13px;
+    margin-top: 5px;
     margin-left: 33px;
     width: 200px;
     letter-spacing: 0.5px;
@@ -487,6 +509,54 @@ input[type=text]{
     width: 50px;
     letter-spacing: 0.5px;
 }
+#mail_right_content_bottom {
+	position: absolute;
+}
+.mailview_hr2 {
+	position: absolute;
+	border: 1px solid #e0e0e0;
+	margin-top: 60px;
+	margin-left: -41px;
+	width: 758px;
+}
+.right_top_people_img_2 {
+	position: absolute;
+	margin-top: 95px;
+    margin-left: -22px;
+    width: 33px;
+    border-radius: 150px;
+    border: 2px solid #ededed;
+}
+.mail_right_reply_box {
+	position: absolute;
+}
+.reply_box_tt {
+	position: relative;
+    border-radius: 5px;
+    border: 1px solid #dedede;
+    font-size: 13px;
+    color: #7e7e7e;
+    margin-top: 98px;
+    margin-left: 40px;
+}
+.reply_img_btn {
+    position: relative;
+    margin-top: 13px;
+    margin-left: 477px;
+    width: 200px;
+}
 
+#search_text {
+	color: #bcbcbc;
+    border: 0px;
+    font-size: 13px;
+    text-indent: 12px;
+    float: left;
+    padding: 12px;
+}
+
+#search_text:focus{
+    outline: 0;
+}
 
 
