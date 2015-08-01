@@ -16,8 +16,11 @@ exports.index = function(req, res){
       console.log('[session] ===> session Alive!');
       res.redirect('/mail');
     }else{
+    console.log('data None!');
 	  res.render('index', {});
 	}
+      
+
 };
 exports.home = function(req, res){
   res.render('home', {});
