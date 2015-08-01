@@ -119,7 +119,8 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 // app.get('/write', routes.write);
 
 app.get('/', routes.index);
-app.get('/title', routes.title);
+app.get('/home', routes.home);
+add.get('/detail',routes.detail);
 app.get('/mail', routes.mail);
 app.get('/mailview', routes.mailview);
 app.get('/calender',routes.calender);
