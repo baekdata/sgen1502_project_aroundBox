@@ -687,8 +687,11 @@ li {
 }
 #files {
     margin-left: 88px;
-    width: 500px;
+    width: 610px;
+    height: 15px;
     margin-top: -13px;
+    overflow-x: scroll;
+    overflow-y: hidden; 
 }
 .file_name {
 	float: left;
