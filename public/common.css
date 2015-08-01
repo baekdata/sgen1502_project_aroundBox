@@ -590,6 +590,7 @@ li {
     width: 54px;
 	background-image: url("/images/dialogbox.png");
 	background-repeat: no-repeat;
+	    z-index: 9999;
 }
 
 .tooltip_compose {
