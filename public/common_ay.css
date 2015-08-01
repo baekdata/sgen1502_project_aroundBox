@@ -68,3 +68,16 @@
 	position: relative;
 	margin-top: 1px;
 }
+#sender_content {
+
+}
+#sender_content_tt {
+	position: relative;
+    border-radius: 5px;
+    border: 1px solid #dedede;
+    font-size: 13px;
+    color: #7e7e7e;
+    margin-top: 11px;
+    margin-left: 15px;
+}
+
