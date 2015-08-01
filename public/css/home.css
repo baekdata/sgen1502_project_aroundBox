@@ -71,14 +71,19 @@ body{
 }
 
 #today{
+	margin-top: 10px;
+	margin-left: 10px;
 	float:left;
+	color: #0066CC;
 }
 #show_date{
+	margin-top: 10px;
 	float: left;
 	margin-left: 10px;
 }
 
 #img_refresh{
+	margin-top: 10px;
     float: right;
     margin-right: 10px;
 }
@@ -99,6 +104,7 @@ body{
 	width: 320px;
 	background-color: #ffffff;
 }
+
 #msg_text{
 	position: absolute;
 	text-align: left;
@@ -106,6 +112,7 @@ body{
 	margin-top: 20px;
 	width: 280px;
 }
+
 #msg_drawing{
 	margin-left: 20px;
 	position: absolute;
@@ -129,15 +136,20 @@ body{
 
 }
 #msg_team{
-	bottom: 20px;
+	bottom: 4px;
 	left: 120px;
 }
 
-#msg_num{
+.msg_num{
+	color:#0066CC;
+	font-size: 20px;
+}
+
+#msg_total_num{
 	position: absolute;
 	left: 118px;
 	top:100px;
-	color: red;
+	color: #e45064;
 	font-size: 46px;
 }
 #msg_circle{
@@ -146,7 +158,7 @@ body{
 	top:50px;
     width: 160px;
     height: 160px;
-    border : 3px solid red;
+    border : 3px solid #e45064;
     border-radius: 50%;
 }
 #meeting_text{
