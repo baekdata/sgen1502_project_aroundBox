@@ -71,7 +71,7 @@ li {
 	background-color: #0098d8;
 	font-size: 14px;
 	color: #ffffff;
-	padding:11px 0px 8px 0px;
+	padding:11px 0px 11px 0px;
 }
 #title_home {
 	float: left;
@@ -149,16 +149,40 @@ li {
     margin-top: 16px;
 	border-right: 1px solid  #bdbdbd
 }
-#round_icons_right {
+#round_icons_left .round_img{
+	position: relative;
+	float: left;
+	margin-right: 23px;
+}
 
+#round_icons_left .left-margin {
+	margin-left: 50px;
 }
 .round_icons_img {
-	position: relative;
-	margin-right: 23px;
 	size: 100px;
 }
-#round_icons_right {
 
+.round_icons_img:hover {
+	margin: -2px;
+    border: 2px solid #0098d8;
+    border-radius: 26px;
+}
+#round_icons_right {
+	position: absolute;
+    margin-top: 16px;
+    margin-left: 330px;
+}
+.icons_img_p {
+    border: 1px solid #bdbdbd;
+    width: 49px;
+    height: 49px;
+    border-radius: 150px;
+}
+.round_icons_p {
+	height: 84px;
+    width: 49px;
+    float: left;
+    margin-right: 28px;
 }
 
 
@@ -258,6 +282,10 @@ li {
     width: 400px;
 }
 /*스크롤이 들어가는 부분 attr의 list*/
+
+.mail_left_content {
+	cursor: pointer;
+}
 .mail_left_content_list {
     position: absolute;
     margin-top: 60px;
@@ -270,11 +298,8 @@ li {
 	border-left: 4px solid #ffffff;
 	border-top: 1px solid #dddddd;
 }
-.mail_left_list_attr_overlay {
-	height: 100px; 
-	padding-left: 10px;
+.mail_left_list_attr.overlay {
 	background-color: #DFEEF6;
-	border-top: 1px solid #dddddd;
 	border-left: 4px solid #3085CE;
 }
 .list_attr_img {
@@ -383,31 +408,24 @@ li {
 }
 .right_star_image {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    margin-top: -3px;
-    margin-left: 576px;
+    width: 22px;
+    height: 21px;
+    margin-top: 1px;
+    margin-left: 625px;
 }
 .right_like_image {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    margin-top: -2px;
-    margin-left: 540px;
+    width: 21px;
+    height: 21px;
+    margin-top: 2px;
+    margin-left: 594px;
 }
 .right_left_image {
     position: absolute;
-    width: 60px;
-    height: 35px;
+    width: 50px;
+    height: 27px;
     margin-top: 0px;
-    margin-left: 631px;
-}
-.right_right_image {
-    position: absolute;
-    width: 30px;
-    height: 34px;
-    margin-top: 1px;
-    margin-left: 689px;
+    margin-left: 670px;
 }
 #mail_right_content_top {
 	position: absolute;
@@ -548,11 +566,11 @@ li {
 }
 .reply_img_btn {
     position: relative;
-    margin-top: 13px;
-    margin-left: 477px;
-    width: 200px;
+    margin-top: 10px;
+    margin-left: 621px;
+    margin-bottom: 20px;
+    width: 55px;
 }
-
 #search_text {
 	color: #bcbcbc;
     border: 0px;
@@ -561,9 +579,31 @@ li {
     float: left;
     padding: 12px;
 }
-
 #search_text:focus{
     outline: 0;
 }
 
+.tooltip_menu {
+	position: absolute;
+	display: none;
+	top:52px;
+    height: 32px;
+    width: 54px;
+	background-image: url("/images/dialogbox.png");
+	background-repeat: no-repeat;
+	    z-index: 9999;
+}
 
+.tooltip_compose {
+	position: relative;
+    float: left;
+    margin-left: 8px;
+    margin-top: 13px;
+}
+
+.tooltip_inform {
+	float: left;
+    position: relative;
+    margin-left: 13px;
+    margin-top: 11px;
+}

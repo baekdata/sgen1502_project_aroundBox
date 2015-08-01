@@ -54,4 +54,12 @@ $(document).ready(function(){
     $("#btn_login").mouseout(function(){
         $("#btn_login").css("background-color", "#0098d8");
     });
+
+
+
+    $(".round_icons_p").hover(function() {
+        $(this).find(".tooltip_menu").show();
+    },function() {
+        $(this).find(".tooltip_menu").hide();
+    });
 });

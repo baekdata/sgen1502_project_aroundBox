@@ -8,7 +8,16 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', {});
+    var sess;
+    sess = req.session;
+    
+    //userId가 존재한다면 바로 redirect
+    if(sess.userId){
+      console.log('[session] ===> session Alive!');
+      res.redirect('/mail');
+    }else{
+	  res.render('index', {});
+	}
 };
 exports.home = function(req, res){
   res.render('home', {});
@@ -18,6 +27,9 @@ exports.detail = function(req, res){
 };
 exports.mail = function(req, res){
   res.render('mail', {});
+};
+exports.mailWrite = function(req, res){
+  res.render('mailWrite', {});
 };
 exports.calender = function(req, res){
   res.render('calender',{});
