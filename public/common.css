@@ -55,7 +55,7 @@ li {
 }
 
 #header {
-	height:64px;
+	height:44px;
 }
 
 #title_line {
@@ -139,7 +139,7 @@ li {
 
 /* mail */
 #round_icons {
-	height: 100px;
+	height: 90px;
 	background-color: #ededed;
 	border-bottom: 1px solid #d0d0d0;
 }
@@ -179,6 +179,9 @@ li {
 	padding: 2px;
     float: right;
 }
+.round_icons_img {
+	width: 100px;
+}
 
 #mail_view{
 }
@@ -191,7 +194,7 @@ li {
 	text-align: left;
 	position: absolute;
 	left: 0%;
-	height: 550px;
+	height: 450px;
 	width: 400px;
 	background: #ffffff;
 }
@@ -347,9 +350,11 @@ li {
 	margin-right: 10px;
 	position: absolute;
 	left: 320px;
-	height: 700px;
+	height: 450px;
 	width: 765px;
 	background: #ffffff;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 #mail_right_top {
 	position: absolute;
