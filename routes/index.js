@@ -10,8 +10,11 @@
 exports.index = function(req, res){
   res.render('index', {});
 };
-exports.title = function(req, res){
-  res.render('title', {});
+exports.home = function(req, res){
+  res.render('home', {});
+};
+exports.detail = function(req, res){
+  res.render('detail', {});
 };
 exports.mail = function(req, res){
   res.render('mail', {});
