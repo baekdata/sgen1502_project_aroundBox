@@ -16,11 +16,15 @@
 	<link href="css/calendar.css" rel="stylesheet" />
 
 	<script src="js/moment.min.js"></script>
-	
+
 	<script src="js/jquery-ui-1.10.2.min.js"></script>
-	
+
 	<script src="js/timelineScheduler.js"></script>
 	<script src="js/calendar.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"> </script>
+
+	
+	
 </head>
 <body   style="background:#e0e0e0;">
 	<div id="wrapper">
@@ -46,102 +50,100 @@
 
 		<div id="container" style="text-align:center;">
 			<div id="around"></div>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"> </script>
-			
+
 			<script>
 
-			var width = 600,
-			height = 600,
-			radius = Math.min(width, height);
+	var width = 600,
+	height = 600,
+	radius = Math.min(width, height);
 
-			var radii = {
-				"user" : radius / 12,
-				"orbit_big" : radius / 2.5,
-				"orbit_small" : radius / 4,
-				"cw_tall" : radius / 25,
-				"cw_grande" : radius / 20,
-				"cw_venti" : radius / 15
-			};
+	var radii = {
+		"user" : radius / 12,
+		"orbit_big" : radius / 2.5,
+		"orbit_small" : radius / 4,
+		"cw_tall" : radius / 25,
+		"cw_grande" : radius / 20,
+		"cw_venti" : radius / 15
+	};
 
-			var jsonCircles = [
-			{
-				"name" : "Donguk",
-				"priority" : 1,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.daum.net",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test1.png"
-				
-			},
-			{
-				"name" : "Lina",
-				"priority" : 1,
-				"alert_num" : 3,
-				"color" : "yellow",
-				"link" : "http://www.naver.com",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test2.png"
+	var jsonCircles = [
+	{
+		"name" : "Donguk",
+		"priority" : 1,
+		"alert_num" : 4,
+		"color" : "orange",
+		"link" : "http://www.daum.net",
+		"img_link" : "/test1.png"
+		
+	},
+	{
+		"name" : "Lina",
+		"priority" : 1,
+		"alert_num" : 3,
+		"color" : "yellow",
+		"link" : "http://www.naver.com",
+		"img_link" : "/test2.png"
 
-				
-			},
-			{
-				"name" : "Penguin",
-				"priority" : 1,
-				"alert_num" : 4,
-				"color" : "red",
-				"link" : "http://www.google.com",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test3.png"
+		
+	},
+	{
+		"name" : "Penguin",
+		"priority" : 1,
+		"alert_num" : 4,
+		"color" : "red",
+		"link" : "http://www.google.com",
+		"img_link" : "/test3.jpg"
 
-			},
-			{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://en.wikipedia.org/",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test1.png"
-				
-			},
-			{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.babbel.com",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test1.png"
-				
-			},{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.cgv.co.kr",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test1.png"
-				
-			},{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "http://www.facebook.com",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test1.png"
-				
-			}
-			];
+	},
+	{
+		"name" : "Donguk",
+		"priority" : 2,
+		"alert_num" : 4,
+		"color" : "orange",
+		"link" : "http://en.wikipedia.org/",
+		"img_link" : "/test1.png"
+		
+	},
+	{
+		"name" : "Donguk",
+		"priority" : 2,
+		"alert_num" : 4,
+		"color" : "orange",
+		"link" : "http://www.babbel.com",
+		"img_link" : "/test1.png"
+		
+	},{
+		"name" : "Donguk",
+		"priority" : 2,
+		"alert_num" : 4,
+		"color" : "orange",
+		"link" : "http://www.cgv.co.kr",
+		"img_link" : "/test1.png"
+		
+	},{
+		"name" : "Donguk",
+		"priority" : 2,
+		"alert_num" : 4,
+		"color" : "orange",
+		"link" : "http://www.facebook.com",
+		"img_link" : "/test1.png"
+		
+	}
+	];
 
-			var user_info = [{
-				"name" : "JH",
-				"link" : "http://www.nate.com",
-				"img_link" : "https://bitbucket.org/donguk/sgen_15_01/hyeonjin/test4.png"
-			}];
+	var user_info = [{
+		"name" : "JH",
+		"link" : "http://www.nate.com",
+		"img_link" : "/test4.png"
+	}];
 
 
-			var around = d3.select("#around");
-			var svg_around = around.append("svg")
-			.attr("width", width)
-			.attr("height", height)
-			.style("background-color", "pink")
-			.append("g")
-			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+	var around = d3.select("#around");
+	var svg_around = around.append("svg")
+	.attr("width", width)
+	.attr("height", height)
+	.append("g")
+	.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 
 	// small orbit
@@ -310,25 +312,25 @@
 
 	</script>
 
-	
-</div>
-<div id="timeline2">
-	<div class="wrap">
-		
-	</div>
-</div>
-<div id="timeline" style="background:#fff; ">
-	<div class="wrap">
-		<div class="calendar" style="padding: 5px;">
 
-			<div>
+		</div>
+		<div id="timeline2">
+			<div class="wrap">
+
 			</div>
 		</div>
-	</div>
-	<script>
-	$( document ).ready( function(){	
-		
-	});
-	</script>
-</body>
-</html>
+		<div id="timeline" style="background:#fff; ">
+			<div class="wrap">
+				<div class="calendar" style="padding: 5px;">
+
+					<div>
+					</div>
+				</div>
+			</div>
+			<script>
+			$( document ).ready( function(){	
+				
+			});
+			</script>
+		</body>
+		</html>
