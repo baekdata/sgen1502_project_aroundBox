@@ -28,6 +28,9 @@ exports.detail = function(req, res){
 exports.mail = function(req, res){
   res.render('mail', {});
 };
+exports.mailWrite = function(req, res){
+  res.render('mailWrite', {});
+};
 exports.calender = function(req, res){
   res.render('calender',{});
 };
