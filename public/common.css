@@ -618,11 +618,10 @@ li {
     margin-top: 11px;
 }
 .send_img_btn {
-    /*position: relative;*/
-    margin-top: 20px;
-    margin-left: -600px;
-    margin-bottom: 20px;
-    width: 55px;
+    margin-top: 15px;
+    margin-left: 17px;
+    margin-bottom: -3px;
+    width: 63px;
  }
 .receive_mail_btn_c ._dropdown-menu {
 	background-image: url("/images/mail-dropdown.png");
