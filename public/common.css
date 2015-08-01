@@ -59,7 +59,8 @@ li {
 }
 
 #title_line {
-	height: 64px;
+	/*height: 64px;*/
+	padding: 18px;
 	text-align: center;
 	background-color: #0098d8;
 	font-size: 18px;
@@ -174,13 +175,10 @@ li {
 #search_image{
 	left: 37px;
 	right: 37px;
+	padding: 2px;
+    float: right;
 }
-input[type=text]{
-	color:#bcbcbc;
-	height: 20px;
-	border: 0px;
-	font-size: 16px;
-}
+
 #mail_view{
 }
 
@@ -224,7 +222,7 @@ input[type=text]{
     margin-left: 37px;
     margin-top: 3px;
 }
-#writeBtn_image{
+#8{
     /*position: absolute;*/
     left: 0%;
     margin-top: 10px;
@@ -298,32 +296,40 @@ input[type=text]{
     margin-top: 12px;
     color: #ffffff;
 }
+.list_attr_title {
+	margin-top: 22px;
+    margin-left: 55px;	
+}
+
 .list_attr_title1 {
-	position: absolute;
-    margin-top: 12px;
-    margin-left: 55px;
+	position: relative;
+	float: left;
     font-size: 12px;
     font-weight: bold;
     color: #000000;
 }
 .list_attr_title2 {
-	position: absolute;
+	position: relative;
+	float:left;
+	margin-left: 3px;
     color: #2B6DFA;
     font-weight: bold;
     font-size: 12px;
-    margin-top: 12px;
-    margin-left: 200px;
 }
 .list_attr_time {
-	position: absolute;
-    margin-top: 12px;
-    margin-left: 315px;
+	position: relative;
+	float: right;
+	margin-right: 20px;
+}
+
+.list_attr_text {
+	margin-top: 53px;
+    margin-left: 55px;
+    width: 307px;
 }
 .list_attr_text1 {
-	position: absolute;
-    margin-top: 35px;
-    margin-left: 55px;
-    margin-right: 20px;
+	position: relative;
+
 	font-size: 12px;
 }
 
@@ -334,7 +340,7 @@ input[type=text]{
 	margin-right: 10px;
 	position: absolute;
 	left: 320px;
-	height: 550px;
+	height: 700px;
 	width: 765px;
 	background: #ffffff;
 }
@@ -407,7 +413,7 @@ input[type=text]{
     width: 33px;
     border-radius: 150px;
     border: 2px solid #ededed;
-    margin-top: 103px;
+    margin-top: 105px;
     margin-left: 22px;
 }
 .right_top_sender {
@@ -428,20 +434,25 @@ input[type=text]{
 }
 #mail_right_content_middle {
 	position: absolute;
+	margin-top: 15px;
+}
+.mailview_hr {
+	position: absolute;
+	border: 1px solid #e0e0e0;
+	margin-top: 170px;
+	margin-left: 4px;
+	width: 758px;
 }
 /*메일 내용*/
 .right_middle_text{
 	position: absolute;
-    margin-top: 170px;
+    margin-top: 190px;
     margin-left: 45px;
     width: 700px;
     text-align: left;
     font-size: 14px;
     letter-spacing: 0.5px;
 	font-weight: 100;
-}
-#mail_right_content_bottom {
-	position: absolute;
 }
 /*첨부파일*/
 .right_middle_files {
@@ -470,8 +481,8 @@ input[type=text]{
 }
 .right_file_text_value {
 	position: absolute;
-    font-size: 14px;
-    margin-top: 4px;
+    font-size: 13px;
+    margin-top: 5px;
     margin-left: 33px;
     width: 200px;
     letter-spacing: 0.5px;
@@ -487,6 +498,56 @@ input[type=text]{
     width: 50px;
     letter-spacing: 0.5px;
 }
+#mail_right_content_bottom {
+	position: absolute;
+}
+.mailview_hr2 {
+	position: absolute;
+	border: 1px solid #e0e0e0;
+	margin-top: 60px;
+	margin-left: -41px;
+	width: 758px;
+}
+.right_top_people_img_2 {
+	position: absolute;
+	margin-top: 95px;
+    margin-left: -22px;
+    width: 33px;
+    border-radius: 150px;
+    border: 2px solid #ededed;
+}
+.mail_right_reply_box {
+	position: absolute;
+}
+.reply_box_tt {
+	position: relative;
+    border-radius: 5px;
+    border: 1px solid #dedede;
+    font-size: 13px;
+    color: #7e7e7e;
+    margin-top: 98px;
+    margin-left: 40px;
+}
+.reply_img_btn {
+    position: relative;
+    margin-top: 13px;
+    margin-left: 477px;
+    width: 200px;
+}
 
+#search_text {
+	color:#bcbcbc;
+	height: 20px;
+	border: 0px;
+	font-size: 16px;
+    text-indent: 12px;
+    float: left;
+    padding: 12px;
+
+}
+
+#search_text:focus{
+    outline: 0;
+}
 
 
