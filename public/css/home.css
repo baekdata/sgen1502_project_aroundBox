@@ -111,7 +111,43 @@ body{
 	position: absolute;
 	width: 280px;
 	height: 280px;
-	margin-top: 80px;
+	margin-top: 90px;
+}
+.msg_info{
+	position: absolute;
+	text-align: center;
+}
+
+#msg_out{
+	left:20px;
+	top:20px;
+}
+
+#msg_in{
+	right: 20px;
+	top:20px;
+
+}
+#msg_team{
+	bottom: 20px;
+	left: 120px;
+}
+
+#msg_num{
+	position: absolute;
+	left: 118px;
+	top:100px;
+	color: red;
+	font-size: 46px;
+}
+#msg_circle{
+	position: absolute;
+	left:60px;
+	top:50px;
+    width: 160px;
+    height: 160px;
+    border : 3px solid red;
+    border-radius: 50%;
 }
 #meeting_text{
 	position: absolute;
