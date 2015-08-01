@@ -184,7 +184,8 @@
 			.attr("class", "smallOrbit")
 			.attr("r", radii.orbit_small)
 			.style("fill", "none")
-			.style("stroke","gray");
+			.style("stroke","gray")
+			.style("stroke-dasharray", "10 5");;
 
 
 			// big orbit
@@ -192,7 +193,8 @@
 			.attr("class", "bigOrbit")
 			.attr("r", radii.orbit_big)
 			.style("fill", "none")
-			.style("stroke","gray");
+			.style("stroke","gray")
+			.style("stroke-dasharray", "10 5");
 
 
 			// user circle
@@ -225,6 +227,7 @@
 			.attr("xlink:href", function(d) { return d.link; })
 			.append("circle")
 			.attr("r",radii.user)
+			//.attr("stroke", "black")
 			.style("fill", "url(#catpattern_user)");
 			
 
@@ -318,6 +321,7 @@
 			.style("fill", function (d,i) {
 				return "url(#catpatterns_" + i + ")";
 			});
+			//.style("stroke", "black");
 			//.on("mouseover", nodeOver)
 			//.on("mouseout", nodeOut);
 
@@ -405,4 +409,4 @@
 	});
 	</script>
 </body>
-</html>
+</html>	
