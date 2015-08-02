@@ -196,10 +196,10 @@ li {
 #mail_box {
 	background-color: #ededed;
     width: 1200px;
-    height: 525px;
+    height: 570px;
 }
 #mail_find {
-	padding-top: 10px;
+	padding-top: 7px;
 	height:45px;
 }
 #mail_find_bg {
@@ -228,7 +228,7 @@ li {
 	text-align: left;
 	position: absolute;
 	left: 0%;
-	height: 450px;
+	height: 509px;
 	width: 400px;
 	background: #ffffff;
 }
@@ -392,7 +392,7 @@ li {
 	margin-right: 10px;
 	position: absolute;
 	left: 320px;
-	height: 450px;
+	height: 509px;
 	width: 765px;
 	background: #ffffff;
 	overflow-y: scroll;
@@ -430,6 +430,15 @@ li {
     height: 21px;
     margin-top: 2px;
     margin-left: 594px;
+}
+.right_like_image:hover {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    margin-top: 2px;
+    margin-left: 594px;
+    padding: -2px;
+    border: 2px solid black;
 }
 .right_left_image {
     position: absolute;
