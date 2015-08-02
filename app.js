@@ -217,6 +217,8 @@ app.post('/user/signup',user.signup);
 app.post('/mail/getAllMailData',mail.getAllMailData);
 app.post('/mail/getReceiveMailData',mail.getReceiveMailData);
 
+app.post('/mail/getMail',mail.getMail);
+
 app.get('/Downlaod/:id',function(req,res){
 	var name = req.params.id;
 	console.log('down = name',name);

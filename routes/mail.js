@@ -1,8 +1,82 @@
-var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
+var mongo = require('mongoskin');
+var db = mongo.db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
     db.bind('mail');
     db.bind('user_info');
 
 var async = require('async');
+
+    exports.getMail = function(req,res, err) {
+        var sess = req.session;
+        var _id  = sess.userId;
+        console.log('[session Data] id ===>' + _id);
+
+        var mail_id = mongo.helper.toObjectID(req.body.mail_id);
+
+        db.mail.find({_id:mail_id}).toArray(function (err, result) {
+            console.log("--result", result);
+            if(err) {
+
+                console.log(err);
+            } else if(result.length) {
+
+                var like_on = (result[0].like &&  result[0].like.indexOf('sgen3')>-1 ) ? true  : false;
+                var star_on = (result[0].star && result[0].star.indexOf('sgen3')>-1 ) ? true  : false;
+
+                var send_data = result;
+
+                var receiveMember_temp=[];
+                var cc_temp=[];
+                var sender_temp ='';
+
+                async.waterfall([
+                    function(callback2) {
+                        async.each(result[0].receiveMember, function(receive_item, callback) {
+                            db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
+
+                                receiveMember_temp.push(result[0]);
+                                callback();
+                            });
+
+                        }, function(err){
+                            callback2(null);
+                        });
+                    }, 
+                    function(callback2) {
+                        async.each(result[0].cc, function(cc_item, callback) {
+                            db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
+                                cc_temp.push(result[0]);
+                                callback();
+                            });
+                        }, function(err){
+                            callback2(null);
+                        });
+                    }, 
+                    function(callback2) {
+                        db.user_info.find({user_id:result[0].sender},{user_id:'',name:''}).toArray(function (err, result) {
+                            sender_temp = result[0];
+                            callback2();
+                        });
+                    }
+                ], function(err) {
+                    send_data[0].receiveMember = receiveMember_temp;
+                    send_data[0].cc = cc_temp;
+                    send_data[0].sender = sender_temp;
+
+                    res.send({
+                          code:200,
+                          row:send_data,
+                          like_on:like_on,
+                          star_on:star_on
+                    });
+                });
+
+
+                
+
+            }
+        });
+    };
+
 	exports.getReceiveMailData = function(req,res,err){
 		var sess;
 		sess = req.session;
