@@ -437,8 +437,7 @@ li {
     height: 21px;
     margin-top: 2px;
     margin-left: 594px;
-    padding: -2px;
-    border: 2px solid black;
+    background: url('./images/right_like_y.png');
 }
 .right_left_image {
     position: absolute;
