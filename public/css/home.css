@@ -174,21 +174,22 @@ body{
 	float: left;
 	margin-left: 10px;
 	margin-top: 20px;
+	font-size: 12px;
 }
 #min{
 	float: left;
 	color: #e45064;
-	font-size: 40px;
+	font-size: 44px;
 }
 #meeting_schedule{
 	position: absolute;
-	margin-top: 120px;
+	margin-top: 130px;
 	text-align: left;
 	margin-left: 20px;
 }
 .meeting_info{
+	margin: 10px;
 	text-align: left;
-	padding:5px;
 }
 #around_form{
 	margin-left: 20px;
@@ -196,6 +197,16 @@ body{
 	text-align: left;
 	width:840px;
 	height:80px;
+}
+
+#around_cw_name, #around_keyword{
+	float: left;
+	font-size: 13px;
+}
+#around_cw_num, #around_keyword_num{
+	float: left;
+	margin-left: 4px;
+	color: #0066CC;
 }
 #svg_around{
 	margin: 0 auto;
