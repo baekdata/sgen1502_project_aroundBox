@@ -21,54 +21,43 @@ var async = require('async');
         		var receiveMember_temp=[];
         		var cc_temp=[];
         		async.waterfall([
-        			function(callback) {
-		        		async.each(receiveMember, function(receive_item, callback) {
+        			function(callback2) {
+		        		async.each(receiveMember, function(receive_item, callback3) {
 		        			db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
 
 								receiveMember_temp.push(result[0]);
-								callback();
+								callback3();
 							});
 
         				}, function(err){
-        					callback(null);
+        					callback2(null);
         				});
         			}, 
-        			function(callback) {
-        				async.each(cc, function(cc_item, callback) {
+        			function(callback2) {
+        				async.each(cc, function(cc_item, callback3) {
         					db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
 								cc_temp.push(result[0]);
-								callback();
+								callback3();
 							});
         				}, function(err){
-        					callback(null);
+        					callback2(null);
         				});
         			}
     			], function(err) {
         			send_data[key].receiveMember = receiveMember_temp;
         			send_data[key].cc = cc_temp;
         			// console.log(send_data);
-        			callback(send_data);
+        			callback();
         		});
-        	}, function(data_temp) {
-        		console.log('lastdata=',data_temp);
+        	}, function() {
+        		// console.log('lastdata=',data_temp);
         		res.send({
 			          code:200,
-			          row:data_temp
-			        });
-        		// if(data) {
-        			
-        		// 	// console.log('senddata==>', data);
-        		// 	res.send({
-			       //    code:205,
-			       //    row:data
-			       //  });
-        		// }  else {
-        		// 	res.send({
-			       //    code:201
-			       //  });
-        		// }
+			          row:send_data
+		        });
+
         	});
-       	    //리턴 사람 이름, 시간, 제목 , 머아웃결과값
+
 
         } else {
           console.log('No document(s) found with defined "find" criteria!');
@@ -91,58 +80,47 @@ var async = require('async');
         } else if (result.length) {
         	var send_data = result;
         	async.forEachOf(result, function(data, key, callback) {
+                console.log("--key", key);
         		var receiveMember = data.receiveMember;
         		var cc  = data.cc;
 
         		var receiveMember_temp=[];
         		var cc_temp=[];
         		async.waterfall([
-        			function(callback) {
-		        		async.each(receiveMember, function(receive_item, callback) {
-		        			db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
+          			function(callback2) {
+  		        		async.each(receiveMember, function(receive_item, callback) {
+  		        			db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
 
-								receiveMember_temp.push(result[0]);
-								callback();
-							});
+  								receiveMember_temp.push(result[0]);
+  								callback();
+  							});
 
-        				}, function(err){
-        					callback(null);
-        				});
-        			}, 
-        			function(callback) {
-        				async.each(cc, function(cc_item, callback) {
-        					db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
-								cc_temp.push(result[0]);
-								callback();
-							});
-        				}, function(err){
-        					callback(null);
-        				});
-        			}
-    			], function(err) {
-        			send_data[key].receiveMember = receiveMember_temp;
-        			send_data[key].cc = cc_temp;
-        			// console.log(send_data);
-        			callback(send_data);
-        		});
-        	}, function(data_temp) {
-        		console.log('lastdata=',data_temp);
+          				}, function(err){
+          					callback2(null);
+          				});
+          			}, 
+          			function(callback2) {
+          				async.each(cc, function(cc_item, callback) {
+          					db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
+  								cc_temp.push(result[0]);
+  								callback();
+  							});
+          				}, function(err){
+          					callback2(null);
+          				});
+          			}
+      			], function(err) {
+          			send_data[key].receiveMember = receiveMember_temp;
+          			send_data[key].cc = cc_temp;
+                    callback();
+          		});
+        	}, function(err) {
+        		// console.log('lastdata=',data_temp);
         		res.send({
-			          code:2015,
-			          row:data_temp
-			        });
-        		// if(data) {
-        			
-        		// 	// console.log('senddata==>', data);
-        		// 	res.send({
-			       //    code:205,
-			       //    row:data
-			       //  });
-        		// }  else {
-        		// 	res.send({
-			       //    code:201
-			       //  });
-        		// }
+		          code:2015,
+		          row:send_data
+		        });
+
         	});
        	    //리턴 사람 이름, 시간, 제목 , 머아웃결과값
        // 	    var obj =  new Object();
@@ -197,41 +175,4 @@ var async = require('async');
     
 
 	};
-
-
-    //사용안함
-// exports.insert_mailinfo = function(req,res,err){
-
-//     var title  = req.param('title');
-//     var message  = req.param('message');
-//     var sender = req.param('sender');
-//     var receiveMember = req.param('receve_member');
-//     var cc = req.param('cc');
-//     var star = req.param('star');
-//     var like = req.param('like');
-//     var attach =req.param('attach');
-
-
-// 	db.mail.insert({
-//         title : title,
-//         message :message,
-//         sender : sender,
-//         receiveMember :receiveMember,
-//         cc:cc,
-//         star:star,
-//         like:like,
-//         attach:attach
-// 	}, function(err, result) {
-// 	    if (err) throw err;
-// 	    if (result) {
-// 	    	console.log('Added!');
-// 	    	 res.send({
-// 	    	 	code:200,
-// 	    	 	result:result
-// 	    	 })
-
-// 	    }
-// 	});
-	
-// };
 
