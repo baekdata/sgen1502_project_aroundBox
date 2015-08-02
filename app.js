@@ -10,6 +10,9 @@
   , path = require('path')
   , calender = require('./routes/calendar')
   , mail = require('./routes/mail');
+var sleep = require('sleep');
+var Fiber = require('fibers');
+
 
 //WWARRING!!!
 //몽고  디비 설치필요
@@ -17,6 +20,7 @@ var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandb
     db.bind('event');
     db.bind('mail');
     db.bind('user_info');
+var wait = require('wait.for');
 
 
 var md5 = require('MD5');
@@ -83,7 +87,7 @@ app.configure('development', function(){
 
 ////testLogic
 // 60초 로그인 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000000 }}))
 
 app.get("/mTest",function(req,res){
    db.user_info.find({user_id: '123'}).toArray(function (err, result) {
@@ -132,7 +136,7 @@ filetype = filepoint;
 }
 
 //메일 보낼경우 
-app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
+app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
   	
 		var title  = req.param('title');
 	    var message  = req.param('message');
@@ -142,25 +146,32 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 	    var star = req.param('star');
 	    var like = req.param('like');
         
-        
-	    //파일고유 id
-	    if(req.file){
-    	var attachid = req.file.filename;
-    	console.log(req.file);
-    	
-		//사용자들에게 보여줄 진짜이름
-	    var attach =req.file.originalname;
-	    	if(req.file.mimetype = 'image/png'){
-	    		console.log('[type mimtype]===> '+ req.file.mimetype);
-	    	}else{
-	    		console.log('[type data]===> '+ req.file.mimetype);
-	    	}
+        console.log(req.files);
+        var files = new Array();
+        var AttachID = new Array();
+        var Attach = new Array();
 
+        files = req.files;
 
-	    }else{
-	    	attachid =null;
-	    	attach = null;
-	    }
+        //파일의 갯수만큼 포맷팅을 예쁘게한다.
+        for(var i =0 ;i<files.length;i++){
+        	console.log(files[i]);
+        	//첨부 고유값저장
+        	AttachID.push(files[i].filename);
+        	//첨부 실제 저장 언어
+        	Attach.push(files[i].originalname);
+
+	          fs.rename('./uploads/'+req.files[i].filename, './uploads/'+req.files[i].originalname, function (err) {
+	            if (err) throw err;
+	            console.log('renamed complete');
+	          });
+        }
+       
+
+		console.log('searching END');
+		// console.log(arrName);
+		// console.log(arrCC);
+
         var date = Math.round(+new Date()/1000);
 
 		db.mail.insert({
@@ -171,8 +182,8 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 	        cc:cc,
 	        star:star,
 	        like:like,
-	        attachid:attachid,
-	        attach:attach,
+	        attachid:AttachID,
+	        attach:Attach,
 	        date:date
 		}, function(err, result) {
 		    if (err) throw err;
@@ -186,6 +197,8 @@ app.post("/mail/uploadFile",upload.single('attach'),function(req,res){
 		    }
 		});
 });
+
+
 // app.get('/write', routes.write);
 
 app.get('/', routes.index);
@@ -204,8 +217,15 @@ app.post('/user/signin',user.signin);
 app.post('/user/signup',user.signup);
 
 //지금안씀 위에 업로드로 이용함
-// app.post('/mail/insert_mailinfo',mail.insert_mailinfo);
+app.get('/mail/getAllMailData',mail.getAllMailData);
+app.post('/mail/getReceiveMailData',mail.getReceiveMailData);
 
+app.get('/Downlaod/:id',function(req,res){
+	var name = req.params.id;
+	console.log('down = name',name);
+	var filepath = __dirname + "/uploads/" +name;
+	res.download(filepath);
+});
 
 
 http.createServer(app).listen(app.get('port'), function(){
