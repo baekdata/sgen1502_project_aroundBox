@@ -188,8 +188,11 @@ body{
 	margin-left: 20px;
 }
 .meeting_info{
-	margin: 10px;
+	margin-top:10px;
 	text-align: left;
+}
+.meeting_title{
+	font-size: 13px;
 }
 #around_form{
 	margin-left: 20px;

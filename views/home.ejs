@@ -67,154 +67,154 @@
 					<h3 id="today"> TODAY </h3>
 					<p id="show_date"> Have to set the date </p>
 					<a href="/home">
-					<input type="image" src="./images/refresh.png"id="img_refresh" ></input></a>
-				</div>
-				<div id="noti_msg" class="in_noti">
-					<div id="msg_text">
-						<h1> 안읽은 메시지 </h1>
-						<h3> AM 14:00 </h3>
+						<input type="image" src="./images/refresh.png"id="img_refresh" ></input></a>
 					</div>
-					<div id="msg_drawing">
-						<div class="msg_info" id="msg_out">
-							<h4> 외부메시지 </h4>
-							<p class="msg_num"> 3 </p>
+					<div id="noti_msg" class="in_noti">
+						<div id="msg_text">
+							<h1> 안읽은 메시지 </h1>
+							<h3> AM 14:00 </h3>
 						</div>
-						<div class="msg_info" id="msg_in">
-							<h4> 내부메시지 </h4>
-							<p class="msg_num"> 3 </p>
+						<div id="msg_drawing">
+							<div class="msg_info" id="msg_out">
+								<h4> 외부메시지 </h4>
+								<p class="msg_num"> 3 </p>
+							</div>
+							<div class="msg_info" id="msg_in">
+								<h4> 내부메시지 </h4>
+								<p class="msg_num"> 3 </p>
+							</div>
+							<div class="msg_info" id="msg_team">
+								<h4> 팀메시지 </h4>
+								<p class="msg_num"> 3 </p>
+							</div>
+							<div id="msg_circle"> </div>
+							<p id="msg_total_num">29 </p>
 						</div>
-						<div class="msg_info" id="msg_team">
-							<h4> 팀메시지 </h4>
-							<p class="msg_num"> 3 </p>
+
+					</div>
+					<div id="noti_meeting" class="in_noti" >
+						<div id="meeting_text">
+							<h1> 다음 미팅 </h1>
+							<div id="time_left">
+								<p id="min"> 15 </p>
+								<p id="min_text"> 분 후 </p>
+							</div>
 						</div>
-						<div id="msg_circle"> </div>
-						<p id="msg_total_num">29 </p>
+						<div id="meeting_schedule">
+							<div class="meeting_info">
+								<p class="meeting_title"> 마게팅 미팅 </p>
+								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+							</div>
+							<div class="meeting_info">
+								<p class="meeting_title"> 마게팅 미팅 </p>
+								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+							</div>
+							<div class="meeting_info">
+								<p class="meeting_title"> 마게팅 미팅 </p>
+								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+							</div>
+						</div>
 					</div>
 
 				</div>
-				<div id="noti_meeting" class="in_noti" >
-					<div id="meeting_text">
-						<h1> 다음 미팅 </h1>
-						<div id="time_left">
-							<p id="min"> 15 </p>
-							<p id="min_text"> 분 후 </p>
-						</div>
+				<div id="home_around" class="in_container"> 
+					<div id="around_form">
+						<h2> 업무 흐름도 </h2>
+						<p id="around_cw_name"> 윤석호, 김동억, 백종수 외</p>
+						<h3 id="around_cw_num"> 5명 </h3>
 					</div>
-					<div id="meeting_schedule">
-						<div class="meeting_info">
-							<h3> 마게팅 미팅 </h3>
-							<p> 5월 9일 오후 3:00 </p>
-						</div>
-						<div class="meeting_info">
-							<h3> 마게팅 미팅 </h3>
-							<p> 5월 9일 오후 3:00 </p>
-						</div>
-						<div class="meeting_info">
-							<h3> 마게팅 미팅 </h3>
-							<p> 5월 9일 오후 3:00 </p>
-						</div>
+					<div id="around">
+						<svg id="svg_around"></svg>
 					</div>
 				</div>
 
-			</div>
-			<div id="home_around" class="in_container"> 
-				<div id="around_form">
-					<h2> 업무 흐름도 </h2>
-					<p id="around_cw_name"> 윤석호, 김동억, 백종수 외</p>
-					<h3 id="around_cw_num"> 5명 </h3>
-				</div>
-				<div id="around">
-					<svg id="svg_around"></svg>
-				</div>
-			</div>
+				<script>
 
-			<script>
+				var width = 600,
+				height = 600,
+				radius = Math.min(width, height);
 
-			var width = 600,
-			height = 600,
-			radius = Math.min(width, height);
+				var radii = {
+					"user" : radius / 12,
+					"orbit_big" : radius / 2.5,
+					"orbit_small" : radius / 4,
+					"cw_tall" : radius / 25,
+					"cw_grande" : radius / 20,
+					"cw_venti" : radius / 15,
+					"alert_big" : 10,
+					"alert_small" : 8
+				};
 
-			var radii = {
-				"user" : radius / 12,
-				"orbit_big" : radius / 2.5,
-				"orbit_small" : radius / 4,
-				"cw_tall" : radius / 25,
-				"cw_grande" : radius / 20,
-				"cw_venti" : radius / 15,
-				"alert_big" : 10,
-				"alert_small" : 8
-			};
+				var jsonCircles = [
+				{
+					"name" : "Donguk",
+					"priority" : 1,
+					"alert_num" : 4,
+					"color" : "orange",
+					"link" : "/detail",
+					"img_link" : "/test1.png"
 
-			var jsonCircles = [
-			{
-				"name" : "Donguk",
-				"priority" : 1,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "/detail",
-				"img_link" : "/test1.png"
-
-			},
-			{
-				"name" : "Lina",
-				"priority" : 1,
-				"alert_num" : 3,
-				"color" : "yellow",
-				"link" : "/detail",
-				"img_link" : "/test2.png"
+				},
+				{
+					"name" : "Lina",
+					"priority" : 1,
+					"alert_num" : 0,
+					"color" : "yellow",
+					"link" : "/detail",
+					"img_link" : "/test2.png"
 
 
-			},
-			{
-				"name" : "Penguin",
-				"priority" : 1,
-				"alert_num" : 4,
-				"color" : "red",
-				"link" : "/detail",
-				"img_link" : "/test3.jpg"
+				},
+				{
+					"name" : "Penguin",
+					"priority" : 1,
+					"alert_num" : 4,
+					"color" : "red",
+					"link" : "/detail",
+					"img_link" : "/test3.jpg"
 
-			},
-			{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "/detail",
-				"img_link" : "/test1.png"
+				},
+				{
+					"name" : "Donguk",
+					"priority" : 2,
+					"alert_num" : 0,
+					"color" : "orange",
+					"link" : "/detail",
+					"img_link" : "/test1.png"
 
-			},
-			{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "/detail",
-				"img_link" : "/test1.png"
+				},
+				{
+					"name" : "Donguk",
+					"priority" : 2,
+					"alert_num" : 4,
+					"color" : "orange",
+					"link" : "/detail",
+					"img_link" : "/test1.png"
 
-			},{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "/detail",
-				"img_link" : "/test1.png"
+				},{
+					"name" : "Donguk",
+					"priority" : 2,
+					"alert_num" : 4,
+					"color" : "orange",
+					"link" : "/detail",
+					"img_link" : "/test1.png"
 
-			},{
-				"name" : "Donguk",
-				"priority" : 2,
-				"alert_num" : 4,
-				"color" : "orange",
-				"link" : "/detail",
-				"img_link" : "/test1.png"
+				},{
+					"name" : "Donguk",
+					"priority" : 2,
+					"alert_num" : 4,
+					"color" : "orange",
+					"link" : "/detail",
+					"img_link" : "/test1.png"
 
-			}
-			];
+				}
+				];
 
-			var user_info = [{
-				"name" : "JH",
-				"link" : "/home",
-				"img_link" : "/test4.png"
-			}];
+				var user_info = [{
+					"name" : "JH",
+					"link" : "/home",
+					"img_link" : "/test4.png"
+				}];
 
 
 			//var around = d3.select("#around");
@@ -375,8 +375,11 @@
 
 			var alert_circles = cw_data.append("circle")
 			.attr("r", function(d){
-				return (d.priority == 1 ? radii.alert_big : radii.alert_small);
-			})
+				if(d.alert_num==0){
+					return 0;
+				}else{
+					return (d.priority == 1 ? radii.alert_big : radii.alert_small)};
+				})
 			.attr("cx", function (d,i) { 
 				if(d.priority == 1){
 					return radii.orbit_small*Math.cos(pos_small[i]*45/180*3.1415926)+20;}
@@ -408,7 +411,12 @@
 						return radii.orbit_big*Math.sin(pos_big[i]*45/180*3.1415926)-12;}
 						;})
 			.text(function(d){
-				return d.alert_num;
+				if(d.alert_num==0){
+					return "";
+				}
+				else {
+					return d.alert_num;
+				}
 			})
 			.attr("fill","white");
 

@@ -66,107 +66,107 @@
 					<h3 id="today"> TODAY </h3>
 					<p id="show_date"> Have to set the date </p>
 					<a href="/detail">
-					<input type="image" src="./images/refresh.png"id="img_refresh" ></input></a>
-				</div>
-				<div id="noti_msg" class="in_noti">
-					<div id="msg_text">
-						<h1> 안읽은 메시지 </h1>
-						<h3> AM 14:00 </h3>
+						<input type="image" src="./images/refresh.png"id="img_refresh" ></input></a>
 					</div>
-					<div id="msg_drawing">
-						<div class="msg_info" id="msg_out">
-							<h4> 외부메시지 </h4>
-							<p class="msg_num"> 3 </p>
+					<div id="noti_msg" class="in_noti">
+						<div id="msg_text">
+							<h1> 안읽은 메시지 </h1>
+							<h3> AM 14:00 </h3>
 						</div>
-						<div class="msg_info" id="msg_in">
-							<h4> 내부메시지 </h4>
-							<p class="msg_num"> 3 </p>
+						<div id="msg_drawing">
+							<div class="msg_info" id="msg_out">
+								<h4> 외부메시지 </h4>
+								<p class="msg_num"> 3 </p>
+							</div>
+							<div class="msg_info" id="msg_in">
+								<h4> 내부메시지 </h4>
+								<p class="msg_num"> 3 </p>
+							</div>
+							<div class="msg_info" id="msg_team">
+								<h4> 팀메시지 </h4>
+								<p class="msg_num"> 3 </p>
+							</div>
+							<div id="msg_circle"> </div>
+							<p id="msg_total_num">29 </p>
 						</div>
-						<div class="msg_info" id="msg_team">
-							<h4> 팀메시지 </h4>
-							<p class="msg_num"> 3 </p>
-						</div>
-						<div id="msg_circle"> </div>
-						<p id="msg_total_num">29 </p>
+
 					</div>
-
-				</div>
-				<div id="noti_meeting" class="in_noti" >
-					<div id="meeting_text">
-						<h1> 다음 미팅 </h1>
-						<div id="time_left">
-							<p id="min"> 15 </p>
-							<p id="min_text"> 분 후 </p>
+					<div id="noti_meeting" class="in_noti" >
+						<div id="meeting_text">
+							<h1> 다음 미팅 </h1>
+							<div id="time_left">
+								<p id="min"> 15 </p>
+								<p id="min_text"> 분 후 </p>
+							</div>
+						</div>
+						<div id="meeting_schedule">
+							<div class="meeting_info">
+								<p class="meeting_title"> 마게팅 미팅 </p>
+								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+							</div>
+							<div class="meeting_info">
+								<p class="meeting_title"> 마게팅 미팅 </p>
+								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+							</div>
+							<div class="meeting_info">
+								<p class="meeting_title"> 마게팅 미팅 </p>
+								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+							</div>
 						</div>
 					</div>
-					<div id="meeting_schedule">
-						<div class="meeting_info">
-							<h3> 마게팅 미팅 </h3>
-							<p> 5월 9일 오후 3:00 </p>
-						</div>
-						<div class="meeting_info">
-							<h3> 마게팅 미팅 </h3>
-							<p> 5월 9일 오후 3:00 </p>
-						</div>
-						<div class="meeting_info">
-							<h3> 마게팅 미팅 </h3>
-							<p> 5월 9일 오후 3:00 </p>
-						</div>
+				</div>
+
+				<div id="home_around" class="in_container"> 
+					<div id="around_form">
+						<h2> 키워드 </h2>
+						<p id="around_keyword"> 개발, 디자인, xml 외</p>
+						<h3 id="around_keyword_num"> 13개 </h3>
+					</div>
+					<div id="around">
+						<svg id="svg_around"></svg>
 					</div>
 				</div>
-			</div>
 
-			<div id="home_around" class="in_container"> 
-				<div id="around_form">
-					<h2> 키워드 </h2>
-					<p id="around_keyword"> 개발, 디자인, xml 외</p>
-					<h3 id="around_keyword_num"> 13개 </h3>
-				</div>
-				<div id="around">
-					<svg id="svg_around"></svg>
-				</div>
-			</div>
+				<script>
 
-			<script>
+				var width = 600,
+				height = 600,
+				radius = Math.min(width, height);
 
-			var width = 600,
-			height = 600,
-			radius = Math.min(width, height);
+				var radii = {
+					"user" : radius / 12,
+					"orbit_big" : radius / 2.5,
+					"orbit_small" : radius / 4,
+					"cw_tall" : radius / 25,
+					"cw_grande" : radius / 20,
+					"cw_venti" : radius / 15
+				};
 
-			var radii = {
-				"user" : radius / 12,
-				"orbit_big" : radius / 2.5,
-				"orbit_small" : radius / 4,
-				"cw_tall" : radius / 25,
-				"cw_grande" : radius / 20,
-				"cw_venti" : radius / 15
-			};
+				var cw_info = [
+				{
+					"priority" :1,
+					"key":"xml",
+					"qty":"12"
+				},
+				{
+					"key":"합격",
+					"qty":"25",
+					"priority":2
+				}
+				];
 
-			var cw_info = [
-			{
-				"priority" :1,
-				"key":"xml",
-				"qty":"12"
-			},
-			{
-				"key":"합격",
-				"qty":"25",
-				"priority":2
-			}
-			];
-
-			var user_info = [{
-				"name" : "JH",
-				"link" : "/home",
-				"img_link" : "/test4.png"
-			}];
+				var user_info = [{
+					"name" : "JH",
+					"link" : "/home",
+					"img_link" : "/test4.png"
+				}];
 
 
-			var svg_around = d3.select("#svg_around")
-			.attr("width", width)
-			.attr("height", height)
-			.append("g")
-			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+				var svg_around = d3.select("#svg_around")
+				.attr("width", width)
+				.attr("height", height)
+				.append("g")
+				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 
 			// small orbit
@@ -314,10 +314,10 @@
 				// 	})
 				// }
 
-			</script>
+				</script>
 
 
-		</div>
+			</div>
 <!-- <div id="timeline2">
 	<div class="wrap">
 
