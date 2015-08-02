@@ -26,20 +26,20 @@ body{
 }
 .search_image{
 	margin:13px 16px 10px 10px;
-    float: right;
+	float: right;
 }
 
 #home_search_input {
 	color: #bcbcbc;
-    border: 0px;
-    font-size: 13px;
-    text-indent: 12px;
-    float: left;
-    padding: 10px;
+	border: 0px;
+	font-size: 13px;
+	text-indent: 12px;
+	float: left;
+	padding: 10px;
 }
 
 #home_search_text:focus{
-    outline: 0;
+	outline: 0;
 }
 
 
@@ -84,8 +84,8 @@ body{
 
 #img_refresh{
 	margin-top: 10px;
-    float: right;
-    margin-right: 10px;
+	float: right;
+	margin-right: 10px;
 }
 
 #noti_msg{
@@ -148,18 +148,25 @@ body{
 #msg_total_num{
 	position: absolute;
 	left: 118px;
-	top:100px;
+	top:90px;
 	color: #e45064;
 	font-size: 46px;
+}
+#msg_total{
+	position: absolute;
+	color: #e45064;
+	left: 120px;
+	top: 142px;
+	font-size: 22px;
 }
 #msg_circle{
 	position: absolute;
 	left:60px;
 	top:50px;
-    width: 160px;
-    height: 160px;
-    border : 3px solid #e45064;
-    border-radius: 50%;
+	width: 160px;
+	height: 160px;
+	border : 3px solid #e45064;
+	border-radius: 50%;
 }
 #meeting_text{
 	position: absolute;
@@ -198,10 +205,9 @@ body{
 	margin-left: 20px;
 	margin-top: 20px;
 	text-align: left;
-	width:840px;
+	width:800px;
 	height:80px;
 }
-
 #around_cw_name, #around_keyword{
 	float: left;
 	font-size: 13px;
@@ -211,6 +217,12 @@ body{
 	margin-left: 4px;
 	color: #0066CC;
 }
+#detail_back{
+	position: absolute;
+    right: 100px;
+    top: 120px;
+}
+
 #svg_around{
 	margin: 0 auto;
 }
