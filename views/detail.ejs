@@ -132,6 +132,17 @@
 						<div id="around">
 							<svg id="svg_around"></svg>
 						</div>
+						<div id="cw_detail"> 
+							<div id="detail_form">
+								<input type="image" src="./images/x_btn.png"id="detail_close" ></input>
+							</div>
+							<svg id="detail_svg"> </svg>
+							<h2 class="detail_cw_info" id="cw_name" > name </h2>
+							<p class ="detail_cw_info" id="cw_depart"> department </p>
+							<p class ="detail_cw_info" id="cw_mail"> e-mail address </p>
+							<p class ="detail_cw_info" id="cw_phone"> phone number </p>
+
+						</div>
 					</div>
 
 					<script>
@@ -325,6 +336,13 @@
 				return (d.priority == 1 ? "16px" : "14px");
 			});
 			
+			var detail_circle = d3.select("#detail_svg")
+			.append("circle")
+			.attr("r",40)
+			.attr("cx",50)
+			.attr("cy",50)
+			.style("fill","white");
+
 
 			</script>
 
@@ -355,7 +373,13 @@
 				}
 			}
 		});
+
+		$('#detail_close').click(function() {
+   			 $('#cw_detail').toggle(); // or hide()
+   		});
 	});
+
+
 	</script>
 </body>
 </html>
