@@ -7,7 +7,7 @@ div {
 	color: #727272;
 	letter-spacing:-0.25px;
 }
-a {
+a, a:focus, a:hover {
 	text-decoration:none; 
 	color:#727272;
 	outline: 0px;
@@ -163,10 +163,11 @@ li {
 }
 
 .round_icons_img:hover {
-	margin: -2px;
+	margin: 0px;
     border: 2px solid #0098d8;
     border-radius: 26px;
 }
+
 .round_icons_img:focus {
 	outline: none;
 }
