@@ -7,15 +7,6 @@ var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandb
 var async = require('async');
 var sleep = require('sleep');
 
-// exports.friendList = function(req,res,err){
-    
-
-//     db.mail.find({_id:oId}).toArray(function (err, result) {
-//     };
-
-
-// };
-
 exports.setFavorite = function(req,res,err){
     //별표 추가하는 부분 star에 내 링크 끄러넣으며좋아
     var user_id = req.param('user_id'); 
@@ -55,32 +46,6 @@ exports.setFavorite = function(req,res,err){
         
     });
 
-};
-exports.unSetLike = function(req,res,err){
-    var idx = req.param('mail_id');
-    var user_id = req.param('user_id');      
-    var oId = mongo.helper.toObjectID(idx);
-    // console.log('oid',oid);
-  db.mail.find({_id:oId}).toArray(function (err, result) {
-        var arr = new Array();
-        // console.log(result[0]['like']);
-        arr = result[0]['like']
-
-        if(arr==null){
-            res.send({
-                code:200,
-                row:'nonClicked'
-            });
-        }else{
-            var a = arr.indexOf("Apple");
-
-            res.send({
-                code:200,
-                row:  result[0]['like']
-            });
-        }
-     
-  });
 };
 
 
