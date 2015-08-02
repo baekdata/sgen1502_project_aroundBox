@@ -6,14 +6,23 @@ to use it in non-GPL project. Please contact sales@dhtmlx.com for details
 
 
 #scheduler_here {
-    width: 1200px;
-    height: 80%;
+    width: 1182px;
+    height: 660px;
     position: absolute;
     margin-left: 693px;
     top: 8%;
     margin-top: 320px;
     left: 0%;
     transform: translateX(-50%) translateY(-50%);
+    /*background-color: #ededed;*/
+}
+
+#sch_box {
+    background-color: #ededed;
+    width: 1200px;
+    height: 800px;
+    margin-left: 93px;
+    margin-top: 1px;
 }
 .dhtmlx_message_area{
 	position:fixed;right:5px;width:250px;z-index:1000;
