@@ -149,7 +149,7 @@
 				{
 					"name" : "Donguk",
 					"priority" : 1,
-					"alert_num" : 4,
+					"alert_num" : 3,
 					"color" : "orange",
 					"link" : "/detail",
 					"img_link" : "/test1.png"
@@ -168,7 +168,7 @@
 				{
 					"name" : "Penguin",
 					"priority" : 1,
-					"alert_num" : 4,
+					"alert_num" : 2,
 					"color" : "red",
 					"link" : "/detail",
 					"img_link" : "/test3.jpg"
@@ -186,7 +186,7 @@
 				{
 					"name" : "Donguk",
 					"priority" : 2,
-					"alert_num" : 4,
+					"alert_num" : 9,
 					"color" : "orange",
 					"link" : "/detail",
 					"img_link" : "/test1.png"
@@ -394,6 +394,22 @@
 						;})
 			.style("fill", "red");
 
+			var cw_names = cw_data.append("text")
+			.attr("x", function (d,i) { 
+				if(d.priority == 1){
+					return radii.orbit_small*Math.cos(pos_small[i]*45/180*3.1415926);}
+					else{
+						return radii.orbit_big*Math.cos(pos_big[i]*45/180*3.1415926);}
+						;})
+			.attr("y", function (d,i) { 
+				if(d.priority == 1){
+					return radii.orbit_small*Math.sin(pos_small[i]*45/180*3.1415926)+radii.cw_grande +10;}
+					else {
+						return radii.orbit_big*Math.sin(pos_big[i]*45/180*3.1415926)+radii.cw_tall + 10;}
+						;})
+			.text(function (d){
+				return d.name;}
+			).style("text-anchor", "middle");
 
 
 
