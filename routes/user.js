@@ -43,7 +43,7 @@ exports.signin = function(req,res,err){
     
     //userId가 존재한다면 바로 redirect
     
-      db.user_info.find({user_id: '123'}).toArray(function (err, result) {
+      db.user_info.find({user_id: userId}).toArray(function (err, result) {
         if (err) {
           console.log(err);
         } else if (result.length) {
@@ -67,7 +67,4 @@ exports.signin = function(req,res,err){
         }
       });
     
-
-
-
 };
