@@ -1,11 +1,83 @@
 var mongo = require('mongoskin');
 
-var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
+
+var db = mongo.db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
     db.bind('mail');
     db.bind('user_info');
 
 var async = require('async');
-var sleep = require('sleep');
+
+    exports.getMail = function(req,res, err) {
+        var sess = req.session;
+        var _id  = sess.userId;
+        console.log('[session Data] id ===>' + _id);
+
+        var mail_id = mongo.helper.toObjectID(req.body.mail_id);
+
+        db.mail.find({_id:mail_id}).toArray(function (err, result) {
+            console.log("--result", result);
+            if(err) {
+
+                console.log(err);
+            } else if(result.length) {
+
+                var like_on = (result[0].like &&  result[0].like.indexOf('sgen3')>-1 ) ? true  : false;
+                var star_on = (result[0].star && result[0].star.indexOf('sgen3')>-1 ) ? true  : false;
+
+                var send_data = result;
+
+                var receiveMember_temp=[];
+                var cc_temp=[];
+                var sender_temp ='';
+
+                async.waterfall([
+                    function(callback2) {
+                        async.each(result[0].receiveMember, function(receive_item, callback) {
+                            db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
+
+                                receiveMember_temp.push(result[0]);
+                                callback();
+                            });
+
+                        }, function(err){
+                            callback2(null);
+                        });
+                    }, 
+                    function(callback2) {
+                        async.each(result[0].cc, function(cc_item, callback) {
+                            db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
+                                cc_temp.push(result[0]);
+                                callback();
+                            });
+                        }, function(err){
+                            callback2(null);
+                        });
+                    }, 
+                    function(callback2) {
+                        db.user_info.find({user_id:result[0].sender},{user_id:'',name:''}).toArray(function (err, result) {
+                            sender_temp = result[0];
+                            callback2();
+                        });
+                    }
+                ], function(err) {
+                    send_data[0].receiveMember = receiveMember_temp;
+                    send_data[0].cc = cc_temp;
+                    send_data[0].sender = sender_temp;
+
+                    res.send({
+                          code:200,
+                          row:send_data,
+                          like_on:like_on,
+                          star_on:star_on
+                    });
+                });
+
+
+                
+
+            }
+        });
+    };
 
 exports.setFavorite = function(req,res,err){
     //별표 추가하는 부분 star에 내 링크 끄러넣으며좋아
@@ -150,54 +222,43 @@ exports.setLike = function(req,res,err){
         		var receiveMember_temp=[];
         		var cc_temp=[];
         		async.waterfall([
-        			function(callback) {
-		        		async.each(receiveMember, function(receive_item, callback) {
+        			function(callback2) {
+		        		async.each(receiveMember, function(receive_item, callback3) {
 		        			db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
 
 								receiveMember_temp.push(result[0]);
-								callback();
+								callback3();
 							});
 
         				}, function(err){
-        					callback(null);
+        					callback2(null);
         				});
         			}, 
-        			function(callback) {
-        				async.each(cc, function(cc_item, callback) {
+        			function(callback2) {
+        				async.each(cc, function(cc_item, callback3) {
         					db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
 								cc_temp.push(result[0]);
-								callback();
+								callback3();
 							});
         				}, function(err){
-        					callback(null);
+        					callback2(null);
         				});
         			}
     			], function(err) {
         			send_data[key].receiveMember = receiveMember_temp;
         			send_data[key].cc = cc_temp;
         			// console.log(send_data);
-        			callback(send_data);
+        			callback();
         		});
-        	}, function(data_temp) {
-        		console.log('lastdata=',data_temp);
+        	}, function() {
+        		// console.log('lastdata=',data_temp);
         		res.send({
 			          code:200,
-			          row:data_temp
-			        });
-        		// if(data) {
-        			
-        		// 	// console.log('senddata==>', data);
-        		// 	res.send({
-			       //    code:205,
-			       //    row:data
-			       //  });
-        		// }  else {
-        		// 	res.send({
-			       //    code:201
-			       //  });
-        		// }
+			          row:send_data
+		        });
+
         	});
-       	    //리턴 사람 이름, 시간, 제목 , 머아웃결과값
+
 
         } else {
           console.log('No document(s) found with defined "find" criteria!');
@@ -226,37 +287,37 @@ exports.setLike = function(req,res,err){
         		var receiveMember_temp=[];
         		var cc_temp=[];
         		async.waterfall([
-        			function(callback) {
-		        		async.each(receiveMember, function(receive_item, callback) {
-		        			db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
+          			function(callback2) {
+  		        		async.each(receiveMember, function(receive_item, callback) {
+  		        			db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
 
-								receiveMember_temp.push(result[0]);
-								callback();
-							});
+  								receiveMember_temp.push(result[0]);
+  								callback();
+  							});
 
-        				}, function(err){
-        					callback(null);
-        				});
-        			}, 
-        			function(callback) {
-        				async.each(cc, function(cc_item, callback) {
-        					db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
-								cc_temp.push(result[0]);
-								callback();
-							});
-        				}, function(err){
-        					callback(null);
-        				});
-        			}
-    			], function(err) {
-        			send_data[key].receiveMember = receiveMember_temp;
-        			send_data[key].cc = cc_temp;
-        			// console.log(send_data);
-        			callback(send_data);
-        		});
-        	}, function(data_temp) {
-        		console.log('lastdata=',data_temp);
+          				}, function(err){
+          					callback2(null);
+          				});
+          			}, 
+          			function(callback2) {
+          				async.each(cc, function(cc_item, callback) {
+          					db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
+  								cc_temp.push(result[0]);
+  								callback();
+  							});
+          				}, function(err){
+          					callback2(null);
+          				});
+          			}
+      			], function(err) {
+          			send_data[key].receiveMember = receiveMember_temp;
+          			send_data[key].cc = cc_temp;
+                    callback();
+          		});
+        	}, function(err) {
+        		// console.log('lastdata=',data_temp);
         		res.send({
+<<<<<<< HEAD
 			          code:200,
 			          row:data_temp
 			        });
@@ -272,6 +333,12 @@ exports.setLike = function(req,res,err){
 			       //    code:201
 			       //  });
         		// }
+=======
+		          code:2015,
+		          row:send_data
+		        });
+
+>>>>>>> 0b4cadc4ba993dc019841248d0e77b8ca534a52b
         	});
        	    
 
@@ -282,41 +349,4 @@ exports.setLike = function(req,res,err){
     
 
 	};
-
-
-    //사용안함
-// exports.insert_mailinfo = function(req,res,err){
-
-//     var title  = req.param('title');
-//     var message  = req.param('message');
-//     var sender = req.param('sender');
-//     var receiveMember = req.param('receve_member');
-//     var cc = req.param('cc');
-//     var star = req.param('star');
-//     var like = req.param('like');
-//     var attach =req.param('attach');
-
-
-// 	db.mail.insert({
-//         title : title,
-//         message :message,
-//         sender : sender,
-//         receiveMember :receiveMember,
-//         cc:cc,
-//         star:star,
-//         like:like,
-//         attach:attach
-// 	}, function(err, result) {
-// 	    if (err) throw err;
-// 	    if (result) {
-// 	    	console.log('Added!');
-// 	    	 res.send({
-// 	    	 	code:200,
-// 	    	 	result:result
-// 	    	 })
-
-// 	    }
-// 	});
-	
-// };
 

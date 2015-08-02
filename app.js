@@ -10,8 +10,6 @@
   , path = require('path')
   , calender = require('./routes/calendar')
   , mail = require('./routes/mail');
-var sleep = require('sleep');
-var Fiber = require('fibers');
 
 
 //WWARRING!!!
@@ -20,7 +18,6 @@ var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandb
     db.bind('event');
     db.bind('mail');
     db.bind('user_info');
-var wait = require('wait.for');
 
 
 var md5 = require('MD5');
@@ -217,13 +214,16 @@ app.post('/user/signin',user.signin);
 app.post('/user/signup',user.signup);
 
 //지금안씀 위에 업로드로 이용함
-app.get('/mail/getAllMailData',mail.getAllMailData);
+app.post('/mail/getAllMailData',mail.getAllMailData);
 app.post('/mail/getReceiveMailData',mail.getReceiveMailData);
 app.post('/mail/setLike',mail.setLike);
 app.post('/mail/getLike',mail.getLike);
 app.post('/mail/setFavorite',mail.setFavorite);
 
-app.get('/Download/:id',function(req,res){
+
+app.post('/mail/getMail',mail.getMail);
+
+app.get('/Downlaod/:id',function(req,res){
 	var name = req.params.id;
 	console.log('down = name',name);
 	var filepath = __dirname + "/uploads/" +name;

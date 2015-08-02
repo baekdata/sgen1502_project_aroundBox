@@ -57,8 +57,9 @@ body{
 }
 
 #home_around{
+	position:relative;
 	float:left;
-	width: 840px;
+	width: 820px;
 	height: 700px;
 	background: #ffffff;
 }
@@ -201,6 +202,7 @@ body{
 	font-size: 13px;
 }
 #around_form{
+	position:relative;
 	margin-left: 20px;
 	margin-top: 20px;
 	text-align: left;
@@ -216,17 +218,53 @@ body{
 	margin-left: 4px;
 	color: #0066CC;
 }
-#detail_back{
+#detail_back{    
 	position: absolute;
-    right: 100px;
-    top: 120px;
+	right: 20px;
+	top: 20px;
 }
+#cw_detail{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	width: 220px;
+	height: 280px;
+	background-color: #002654;
 
+}
+#detail_form{
+	position: relative;
+	height: 20px;
+	width: 220px;
+}
+#detail_close{
+	position: absolute;
+	margin-top: 6px;
+	right: 6px;
+
+}
+#detail_svg{
+	width: 100px;
+	height: 100px;
+}
+.detail_cw_info{
+	padding:2px;
+	margin: auto;
+	color: white;
+}
+#cw_mail{
+	margin-top: 20px;
+	color: #00CCFF;
+}
+#cw_phone{
+	color: #00CCFF;
+}
+}
 #svg_around{
 	margin: 0 auto;
 }
 #around{
-	width:840px;
+	width:820px;
 	height:610px;
 	margin:0 auto;
 }
