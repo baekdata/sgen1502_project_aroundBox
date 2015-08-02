@@ -10,8 +10,6 @@
   , path = require('path')
   , calender = require('./routes/calendar')
   , mail = require('./routes/mail');
-var sleep = require('sleep');
-var Fiber = require('fibers');
 
 
 //WWARRING!!!
@@ -20,7 +18,6 @@ var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandb
     db.bind('event');
     db.bind('mail');
     db.bind('user_info');
-var wait = require('wait.for');
 
 
 var md5 = require('MD5');

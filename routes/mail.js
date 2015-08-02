@@ -3,8 +3,6 @@ var db = require('mongoskin').db("mongodb://sgen:sgen@119.205.252.51:27017/bandb
     db.bind('user_info');
 
 var async = require('async');
-var sleep = require('sleep');
-
 	exports.getReceiveMailData = function(req,res,err){
 		var sess;
 		sess = req.session;
