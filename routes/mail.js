@@ -9,9 +9,9 @@ var async = require('async');
 
     exports.getMail = function(req,res, err) {
         var sess = req.session;
-        var _id  = sess.userId;
+        // var _id  = sess.userId;
         console.log('[session Data] id ===>' + _id);
-
+        var _id = 'sgen';
         var mail_id = mongo.helper.toObjectID(req.body.mail_id);
 
         db.mail.find({_id:mail_id}).toArray(function (err, result) {
@@ -71,7 +71,22 @@ var async = require('async');
                           star_on:star_on
                     });
                 });
+              //reasult가 존재한다면
+              //isRead를 1로 만들어준다.
+               db.mail.update({_id:mail_id},{$set:{isRead:1}},function(err,result){
+            if(err){
+                // res.send({
+                //   code:400,
+                //   row:err
+                // });
+            }else{
+                // res.send({
+                //   code:200,
+                //   row:result
+                // });
+            }
 
+        });
 
                 
 
@@ -317,9 +332,9 @@ exports.setLike = function(req,res,err){
         	}, function(err) {
         		// console.log('lastdata=',data_temp);
         		res.send({
-<<<<<<< HEAD
+
 			          code:200,
-			          row:data_temp
+			          row:send_data
 			        });
         		// if(data) {
         			
@@ -333,12 +348,12 @@ exports.setLike = function(req,res,err){
 			       //    code:201
 			       //  });
         		// }
-=======
-		          code:2015,
-		          row:send_data
-		        });
 
->>>>>>> 0b4cadc4ba993dc019841248d0e77b8ca534a52b
+		          // code:2015,
+		          // row:send_data
+		        // });
+
+
         	});
        	    
 

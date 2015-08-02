@@ -181,7 +181,8 @@ app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
 	        like:like,
 	        attachid:AttachID,
 	        attach:Attach,
-	        date:date
+	        date:date,
+	        isRead: 0
 		}, function(err, result) {
 		    if (err) throw err;
 		    if (result) {
