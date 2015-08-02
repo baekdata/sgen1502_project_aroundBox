@@ -431,6 +431,15 @@ li {
     margin-top: 2px;
     margin-left: 594px;
 }
+.right_like_image:hover {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    margin-top: 2px;
+    margin-left: 594px;
+    padding: -2px;
+    border: 2px solid black;
+}
 .right_left_image {
     position: absolute;
     width: 50px;
