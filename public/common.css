@@ -301,6 +301,8 @@ li {
     position: absolute;
     margin-top: 60px;
     width: 400px;
+    height: 394px;
+    overflow-y: scroll;
 }
 .mail_left_list_attr {
 	height: 100px; 

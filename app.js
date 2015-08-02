@@ -214,7 +214,7 @@ app.post('/user/signin',user.signin);
 app.post('/user/signup',user.signup);
 
 //지금안씀 위에 업로드로 이용함
-app.get('/mail/getAllMailData',mail.getAllMailData);
+app.post('/mail/getAllMailData',mail.getAllMailData);
 app.post('/mail/getReceiveMailData',mail.getReceiveMailData);
 
 app.get('/Downlaod/:id',function(req,res){

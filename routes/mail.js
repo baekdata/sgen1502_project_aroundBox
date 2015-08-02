@@ -80,7 +80,6 @@ var async = require('async');
         } else if (result.length) {
         	var send_data = result;
         	async.forEachOf(result, function(data, key, callback) {
-                console.log("--key", key);
         		var receiveMember = data.receiveMember;
         		var cc  = data.cc;
 
