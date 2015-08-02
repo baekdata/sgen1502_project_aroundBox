@@ -19,27 +19,26 @@ body{
 }
 
 #home_search_text {
-	margin-left: 10px;
 	margin-right: 10px;
 	text-align: left;
 	height: 30px;
 }
 .search_image{
 	margin:13px 16px 10px 10px;
-    float: right;
+	float: right;
 }
 
 #home_search_input {
 	color: #bcbcbc;
-    border: 0px;
-    font-size: 13px;
-    text-indent: 12px;
-    float: left;
-    padding: 10px;
+	border: 0px;
+	font-size: 13px;
+	text-indent: 12px;
+	float: left;
+	padding: 10px;
 }
 
 #home_search_text:focus{
-    outline: 0;
+	outline: 0;
 }
 
 
@@ -71,16 +70,21 @@ body{
 }
 
 #today{
+	margin-top: 10px;
+	margin-left: 10px;
 	float:left;
+	color: #0066CC;
 }
 #show_date{
+	margin-top: 10px;
 	float: left;
 	margin-left: 10px;
 }
 
 #img_refresh{
-    float: right;
-    margin-right: 10px;
+	margin-top: 10px;
+	float: right;
+	margin-right: 10px;
 }
 
 #noti_msg{
@@ -99,6 +103,7 @@ body{
 	width: 320px;
 	background-color: #ffffff;
 }
+
 #msg_text{
 	position: absolute;
 	text-align: left;
@@ -106,12 +111,61 @@ body{
 	margin-top: 20px;
 	width: 280px;
 }
+
 #msg_drawing{
 	margin-left: 20px;
 	position: absolute;
 	width: 280px;
 	height: 280px;
-	margin-top: 80px;
+	margin-top: 90px;
+}
+.msg_info{
+	position: absolute;
+	text-align: center;
+}
+
+#msg_out{
+	left:20px;
+	top:20px;
+}
+
+#msg_in{
+	right: 20px;
+	top:20px;
+
+}
+#msg_team{
+	bottom: 4px;
+	left: 120px;
+}
+
+.msg_num{
+	color:#0066CC;
+	font-size: 20px;
+}
+
+#msg_total_num{
+	position: absolute;
+	left: 118px;
+	top:90px;
+	color: #e45064;
+	font-size: 46px;
+}
+#msg_total{
+	position: absolute;
+	color: #e45064;
+	left: 120px;
+	top: 142px;
+	font-size: 22px;
+}
+#msg_circle{
+	position: absolute;
+	left:60px;
+	top:50px;
+	width: 160px;
+	height: 160px;
+	border : 3px solid #e45064;
+	border-radius: 50%;
 }
 #meeting_text{
 	position: absolute;
@@ -126,34 +180,53 @@ body{
 	float: left;
 	margin-left: 10px;
 	margin-top: 20px;
+	font-size: 12px;
 }
 #min{
 	float: left;
 	color: #e45064;
-	font-size: 40px;
+	font-size: 44px;
 }
 #meeting_schedule{
 	position: absolute;
-	margin-top: 120px;
+	margin-top: 130px;
 	text-align: left;
 	margin-left: 20px;
 }
 .meeting_info{
+	margin-top:10px;
 	text-align: left;
-	padding:5px;
+}
+.meeting_title{
+	font-size: 13px;
 }
 #around_form{
 	margin-left: 20px;
 	margin-top: 20px;
 	text-align: left;
-	width:840px;
+	width:800px;
 	height:80px;
 }
+#around_cw_name, #around_keyword{
+	float: left;
+	font-size: 13px;
+}
+#around_cw_num, #around_keyword_num{
+	float: left;
+	margin-left: 4px;
+	color: #0066CC;
+}
+#detail_back{
+	position: absolute;
+    right: 100px;
+    top: 120px;
+}
+
 #svg_around{
 	margin: 0 auto;
 }
 #around{
 	width:840px;
-	height:620px;
+	height:610px;
 	margin:0 auto;
 }

@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 	<title>Band title</title>
-	<link rel="stylesheet" href="./common.css"></link>
-	<link rel="stylesheet" href="./common_ay.css"></link>
-	<link rel="stylesheet" href="./NotoSansKR-Regular/styles.css"></link>
-	<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>	
-	<script type="text/javascript" src="./js/sgen.js"></script>	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 
+	
+	
+
+	<link rel="stylesheet" href="./NotoSansKR-Regular/styles.css"></link>
 
 	<link href="css/jquery-ui.css" rel="stylesheet" />
 	<link href="css/jquery.ui.theme.css" rel="stylesheet" />
@@ -16,14 +17,20 @@
 	<link href="css/timelineScheduler.styling.css" rel="stylesheet" />
 	<link href="css/calendar.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="css/selectize.css" />
+	<link rel="stylesheet" href="./common.css"></link>
+	<link rel="stylesheet" href="./common_ay.css"></link>
 
+
+	<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>	
+	<script type="text/javascript" src="./js/sgen.js"></script>	
 	<script src="js/moment.min.js"></script>
-
 	<script src="js/jquery-ui-1.10.2.min.js"></script>
-
 	<script src="js/timelineScheduler.js"></script>
 	<script src="js/calendar.js"></script>
 	<script type="text/javascript" src="js/selectize.js"></script>
+	<script src="./fileinput/js/fileinput.min.js" type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+
 </head>
 <body style="background:#e0e0e0;">
 	<div id="wrapper">
@@ -51,7 +58,7 @@
 			<div id="round_icons">
 				<div id="round_icons_left">
 					<div class="round_img left-margin">
-						<input type='image' src='./images/cirBtn_box.png' class='round_icons_img'/>
+						<a href="/mail"><input type='image' src='./images/cirBtn_box.png' class='round_icons_img'/></a>
 					</div>
 					<div class="round_img">
 						<input type='image' src='./images/cirBtn_person.png' class='round_icons_img'/>
@@ -114,7 +121,7 @@
 						</div>
 						<div id="mail_left_menu"> 
 							<div class="receive_mail_btn_c">
-								<div id="dropdown-mailbox" class="dropdown-menu">
+								<div id="dropdown-mailbox" class="_dropdown-menu">
 									<div class="dropdown-text">받은 편지함 ( 662 )</div>
 									<div class="dropdown-list">
 										<div class="items active" val="in">
@@ -413,17 +420,12 @@
 							</div>
 							<div class="sender_box">
 								<span class="sender_box_text_1"> 파일 첨부 </span>
-								<span class="btn btn-success fileinput-button">
-									<image src="./images/plusBtn.png"/>
-									<input id="fileupload" type="file" name="files[]" multiple>
-								</span>
-								<!-- <input type='image' src="./images/plusBtn.png" id="sender_box_plus_btn" /> -->
-								<div id="files" class='files'></div>
+									<input id="input-2" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="true">
 							</div>
 
 						</div>
 						<div id="sender_content">
-							<textarea id="sender_content_tt" rows=13 cols=97></textarea>
+							<textarea id="sender_content_tt" rows=11 cols=102></textarea>
 						</div>
 					</div>
 				</div>
@@ -431,9 +433,9 @@
 		</div>	
 	</div>
 
+<div id="timeline_container">
 	<div id="timeline2">
 		<div class="wrap">
-
 		</div>
 	</div>
 	<div id="timeline" style="background:#fff; ">
@@ -443,45 +445,25 @@
 			</div>
 		</div>
 	</div>
+</div>
 
-
-<script src="./js/jquery.fileupload.js"></script>
 <script>
-/*jslint unparam: true */
-/*global window, $ */
-$(function () {
-    'use strict';
-    // Change this to the location of your server-side upload handler:
-    // var url = window.location.hostname === 'blueimp.github.io' ?
-    var url = window.location.hostname ?
-                '//jquery-file-upload.appspot.com/' : 'server/php/';
-    $('#fileupload').fileupload({
-        url: url,
-        dataType: 'json',
-        done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                $('<div class="file_name" />').text(file.name).appendTo('#files');
-            });
-        }
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+$( document ).ready( function(){	
+	$('#search_text').selectize({
+		delimiter: ',',
+		persist: false,
+		create: function(input) {
+			return {
+				value: input,
+				text: input
+			}
+		}
+	});
+
+	$("#input-2").fileinput({
+        'showPreview' : false
+    });
 });
 </script>
-
-
-	<script>
-	$( document ).ready( function(){	
-		$('#search_text').selectize({
-			delimiter: ',',
-			persist: false,
-			create: function(input) {
-				return {
-					value: input,
-					text: input
-				}
-			}
-		});
-	});
-	</script>
 </body>
 </html>

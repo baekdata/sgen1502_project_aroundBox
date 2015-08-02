@@ -7,7 +7,7 @@ div {
 	color: #727272;
 	letter-spacing:-0.25px;
 }
-a {
+a, a:focus, a:hover {
 	text-decoration:none; 
 	color:#727272;
 	outline: 0px;
@@ -163,10 +163,11 @@ li {
 }
 
 .round_icons_img:hover {
-	margin: -2px;
+	margin: 0px;
     border: 2px solid #0098d8;
     border-radius: 26px;
 }
+
 .round_icons_img:focus {
 	outline: none;
 }
@@ -195,10 +196,10 @@ li {
 #mail_box {
 	background-color: #ededed;
     width: 1200px;
-    height: 525px;
+    height: 570px;
 }
 #mail_find {
-	padding-top: 10px;
+	padding-top: 7px;
 	height:45px;
 }
 #mail_find_bg {
@@ -227,7 +228,7 @@ li {
 	text-align: left;
 	position: absolute;
 	left: 0%;
-	height: 450px;
+	height: 509px;
 	width: 400px;
 	background: #ffffff;
 }
@@ -391,7 +392,7 @@ li {
 	margin-right: 10px;
 	position: absolute;
 	left: 320px;
-	height: 450px;
+	height: 509px;
 	width: 765px;
 	background: #ffffff;
 	overflow-y: scroll;
@@ -429,6 +430,14 @@ li {
     height: 21px;
     margin-top: 2px;
     margin-left: 594px;
+}
+.right_like_image:hover {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    margin-top: 2px;
+    margin-left: 594px;
+    background: url('./images/right_like_y.png');
 }
 .right_left_image {
     position: absolute;
@@ -618,13 +627,12 @@ li {
     margin-top: 11px;
 }
 .send_img_btn {
-    /*position: relative;*/
-    margin-top: 20px;
-    margin-left: -600px;
-    margin-bottom: 20px;
-    width: 55px;
+    margin-top: 15px;
+    margin-left: 17px;
+    margin-bottom: -3px;
+    width: 63px;
  }
-.receive_mail_btn_c .dropdown-menu {
+.receive_mail_btn_c ._dropdown-menu {
 	background-image: url("/images/mail-dropdown.png");
 	background-repeat: no-repeat;
 	height:30px;
@@ -635,7 +643,7 @@ li {
     cursor: pointer;
 }
 
-.dropdown-menu .dropdown-list {
+._dropdown-menu .dropdown-list {
     position: absolute;
     top: 42px;
     left: 9px;
@@ -684,18 +692,4 @@ li {
     font-size: 100%;
     height: 100%;
   }
-}
-#files {
-    margin-left: 88px;
-    width: 610px;
-    height: 15px;
-    margin-top: -13px;
-    overflow-x: scroll;
-    overflow-y: hidden; 
-}
-.file_name {
-	float: left;
-	margin-right: 10px;
-	font-size: 11px;
-    color: #9e9e9e;
 }
