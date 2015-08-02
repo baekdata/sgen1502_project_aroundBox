@@ -219,8 +219,11 @@ app.post('/user/signup',user.signup);
 //지금안씀 위에 업로드로 이용함
 app.get('/mail/getAllMailData',mail.getAllMailData);
 app.post('/mail/getReceiveMailData',mail.getReceiveMailData);
+app.post('/mail/setLike',mail.setLike);
+app.post('/mail/getLike',mail.getLike);
+app.post('/mail/setFavorite',mail.setFavorite);
 
-app.get('/Downlaod/:id',function(req,res){
+app.get('/Download/:id',function(req,res){
 	var name = req.params.id;
 	console.log('down = name',name);
 	var filepath = __dirname + "/uploads/" +name;
