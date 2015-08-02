@@ -130,3 +130,7 @@
     border: 1px solid transparent;
     border-radius: 4px;
 }
+
+#timeline_container {
+	margin-top: -25px;
+}
