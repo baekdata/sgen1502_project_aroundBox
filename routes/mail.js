@@ -68,11 +68,7 @@ var async = require('async');
                           like_on:like_on,
                           star_on:star_on
                     });
-                });
-
-
-                
-
+                });    
             }
         });
     };
