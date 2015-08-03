@@ -7,6 +7,12 @@ var db = mongo.db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
 
 var async = require('async');
 
+
+    exports.getFilterData = function(req,res,err){
+      
+
+    };
+
     exports.getMail = function(req,res, err) {
         var sess = req.session;
         // var _id  = sess.userId;
@@ -234,6 +240,30 @@ exports.setLike = function(req,res,err){
     });
  		
 };
+  exports.getFavorteMailData = function(req,res,err){
+    var sess;
+    sess = req.session;
+    var _id  = sess.userId;
+    console.log('[session Data] id ===>' + _id);
+    db.mail.find({$or:[{star:"sgen3"}]}).toArray(function (err, result) {
+            if (err) {
+              console.log(err);
+            } else if (result.length) {
+              console.log('[starData] ==> ',result);
+
+                res.send({
+                  code:200,
+                  row:resultㅈ
+                });
+            } else {
+              console.log('No document(s) found with defined "find" criteria!');
+            }
+          });
+
+
+
+  };
+
 	exports.getReceiveMailData = function(req,res,err){
 		var sess;
 		sess = req.session;
@@ -288,8 +318,6 @@ exports.setLike = function(req,res,err){
 		        });
 
         	});
-
-
         } else {
           console.log('No document(s) found with defined "find" criteria!');
         }

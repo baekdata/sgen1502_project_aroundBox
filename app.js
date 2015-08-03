@@ -220,6 +220,7 @@ app.post('/mail/getReceiveMailData',mail.getReceiveMailData);
 app.post('/mail/setLike',mail.setLike);
 app.post('/mail/getLike',mail.getLike);
 app.post('/mail/setFavorite',mail.setFavorite);
+app.post('/mail/getFavorteMailData',mail.getFavorteMailData);
 
 
 app.post('/mail/getMail',mail.getMail);
