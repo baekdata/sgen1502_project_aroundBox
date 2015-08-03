@@ -82,6 +82,9 @@ exports.setFavorite = function(req,res,err){
     var user_id = req.param('user_id'); 
     var idx = req.param('mail_id');
     
+    console.log('user_id', user_id);
+    console.log('idx', idx);
+
     var oId = mongo.helper.toObjectID(idx);
 
     //해당 메일아이디를 찾아서 like  추가해준다.
@@ -119,6 +122,7 @@ exports.setFavorite = function(req,res,err){
   };
 
 
+  //ay
   exports.getLike = function(req,res,err){
     
     var idx = req.param('mail_id');   
@@ -144,6 +148,7 @@ exports.setFavorite = function(req,res,err){
       });
   };
 
+//ay
   exports.setLike = function(req,res,err){
 	//ObjtecId("asdfjadsklf"); 인형태야여야한다.
 	//게시물의 아이디와, 사용자의 아이디를 알아야한다.

@@ -236,7 +236,7 @@ $( document ).ready( function(){
             }).done(function(data) {
                 $("#mail_right_view").empty();
                 var star_on = (data.star_on == true) ? 'right_star_y.png' : 'right_star.png';
-                var like_on = (data.like_on == true )? 'right_like_y.png' : 'right_like.png';
+                var like_on = (data.like_onsetFavorite == true )? 'right_like_y.png' : 'right_like.png';
                 data = data.row[0];
                 var temp =    '<div id="mail_right_top">'
                     if(data.attach.length>0) {
@@ -357,6 +357,22 @@ $( document ).ready( function(){
         
             });
         });
+
+		//ay
+		$(".right_like_image").unbind("click");
+		$(".right_like_image").bind("click", function() {
+			var mail_id = $(this).attr('val');
+
+			$.ajax({
+				type: "POST",
+				url: '/mail/setFavorite',
+				data: {mail_id: mail_id}
+			}).done(function(data) {
+				var favorite = data.row;
+
+			})
+
+		})
 	  
 	});
 
