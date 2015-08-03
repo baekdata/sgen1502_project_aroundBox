@@ -109,6 +109,20 @@ exports.setFavorite = function(req,res,err){
         arr = result[0]['star'];
         if(arr==null){
             arr= new Array();
+        }else{
+                    
+            //널이면 없으니까 ++
+            if(a==-1){
+                //푸시!
+                arr.push(user_id);
+            }
+            //값이 있을경우 --
+            else{
+               var position = arr.indexOf(user_id);
+               arr.splice(position,1);
+
+            }
+            console.log('arr===',arr);
         }
     
         arr.push(user_id);
