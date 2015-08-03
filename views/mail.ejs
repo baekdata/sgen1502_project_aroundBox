@@ -236,7 +236,8 @@ $( document ).ready( function(){
             }).done(function(data) {
                 $("#mail_right_view").empty();
                 var star_on = (data.star_on == true) ? 'right_star_y.png' : 'right_star.png';
-                var like_on = (data.like_onsetFavorite == true )? 'right_like_y.png' : 'right_like.png';
+                var like_on = (data.like_on == true )? 'right_like_y.png' : 'right_like.png';
+                console.log('data', data);
                 data = data.row[0];
                 var temp =    '<div id="mail_right_top">'
                     if(data.attach.length>0) {
