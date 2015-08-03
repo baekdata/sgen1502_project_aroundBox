@@ -336,23 +336,6 @@ exports.setLike = function(req,res,err){
 			          code:200,
 			          row:send_data
 			        });
-        		// if(data) {
-        			
-        		// 	// console.log('senddata==>', data);
-        		// 	res.send({
-			       //    code:205,
-			       //    row:data
-			       //  });
-        		// }  else {
-        		// 	res.send({
-			       //    code:201
-			       //  });
-        		// }
-
-		          // code:2015,
-		          // row:send_data
-		        // });
-
 
         	});
        	    
