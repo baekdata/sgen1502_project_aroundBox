@@ -210,7 +210,7 @@ exports.setLike = function(req,res,err){
                 
                 res.send({
                   code:200,
-                  row:result
+                  row:a
                 });
             }
 
