@@ -301,6 +301,8 @@ li {
     position: absolute;
     margin-top: 60px;
     width: 400px;
+    height: 394px;
+    overflow-y: scroll;
 }
 .mail_left_list_attr {
 	height: 100px; 
@@ -430,14 +432,6 @@ li {
     height: 21px;
     margin-top: 2px;
     margin-left: 594px;
-}
-.right_like_image:hover {
-    position: absolute;
-    width: 21px;
-    height: 21px;
-    margin-top: 2px;
-    margin-left: 594px;
-    background: url('./images/right_like_y.png');
 }
 .right_left_image {
     position: absolute;
