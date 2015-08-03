@@ -365,14 +365,15 @@ $( document ).ready( function(){
 
 			$.ajax({
 				type: "POST",
-				url: '/mail/setFavorite',
+				url: '/mail/setLike',
 				data: {mail_id: mail_id}
 			}).done(function(data) {
-				var favorite = data.row;
+				var like = data.row;
+				console.log('like_: ', like);
 
-			})
+			});
 
-		})
+		});
 	  
 	});
 
