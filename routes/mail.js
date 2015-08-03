@@ -110,7 +110,8 @@ exports.setFavorite = function(req,res,err){
         if(arr==null){
             arr= new Array();
         }else{
-                    
+            var a = arr.indexOf(user_id);
+    
             //널이면 없으니까 ++
             if(a==-1){
                 //푸시!
