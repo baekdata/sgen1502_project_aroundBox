@@ -187,8 +187,8 @@ exports.setLike = function(req,res,err){
 	//게시물의 아이디와, 사용자의 아이디를 알아야한다.
   var user_id = req.param('user_id');	
   var idx = req.param('mail_id');
-  	// console.log(userId);
-  	// console.log(idx);
+  	console.log(user_id);
+  	console.log(idx);
 
   	var oId = mongo.helper.toObjectID(idx);
   	console.log(oId);
@@ -196,7 +196,7 @@ exports.setLike = function(req,res,err){
     db.mail.find({_id:oId}).toArray(function (err, result) {
         
         var arr = new Array();
-        // console.log(result[0]['like']);
+        console.log(result[0]);
         arr = result[0]['like'];
         
         if(arr==null){

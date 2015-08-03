@@ -353,15 +353,18 @@ $( document ).ready( function(){
     			});
         		
 				$(".right_like_image").click(function() {
-					var mail_id = $(this).attr('val');
 		            $.ajax({
 		                type: "POST",
 		                url: '/mail/setLike',
 		                data: { mail_id : mail_id,
-		                		user_id : 'sgen3' }
+		                		user_id : 'sgen3'}
 		            }).done(function(data) {
-		                var star_on = (data.star_on == true) ? 'right_star_y.png' : 'right_star.png';
-		                var like_on = (data.like_on == true )? 'right_like_y.png' : 'right_like.png';
+
+		                if(data.row == -1) {
+				       		$(".right_like_image").attr('src', './images/right_like_y.png');
+				       	} else {
+				       		$(".right_like_image").attr('src', './images/right_like.png');
+				       	}
 	   				});
 
             	});
