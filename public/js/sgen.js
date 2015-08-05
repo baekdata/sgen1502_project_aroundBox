@@ -80,13 +80,15 @@ $(document).ready(function(){
         var html = $(this).html();
         var url = "";
         $("#maillist_in").empty();
-        
+         
         // $("#mail_left").find('.mail_left_content_list').css('display', 'none');
         // $("#mail_left").find('#maillist_'+).css('display','block');
         if( $(this).attr('val') === 'in') {
             url = './mail/getReceiveMailData';
         } if( $(this).attr('val') === 'out') {
             url = './mail/getAllMailData';
+        } if( $(this).attr('val') === 'star') {
+            url = './mail/getFavorteMailData';
         } else {
             $(".dropdown-text").html(html+ "( 0 )");
         }

@@ -369,6 +369,7 @@ $(".mail_left_content").bind("click", function() {
 			});
 		});
 
+// 즐겨찾기 기능
 $(".right_star_image").click(function() {
 	$.ajax({
 		type: "POST",
@@ -385,7 +386,7 @@ $(".right_star_image").click(function() {
 
 	});
 
-				//ay
+				// 좋아요 기능
 				$(".right_like_image").click(function() {
 					$.ajax({
 						type: "POST",
@@ -406,6 +407,7 @@ $(".right_star_image").click(function() {
 });
 
 
+// group 아이콘 클릭 기능
 $("span.round_icons_name").click(
 	function()
 	{
