@@ -376,7 +376,7 @@ $( document ).ready( function(){
 		                data: { mail_id : mail_id,
 		                		user_id : 'sgen'}
 		            }).done(function(data) {
-		                if(data.row == -1) {
+		                if(data.arr_length == 0) {
 				       		$(".right_like_image").attr('src', './images/right_like_y.png');
 				       	} else {
 				       		$(".right_like_image").attr('src', './images/right_like.png');
