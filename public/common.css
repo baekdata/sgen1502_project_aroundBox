@@ -182,7 +182,6 @@ li {
 }
 
 #g1.round_icons_g{
-	
 	background-color: #E45064;
 }
 
@@ -199,7 +198,7 @@ li {
 	background-color: #B0B0B0;
 	
 }
-#round_icons_middle .round_icons_txt{
+#round_icons_middle .round_icons_name{
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 14px;

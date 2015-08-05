@@ -69,21 +69,21 @@
 				</div>
 
 				<div id="round_icons_middle">
-					<a href="#" class="round_icons_g" id="g1">
-						<span class="round_icons_txt"> sgen </span>
-					</a>
-					<a href="" class="round_icons_g" id="g2">
-						<span class="round_icons_txt"> project </span>
-					</a>
-					<a href="" class="round_icons_g" id="g3">
-						<span class="round_icons_txt"> 여의도 </span>
-					</a>
-					<a href="" class="round_icons_g" id="g4">
+					<div class="round_icons_g" id="g1">
+						<span class="round_icons_name"> sgen </span>
+					</div>
+					<div  class="round_icons_g" id="g2">
+						<span class="round_icons_name"> project </span>
+					</div>
+					<div class="round_icons_g" id="g3">
+						<span class="round_icons_name"> 여의도 </span>
+					</div>
+					<div class="round_icons_g" id="g4">
 						<span class="round_icons_add"> + </span>
-					</a>
+					</div>
 				</div>
 
-				<div id='round_icons_right'>
+				<div id='round_icons_right' style="display:none;">
 					<div class='round_icons_p'>
 						<img src="./images/people/p1.png" class="icons_img_p" />
 						<div class="tooltip_menu">
@@ -193,6 +193,7 @@
 	<script>
 	$( document ).ready( function(){
 // 
+
 $.ajax({
 	type: "POST",
 	url: './mail/getReceiveMailData'
@@ -403,6 +404,22 @@ $(".right_star_image").click(function() {
 			});
 });
 });
+
+
+$("span.round_icons_name").click(
+	function()
+	{
+		console.log("click event");
+		$('#round_icons_right').toggle();
+	});
+
+
+$("span.round_icons_add").click(
+	function()
+	{
+		console.log("click event");
+		alert("더 이상 추가 할 수 없습니다.")
+	});
 
 
 $('#search_text').selectize({
