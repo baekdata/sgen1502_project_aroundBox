@@ -560,7 +560,7 @@ exports.getReceiveMailData = function(req,res,err){
      var _id  = sess.userId;
      console.log('[session Data] id ===>' + _id);
 
-     db.mail.find({sender:_id}).toArray(function (err, result) {
+     db.mail.find({sender:"sgen"}).toArray(function (err, result) {
       if (err) {
         console.log(err);
       } else if (result.length) {
