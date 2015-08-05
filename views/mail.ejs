@@ -352,14 +352,30 @@ $( document ).ready( function(){
                     });
     			});
         		
-				$(".right_like_image").click(function() {
+				$(".right_star_image").click(function() {
 		            $.ajax({
 		                type: "POST",
 		                url: '/mail/setLike',
 		                data: { mail_id : mail_id,
 		                		user_id : 'sgen3'}
 		            }).done(function(data) {
+		                if(data.row == -1) {
+				       		$(".right_star_image").attr('src', './images/right_star_y.png');
+				       	} else {
+				       		$(".right_star_image").attr('src', './images/right_star.png');
+				       	}
+	   				});
 
+            	});
+
+				//ay
+				$(".right_like_image").click(function() {
+		            $.ajax({
+		                type: "POST",
+		                url: '/mail/setFavorite',
+		                data: { mail_id : mail_id,
+		                		user_id : 'sgen'}
+		            }).done(function(data) {
 		                if(data.row == -1) {
 				       		$(".right_like_image").attr('src', './images/right_like_y.png');
 				       	} else {
