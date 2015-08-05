@@ -76,10 +76,12 @@ body{
 	float:left;
 	color: #0066CC;
 }
-#show_date{
+#noti_date{
+	font-size: 13px;
+	color: black;
 	margin-top: 10px;
 	float: left;
-	margin-left: 10px;
+		margin-left: 10px;
 }
 
 #img_refresh{
