@@ -372,7 +372,7 @@ exports.getFavorteMailData = function(req,res,err){
 
       res.send({
         code:200,
-        row:resultㅈ
+        row:result
       });
     } else {
       console.log('No document(s) found with defined "find" criteria!');
