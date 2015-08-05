@@ -4,23 +4,68 @@ var mongo = require('mongoskin');
 var db = mongo.db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
 db.bind('mail');
 db.bind('user_info');
-
+    
 var async = require('async');
 
+    function sortMapByValue(map)
+    {
+        var tupleArray = [];
+        for (var key in map) tupleArray.push([key, map[key]]);
+        tupleArray.sort(function (a, b) { return a[1] - b[1] });
+        return tupleArray;
+    }
 
+    exports.getMailCnt = function(req,res,err){
+      
+      var arrSum = [];
+      var sum =0;
+        //하드코딩이 뭔지 보여주겟다.
+      db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen1"}]}).count(function(err,result){
+              
+            arrSum.push({"김동억":result});
+            sum+=result;
+            db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen2"}]}).count(function(err,result){
+                  
+                  arrSum.push({"백종수":result});
+                  sum+=result;
+                  db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen3"}]}).count(function(err,result){
+                      
+                     arrSum.push({"남현진":result});
+                      sum+=result;
+                      db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen4"}]}).count(function(err,result){
+                          
+                         arrSum.push({"이아영":result});
+                          sum+=result;
+                          db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen5"}]}).count(function(err,result){
+                               db.user_info.find()
+                              
+                              arrSum.push({"김도윤":result});
+                              sum+=result;  
+
+                              res.send({
+                                code:200,
+                                row:arrSum
+                              });
+
+                          });
+                        
+                      });
+                    
+                  });
+            });
+      });
+    };
+                
 
     exports.getFilterData = function(req,res,err){
       var otherUser = req.param('other_id'); 
       var filterWord = req.param('filter_word'); 
       var indexing = req.param('indexing');
-
-      // var strArr = filterWord.split(',');
       
         console.log(otherUser);
         console.log(filterWord);
 
         // ====> Default 가 받은메세지  ==> 받은메세지라는 이야기는 sender가 other_id이고 리시브에 내가있고
-
       //검색어 검색
       if(otherUser==null && filterWord!=null){
 
@@ -363,22 +408,75 @@ exports.getFavorteMailData = function(req,res,err){
   var sess;
   sess = req.session;
   var _id  = sess.userId;
-  console.log('[session Data] id ===>' + _id);
+  // console.log('[session Data] id ===>' + _id);
+  // db.mail.find({$or:[{star:"sgen3"}]}).toArray(function (err, result) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else if (result.length) {
+  //     console.log('[starData] ==> ',result);
+
+  //     res.send({
+  //       code:200,
+  //       row:result
+  //     });
+  //   } else {
+  //     console.log('No document(s) found with defined "find" criteria!');
+  //   }
+  // });
+
+
   db.mail.find({$or:[{star:"sgen3"}]}).toArray(function (err, result) {
     if (err) {
       console.log(err);
     } else if (result.length) {
-      console.log('[starData] ==> ',result);
+     var send_data = result;
+     async.forEachOf(result, function(data, key, callback) {
+      var receiveMember = data.receiveMember;
+      var cc  = data.cc;
 
-      res.send({
-        code:200,
-        row:result
-      });
-    } else {
-      console.log('No document(s) found with defined "find" criteria!');
-    }
-  });
+      var receiveMember_temp=[];
+      var cc_temp=[];
+      async.waterfall([
+       function(callback2) {
+        async.each(receiveMember, function(receive_item, callback3) {
+         db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
 
+          receiveMember_temp.push(result[0]);
+          callback3();
+        });
+
+       }, function(err){
+         callback2(null);
+       });
+      }, 
+      function(callback2) {
+        async.each(cc, function(cc_item, callback3) {
+         db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
+          cc_temp.push(result[0]);
+          callback3();
+        });
+       }, function(err){
+         callback2(null);
+       });
+      }
+      ], function(err) {
+       send_data[key].receiveMember = receiveMember_temp;
+       send_data[key].cc = cc_temp;
+              // console.log(send_data);
+              callback();
+            });
+    }, function() {
+            // console.log('lastdata=',data_temp);
+            res.send({
+             code:200,
+             row:send_data
+           });
+
+          });
+} else {
+  console.log('No document(s) found with defined "find" criteria!');
+}
+});
 // <<<<<<< HEAD
 //                 res.send({
 //                   code:200,
