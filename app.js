@@ -111,9 +111,6 @@ app.post("/pTest",function(req,res){
 	// var title1 [];
 	console.log('title =='+title[0]);
 	console.log('title =='+title[1]);
-
-
-
 });
 
 function checkTitleFileType(obj){ 
@@ -224,6 +221,7 @@ app.post('/mail/getLike',mail.getLike);
 app.post('/mail/setFavorite',mail.setFavorite);
 app.post('/mail/getFavorteMailData',mail.getFavorteMailData);
 app.post('/mail/getFilterData',mail.getFilterData);
+app.post('/mail/getMailCnt',mail.getMailCnt);
 
 app.post('/mail/getMail',mail.getMail);
 
