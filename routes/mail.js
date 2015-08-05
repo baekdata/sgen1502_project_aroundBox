@@ -6,55 +6,116 @@ db.bind('mail');
 db.bind('user_info');
     
 var async = require('async');
+  
+  exports.getMailLinking = function(req,res,err){
+  ///테스트코드                
+                            var lastDataPostion  = [];
+                            var lastData = [];
+                            var nextWeek = ["다음주","이번주"];
+                            var day = ["월요일","화요일","수요일","목요일","금요일","토요일","일요일"];
+                            var perid = ["오늘","내일","모레"];
+                            var time = ["00시","01시","02시","03시","04시","05시","06시","07시","08시","09시","10시","11시","12시","13시","14시","15시","16시","17시","18시","19시","20시","21시","22시","23시","24시"];
 
-    function sortMapByValue(map)
-    {
-        var tupleArray = [];
-        for (var key in map) tupleArray.push([key, map[key]]);
-        tupleArray.sort(function (a, b) { return a[1] - b[1] });
-        return tupleArray;
-    }
+                            var message = "다음주 금요일 07시에 뵙죠"
+                  // var like_on = (result[0].like &&  result[0].like.indexOf('sgen3')>-1 ) ? true  : false;
 
-    exports.getMailCnt = function(req,res,err){
-      
-      var arrSum = [];
-      var sum =0;
-        //하드코딩이 뭔지 보여주겟다.
-      db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen1"}]}).count(function(err,result){
-              
-            arrSum.push({"김동억":result});
-            sum+=result;
-            db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen2"}]}).count(function(err,result){
-                  
-                  arrSum.push({"백종수":result});
-                  sum+=result;
-                  db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen3"}]}).count(function(err,result){
-                      
-                     arrSum.push({"남현진":result});
-                      sum+=result;
-                      db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen4"}]}).count(function(err,result){
-                          
-                         arrSum.push({"이아영":result});
-                          sum+=result;
-                          db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen5"}]}).count(function(err,result){
-                               db.user_info.find()
+
+                            ///이번주다음주검색
+                            for(var i=0;i<nextWeek.length;i++){
+                              //해당값이 존재하면
+                              var TFnextWeek =(message.search(nextWeek[i]) > -1) ? true :false ;
                               
-                              arrSum.push({"김도윤":result});
-                              sum+=result;  
+                              //트루면 저장
+                              if( TFnextWeek == true){
+                                lastData.push(nextWeek[i]);
+                                lastDataPostion.push(TFnextWeek);
+                              }else{};
+                            }
+                              //금요
+                            for(var i=0;i<day.length;i++){
+                              //해당값이 존재하면
+                              var TFDay =(message.search(day[i]) > -1) ? true :false ;
+                              //트루면 저장
+                              if( TFDay == true){
+                                lastData.push(day[i]);
+                                lastDataPostion.push(TFDay);
+                              }else{};
+                            }
 
-                              res.send({
-                                code:200,
-                                row:arrSum
-                              });
+                            for(var i=0;i<perid.length;i++){
+                              //해당값이 존재하면
+                              var TFperid =(message.search(perid[i]) > -1) ? true :false ;
+                              //트루면 저장
+                              if( TFDay == true){
+                                lastData.push(day[i]);
+                                lastDataPostion.push(TFperid);
+                              }else{};
+                            }
 
-                          });
-                        
-                      });
-                    
-                  });
-            });
-      });
-    };
+                            for(var i=0;i<time.length;i++){
+                              //해당값이 존재하면
+                              var TFtime =(message.search(time[i]) > -1) ? true :false ;
+                              console.log(TFtime);
+                              //트루면 저장
+                              if( TFtime == true){
+                                lastData.push(time[i]);
+                                lastDataPostion.push(TFtime);
+                              }else{};
+                            }
+
+
+                            res.send({
+                              code:200,
+                              row:lastData,
+                              pos :lastDataPostion
+                            });
+      // res.writeHeader(200, {"Content-Type": "text/html"});  
+      // res.end('<a href="http://www.w3schools.com">Visit W3Schools.com!</a>');                            
+  }
+
+
+  exports.getMailCnt = function(req,res,err){
+    
+    var arrSum = [];
+    var sum =0;
+      //하드코딩이 뭔지 보여주겟다.
+    db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen1"}]}).count(function(err,result){
+            console.log('sgen1')
+          arrSum.push({"name":"김동억","cnt":result});
+          sum+=result;
+          db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen2"}]}).count(function(err,result){
+                console.log('sgen2')
+                arrSum.push({"name":"백종수","cnt":result});
+                sum+=result;
+                db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen3"}]}).count(function(err,result){
+                    console.log('sgen3')
+                   arrSum.push({"name":"남현진","cnt":result});
+                    sum+=result;
+                    db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen4"}]}).count(function(err,result){
+                        console.log('sgen4')
+                       arrSum.push({"name":"이아영","cnt":result});
+                        sum+=result;
+                        db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen5"}]}).count(function(err,result){
+                          console.log('sgen5')
+                             db.user_info.find()
+                            
+                            arrSum.push({"name":"김도윤","cnt":result});
+                            sum+=result;  
+
+                            res.send({
+                              code:200,
+                              row:arrSum
+                            });
+
+
+                        });
+                      
+                    });
+                  
+                });
+          });
+    });
+  };
                 
 
     exports.getFilterData = function(req,res,err){
@@ -560,7 +621,7 @@ exports.getReceiveMailData = function(req,res,err){
      var _id  = sess.userId;
      console.log('[session Data] id ===>' + _id);
 
-     db.mail.find({sender:_id}).toArray(function (err, result) {
+     db.mail.find({sender:'sgen'}).toArray(function (err, result) {
       if (err) {
         console.log(err);
       } else if (result.length) {

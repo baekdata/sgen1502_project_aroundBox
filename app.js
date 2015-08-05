@@ -222,6 +222,7 @@ app.post('/mail/setFavorite',mail.setFavorite);
 app.post('/mail/getFavorteMailData',mail.getFavorteMailData);
 app.post('/mail/getFilterData',mail.getFilterData);
 app.post('/mail/getMailCnt',mail.getMailCnt);
+app.get('/mail/getMailLinking',mail.getMailLinking);
 
 app.post('/mail/getMail',mail.getMail);
 
