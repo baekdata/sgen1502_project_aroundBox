@@ -75,7 +75,7 @@
 					<div id="noti_msg" class="in_noti">
 						<div id="msg_text">
 							<h1> 안읽은 메시지 </h1>
-							<h3> AM 14:00 </h3>
+							<h3 id="noti_time"></h3>
 						</div>
 						<div id="msg_drawing">
 							<div class="msg_info" id="msg_out">
@@ -302,6 +302,7 @@
 			document.getElementById("around_cw_num").innerHTML = temp_cw_num;
 
 
+
 			// coworker's circles
 			var cw_data = svg_around.selectAll(".co_workers")
 			.data(jsonCircles)
@@ -448,6 +449,15 @@
 			var dd = today.getDate();
 			var mm = today.getMonth()+1;
 			var yyyy= today.getFullYear();
+			var hours = today.getHours();
+			var mins = today.getMinutes();
+			var ampm = hours >= 12 ? "PM" : "AM";
+			hours = hours % 12;
+			hours = hours ? hours : 12;
+			mins = mins < 10 ? '0'+mins : mins;
+
+			var strTime = ampm + " " + hours + ":" + mins;
+			document.getElementById("noti_time").innerHTML = strTime;
 
 			if(dd<10)
 				dd='0'+dd;
