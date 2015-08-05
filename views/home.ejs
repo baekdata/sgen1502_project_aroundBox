@@ -306,10 +306,9 @@
 			// coworker's circles
 			var cw_data = svg_around.selectAll(".co_workers")
 			.data(jsonCircles)
-			.enter()
-			.append("a")
-			.attr("xlink:href", function(d) { return d.link; });
-
+			.enter();
+			// .append("a")
+			// .attr("xlink:href", function(d) { return d.link; });
 
 			var defs = svg_around.selectAll(".cw_imgs")
 			.data(jsonCircles)
@@ -356,6 +355,7 @@
 
 
 			var cw_circles = cw_data.append("circle")
+			.attr("class", "cw_circles")
 			.attr("r", function(d){
 				return (d.priority == 1 ? radii.cw_grande : radii.cw_tall);
 			})
@@ -373,7 +373,8 @@
 						;})
 			.style("fill", function (d,i) {
 				return "url(#catpatterns_" + i + ")";
-			});
+			})
+			.on("click", cw_click);
 			//.on("mouseover", nodeOver)
 			//.on("mouseout", nodeOut);
 
@@ -468,7 +469,6 @@
 			document.getElementById("noti_date").innerHTML = today;
 
 
-
 			function nodeOver(){
 				d3.select(this).attr("r", function(d){
 					if(d.priority == 1)
@@ -487,7 +487,27 @@
 				})
 			}
 
-		});
+
+			function cw_click(d) 
+			{
+				var url ="/detail?name=" + d.name; 
+				window.location = url;
+   			 //window.location = "/detail?somval+=" + d.name; //considering dot has a title attribute
+   			}
+
+
+// $(".cw_circles").click(function(){
+// 	console.log("are you working?");
+// 	window.location = "/detail";
+
+// });
+
+
+
+});
+
+
+
 </script>
 </body>
 </html>	
