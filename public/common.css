@@ -169,6 +169,9 @@ li {
 	margin-top: 16px;
 	border-right: 1px solid  #bdbdbd
 }
+div.round_icons_g{
+	cursor: pointer;
+}
 
 .round_icons_g{
 	position: relative;
