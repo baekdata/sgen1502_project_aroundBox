@@ -64,6 +64,8 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 // var app = express();
 var port = process.env.PORT || 3000;
+var request = require('request');
+
 app.set('port', port);
 // app.configure(function(){
 //   app.set('port', port);
@@ -221,7 +223,7 @@ app.post('/mail/setLike',mail.setLike);
 app.post('/mail/getLike',mail.getLike);
 app.post('/mail/setFavorite',mail.setFavorite);
 app.post('/mail/getFavorteMailData',mail.getFavorteMailData);
-
+app.post('/mail/getFilterData',mail.getFilterData);
 
 app.post('/mail/getMail',mail.getMail);
 

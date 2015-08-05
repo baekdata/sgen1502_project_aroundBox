@@ -8,10 +8,128 @@ db.bind('user_info');
 var async = require('async');
 
 
-exports.getFilterData = function(req,res,err){
-  
 
-};
+    exports.getFilterData = function(req,res,err){
+      var otherUser = req.param('other_id'); 
+      var filterWord = req.param('filter_word'); 
+      var indexing = req.param('indexing');
+
+      // var strArr = filterWord.split(',');
+      
+        console.log(otherUser);
+        console.log(filterWord);
+
+        // ====> Default 가 받은메세지  ==> 받은메세지라는 이야기는 sender가 other_id이고 리시브에 내가있고
+
+      //검색어 검색
+      if(otherUser==null && filterWord!=null){
+
+        db.mail.find({'message':{'$regex':filterWord}}).toArray(function (err, result) {
+            var send_data = result;
+          async.forEachOf(result, function(data, key, callback) {
+            var receiveMember = data.receiveMember;
+            var cc  = data.cc;
+
+            var receiveMember_temp=[];
+            var cc_temp=[];
+            async.waterfall([
+              function(callback2) {
+                async.each(receiveMember, function(receive_item, callback3) {
+                  db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
+
+                receiveMember_temp.push(result[0]);
+                callback3();
+              });
+
+                }, function(err){
+                  callback2(null);
+                });
+              }, 
+              function(callback2) {
+                async.each(cc, function(cc_item, callback3) {
+                  db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
+                cc_temp.push(result[0]);
+                callback3();
+              });
+                }, function(err){
+                  callback2(null);
+                });
+              }
+          ], function(err) {
+              send_data[key].receiveMember = receiveMember_temp;
+              send_data[key].cc = cc_temp;
+              // console.log(send_data);
+              callback();
+            });
+          }, function() {
+            // console.log('lastdata=',data_temp);
+            res.send({
+                code:200,
+                row:send_data
+            });
+
+          });
+
+        });
+      
+      }
+      //유저로 검색 받거나 cc 에 있는사람들
+      if(otherUser!=null && filterWord==null){
+        db.mail.find({$and:[{sender:"sgen"},{receiveMember:"sgen3"}]}).toArray(function (err, result) {
+              
+            var send_data = result;
+          async.forEachOf(result, function(data, key, callback) {
+            var receiveMember = data.receiveMember;
+            var cc  = data.cc;
+
+            var receiveMember_temp=[];
+            var cc_temp=[];
+            async.waterfall([
+              function(callback2) {
+                async.each(receiveMember, function(receive_item, callback3) {
+                  db.user_info.find({user_id:receive_item},{user_id:'',name:''}).toArray(function (err, result) {
+
+                receiveMember_temp.push(result[0]);
+                callback3();
+              });
+
+                }, function(err){
+                  callback2(null);
+                });
+              }, 
+              function(callback2) {
+                async.each(cc, function(cc_item, callback3) {
+                  db.user_info.find({user_id:cc_item},{user_id:'',name:''}).toArray(function (err, result) {
+                cc_temp.push(result[0]);
+                callback3();
+              });
+                }, function(err){
+                  callback2(null);
+                });
+              }
+          ], function(err) {
+              send_data[key].receiveMember = receiveMember_temp;
+              send_data[key].cc = cc_temp;
+              // console.log(send_data);
+              callback();
+            });
+          }, function() {
+            // console.log('lastdata=',data_temp);
+            res.send({
+                code:200,
+                row:send_data
+            });
+
+          });
+
+          });  
+
+      }
+      //검색 유저 동시.
+      if(otherUser!=null && filterWord !=null){
+      }
+    };
+
 
 exports.getMail = function(req,res, err) {
   var sess = req.session;
@@ -254,13 +372,23 @@ exports.getFavorteMailData = function(req,res,err){
 
       res.send({
         code:200,
-        row:resultㅈ
+        row:result
       });
     } else {
       console.log('No document(s) found with defined "find" criteria!');
     }
   });
 
+// <<<<<<< HEAD
+//                 res.send({
+//                   code:200,
+//                   row:result
+//                 });
+//             } else {
+//               console.log('No document(s) found with defined "find" criteria!');
+//             }
+//           });
+// =======
 
 
 };
