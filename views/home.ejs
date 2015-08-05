@@ -154,7 +154,6 @@
 					"name" : "Donguk",
 					"priority" : 1,
 					"alert_num" : 3,
-					"color" : "orange",
 					"link" : "/detail",
 					"img_link" : "/test1.png"
 
@@ -163,7 +162,6 @@
 					"name" : "Lina",
 					"priority" : 1,
 					"alert_num" : 0,
-					"color" : "yellow",
 					"link" : "/detail",
 					"img_link" : "/test2.png"
 
@@ -173,7 +171,6 @@
 					"name" : "Penguin",
 					"priority" : 1,
 					"alert_num" : 2,
-					"color" : "red",
 					"link" : "/detail",
 					"img_link" : "/test3.jpg"
 
@@ -182,7 +179,6 @@
 					"name" : "Donguk",
 					"priority" : 2,
 					"alert_num" : 0,
-					"color" : "orange",
 					"link" : "/detail",
 					"img_link" : "/test1.png"
 
@@ -191,7 +187,6 @@
 					"name" : "Donguk",
 					"priority" : 2,
 					"alert_num" : 9,
-					"color" : "orange",
 					"link" : "/detail",
 					"img_link" : "/test1.png"
 
@@ -199,7 +194,6 @@
 					"name" : "Donguk",
 					"priority" : 2,
 					"alert_num" : 4,
-					"color" : "orange",
 					"link" : "/detail",
 					"img_link" : "/test1.png"
 
@@ -207,7 +201,6 @@
 					"name" : "Donguk",
 					"priority" : 2,
 					"alert_num" : 4,
-					"color" : "orange",
 					"link" : "/detail",
 					"img_link" : "/test1.png"
 
@@ -348,7 +341,7 @@
 				default_small.splice(temp_small,1);
 				default_big.splice(temp_big,1);
 
-				console.log(pos_big);
+				//console.log(pos_big);
 			}
 
 
@@ -502,6 +495,18 @@
 					text: input
 				}
 			}
+		});
+
+		$.ajax({
+			type:"POST",
+			url: './mail/getMailCnt'
+		}).done(function(data){
+			data = data.row;
+			console.log("data length: "+data.length);
+			console.log(Object.keys(data[0]));
+			var key = Object.keys(data[0][0]);
+			console.log(key);
+			// jsonCircles.push({"name": Object.key(data[0], "priority":1, "alert_num": Object.)})
 		});
 	});
 	</script>
