@@ -5,10 +5,6 @@
     <title>Band title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="./fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-
-
-
-
     <link rel="stylesheet" href="./NotoSansKR-Regular/styles.css"></link>
 
     <link href="css/jquery-ui.css" rel="stylesheet" />
@@ -74,13 +70,13 @@
 
                 <div id="round_icons_middle">
                     <div class="round_icons_g" id="g1">
-                        <span class="round_icons_name"> sgen </span>
+                        <span class="round_icons_name"> sGen </span>
                     </div>
                     <div class="round_icons_g" id="g2">
-                        <span class="round_icons_name"> dongguk </span>
+                        <span class="round_icons_name"> 동국대 </span>
                     </div>
                     <div class="round_icons_g" id="g3">
-                        <span class="round_icons_name"> develop </span>
+                        <span class="round_icons_name"> 개발 </span>
                     </div>
                     <div class="round_icons_g" id="g4">
                         <span class="round_icons_add"> + </span>
@@ -376,7 +372,28 @@
                             $("#input-2").fileinput({
                                 'showPreview': false
                             });
+
                         });
+
+
+
+                            //
+                            // $("#send_img_btn").click(function() {
+                            //     $.ajax({
+                            //         type: "POST",
+                            //         url: '/mail/uploadFile',
+                            //         data: { title : title,
+                            //                 message : message,
+                            //                 sender : sender,
+                            //                 receive_member : receive_member, 
+                            //                 cc : cc,
+                            //                 attach : files }
+                            //         }).done(function(data) {
+                            //             console.log("returnrrrrrrrr: ", data);
+                            //     });
+                            
+                            // });
+                            //
 
 	// 즐겨찾기 기능
 	$(".right_star_image").click(function() {
