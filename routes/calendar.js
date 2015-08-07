@@ -70,10 +70,8 @@ exports.insert_data = function(req,res,err){
     else if (mode == "inserted"){
         console.log('/data insert is Detected');
         console.log('INSERT DATA IS ====> ' + data.start_date);
-        
         data.start_date = new Date(data.start_date);
         data.end_date = new Date(data.end_date);
-
         db.event.insert(data, update_response);
 }
     else if (mode == "deleted"){

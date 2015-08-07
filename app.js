@@ -233,6 +233,57 @@ app.get('/Downlaod/:id',function(req,res){
 	res.download(filepath);
 });
 
+//메일 에서 원하는 날자 정보를 챙겨서 링크까지만들어줌.
+//메일보낼때 실행하면됨!!!
+app.get('/mail/MilLingking',function(req,res){
+    var time = req.params.time;
+    //date 타입으로 넣을수있
+     // data.start_date = new Date(time);
+});
+
+//해당링크 누르면 저장.
+app.get('/setCal',function(req,res){
+  var date = req.query.date;
+
+  // var data=[];
+    // data["start_date"] = new Date(date);
+    // data["end_date"] = new Date(date);
+    //     db.event.insert({ 
+    //     text:"One more test event", 
+    //     start_date: new Date(2013,8,3),
+    //     end_date:   new Date(2013,8,8),
+    //     color: "#DD8616"
+    // });
+  db.event.insert({
+         
+    text:"One more test event", 
+    start_date: new Date(date),
+    end_date:   new Date(date),
+    color: "#DD8616"
+
+  }, function(err, result) {
+      if (err) throw err;
+      if (result) {
+        console.log('Added!');
+         res.send({
+          code:200,
+          result:result
+         })
+
+      }
+  });
+    // db.event.insert({
+    //   start_date : new Date(date),
+    //   end_date : new Date(date),
+    //   text : "n"
+
+    // });
+     res.send({
+      code:200,
+      row:{dates:date}
+     })
+});
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

@@ -1,12 +1,27 @@
 var mongo = require('mongoskin');
-
+var date = require('./date.js');
 
 var db = mongo.db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
 db.bind('mail');
 db.bind('user_info');
     
 var async = require('async');
-  
+
+  //날자검색해서 링크걸어주는
+  function insertWordMiddle (message,first,last,url){
+
+    String.prototype.splice = function( idx, rem, s ) {
+        return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+    };
+    var lastMsg = message.splice(last,0,"</a>");
+    //앞에추가하고
+
+    var strUrl=  "<a href=\"http://localhost:3000/setCal?"+"date="+url+"\">"
+    var firstMsg = lastMsg.splice(first,0,strUrl);
+    
+    return firstMsg;
+  }
+
   exports.getMailLinking = function(req,res,err){
   ///테스트코드                
                             var lastDataPostion  = [];
@@ -16,10 +31,13 @@ var async = require('async');
                             var perid = ["오늘","내일","모레"];
                             var time = ["00시","01시","02시","03시","04시","05시","06시","07시","08시","09시","10시","11시","12시","13시","14시","15시","16시","17시","18시","19시","20시","21시","22시","23시","24시"];
 
-                            var message = "다음주 금요일 07시에 뵙죠"
-                  // var like_on = (result[0].like &&  result[0].like.indexOf('sgen3')>-1 ) ? true  : false;
+                            var message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
+                            // var message = "내일 13시에 보아요";
 
 
+                            var calData = [];
+
+                              console.log(output)
                             ///이번주다음주검색
                             for(var i=0;i<nextWeek.length;i++){
                               //해당값이 존재하면
@@ -27,8 +45,9 @@ var async = require('async');
                               
                               //트루면 저장
                               if( TFnextWeek == true){
-                                lastData.push(nextWeek[i]);
-                                lastDataPostion.push(TFnextWeek);
+                                lastData.push({"nextWeek":nextWeek[i]});
+                                calData.nextWeek =nextWeek[i];
+                                lastDataPostion.push(message.search(nextWeek[i]));
                               }else{};
                             }
                               //금요
@@ -37,8 +56,9 @@ var async = require('async');
                               var TFDay =(message.search(day[i]) > -1) ? true :false ;
                               //트루면 저장
                               if( TFDay == true){
-                                lastData.push(day[i]);
-                                lastDataPostion.push(TFDay);
+                                lastData.push({"day":day[i]});
+                                calData.day =day[i];
+                                lastDataPostion.push(message.search(day[i]));
                               }else{};
                             }
 
@@ -46,31 +66,159 @@ var async = require('async');
                               //해당값이 존재하면
                               var TFperid =(message.search(perid[i]) > -1) ? true :false ;
                               //트루면 저장
-                              if( TFDay == true){
-                                lastData.push(day[i]);
-                                lastDataPostion.push(TFperid);
+                              if( TFperid == true){
+                                lastData.push({"perid":perid[i]});
+                                calData.perid =perid[i];
+                                lastDataPostion.push(message.search(perid[i]));
                               }else{};
                             }
 
                             for(var i=0;i<time.length;i++){
                               //해당값이 존재하면
                               var TFtime =(message.search(time[i]) > -1) ? true :false ;
-                              console.log(TFtime);
+                              // console.log(TFtime);
                               //트루면 저장
                               if( TFtime == true){
-                                lastData.push(time[i]);
-                                lastDataPostion.push(TFtime);
+                                lastData.push({"time":time[i]});
+                                calData.time =time[i];
+                                lastDataPostion.push(message.search(time[i]));
                               }else{};
                             }
+                            
+                              var now = new Date();
+
+                            if(typeof calData["nextWeek"]=="undefined"){}else{
+                                console.log('week has');
+                                if(calData["nextWeek"]=='이번주'){
 
 
-                            res.send({
-                              code:200,
-                              row:lastData,
-                              pos :lastDataPostion
-                            });
-      // res.writeHeader(200, {"Content-Type": "text/html"});  
-      // res.end('<a href="http://www.w3schools.com">Visit W3Schools.com!</a>');                            
+                                }else{//다음주
+
+                                }
+                            }
+                             if(typeof calData["day"]=="undefined"){}else{
+                              
+                                  //0 일요일...
+                                  //1 월 2 화 3 수 4 목 5 금 6 토 7
+                                  var reservDay ;
+                                  if(calData["day"] =="일요일"){
+                                    reservDay =0;
+                                  }if(calData["day"] =="월요일"){
+                                    reservDay =1;
+                                  }if(calData["day"] =="화요일"){
+                                    reservDay =2;
+                                  }if(calData["day"] =="수요일"){
+                                    reservDay =3;
+                                  }if(calData["day"] =="목요일"){
+                                    reservDay =4;
+                                  }if(calData["day"] =="금요일"){
+                                    reservDay =5;
+                                  }if(calData["day"] =="토요일"){
+                                    reservDay =6;
+                                  }
+                                  // console.log(now.setDay(2));
+                                  var curDay =(now.getDate());
+                                  console.log('curday',curDay);
+                                  console.log('reservDay',reservDay);
+                                  //다음주 같은날에서 +- 해준다
+
+                                  var setDay;
+                                  //이번주일경
+                                  if(calData["nextWeek"]=='이번주'){
+                                    setDay = (reservDay-now.getDay());
+                                    //다음주일경우
+                                  }else{
+                                   setDay = 7 + (reservDay-now.getDay());
+                                  }
+                                  //setDay요일에 저장.
+
+                                  //모든거에 데이트만 추가해서저장.
+                                  now.setDate(now.getDate()+setDay);
+                                  console.log(now);
+
+                            }
+                             if(typeof calData["perid"]=="undefined"){}else{
+                              console.log('perid has');
+                              // var now1 = new Date();
+                              var perid;
+                                if(calData["perid"]=='오늘'){perid =1};
+                                if(calData["perid"]=='내일'){perid =2};
+                                if(calData["perid"]=='모래'){perid =3};
+                                now.setDate(now.getDate() + perid);
+                                console.log('now1',now);
+                            }
+                             if(typeof calData["time"]=="undefined"){}else{
+                               if(calData["time"] =="00시"){
+                                    var realtime =0;
+                                  }if(calData["time"] =="01시"){
+                                    realtime =1;
+                                  }if(calData["time"] =="02시"){
+                                    realtime =2;
+                                  }if(calData["time"] =="03시"){
+                                    realtime =3;
+                                  }if(calData["time"] =="04시"){
+                                    realtime =4;
+                                  }if(calData["time"] =="05시"){
+                                    realtime =5;
+                                  }if(calData["time"] =="06시"){
+                                    realtime =6;
+                                  }if(calData["time"] =="07시"){
+                                    realtime =7;
+                                  }if(calData["time"] =="08시"){
+                                    realtime =8;
+                                  }if(calData["time"] =="09시"){
+                                    realtime =9;
+                                  }if(calData["time"] =="10시"){
+                                    realtime =10;
+                                  }if(calData["time"] =="11시"){
+                                    realtime =11;
+                                  }if(calData["time"] =="12시"){
+                                    realtime =12;
+                                  }if(calData["time"] =="13시"){
+                                    realtime =13;
+                                  }if(calData["time"] =="14시"){
+                                    realtime =14;
+                                  }if(calData["time"] =="15시"){
+                                    realtime =15;
+                                  }if(calData["time"] =="16시"){
+                                    realtime =16;
+                                  }if(calData["time"] =="17시"){
+                                    realtime =17;
+                                  }if(calData["time"] =="18시"){
+                                    realtime =18;
+                                  }if(calData["time"] =="19시"){
+                                    realtime =19;
+                                  }if(calData["time"] =="20시"){
+                                    realtime =20;
+                                  }if(calData["time"] =="21시"){
+                                    realtime =21;
+                                  }if(calData["time"] =="22시"){
+                                    realtime =22;
+                                  }if(calData["time"] =="23시"){
+                                    realtime =23;
+                                  }if(calData["time"] =="24시"){
+                                    realtime =24;
+                                  }
+                                  console.log('realtime===>',realtime);
+                                    now.setHours(realtime);
+                            }
+                            console.log(now);
+                            // 마지막 값의 포지션 
+                            var lastValuePos= lastDataPostion[lastDataPostion.length-1];
+
+                            //마지막값의 글자수.
+                            var lastDataValue = lastData[lastData.length-1]; 
+
+                            var lastDataValue = lastDataValue[Object.keys(lastDataValue)];
+
+                            var lastCharPos = lastValuePos+lastDataValue.length;
+                            //아웃풋최종 데이
+                            var output = insertWordMiddle(message,lastDataPostion[0],lastCharPos,now);
+                            
+                            console.log(output);
+                            
+      res.writeHeader(200, {"Content-Type": "text/html"});  
+      res.end(output);                            
   }
 
 
