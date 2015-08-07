@@ -45,9 +45,9 @@ html, body{
 
 <script type="text/javascript" charset="utf-8">
 function init() {
-
+    var now = new Date();
 	scheduler.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler.init('scheduler_here',new Date(2013,8,4),"month");
+	scheduler.init('scheduler_here',now,"month");
 
 	scheduler.templates.xml_date = function(value){ return new Date(value); };
 		//여기서 데이터를 가져옴. // 즉 서버요청
