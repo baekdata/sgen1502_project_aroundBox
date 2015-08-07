@@ -254,6 +254,7 @@ var async = require('async');
 
                             res.send({
                               code:200,
+                              sumMail : sum,
                               row:arrSum
                             });
 
