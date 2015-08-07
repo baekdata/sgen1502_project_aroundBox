@@ -337,7 +337,8 @@
                         $("#reply_btn").unbind("click");
                         $("#reply_btn").bind("click", function() {
 
-                            var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
+                            var temp = '<button id="send_img_btn" src="./images/reply_sendBtn.png">'
+                            // var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
                             temp += '<hr class="mailwrite_hr">'
                             temp += '<div id="sender_boxes">'
                             temp += '    <div class="sender_box">'
@@ -374,26 +375,7 @@
                             });
 
                         });
-
-
-
-                            //
-                            // $("#send_img_btn").click(function() {
-                            //     $.ajax({
-                            //         type: "POST",
-                            //         url: '/mail/uploadFile',
-                            //         data: { title : title,
-                            //                 message : message,
-                            //                 sender : sender,
-                            //                 receive_member : receive_member, 
-                            //                 cc : cc,
-                            //                 attach : files }
-                            //         }).done(function(data) {
-                            //             console.log("returnrrrrrrrr: ", data);
-                            //     });
-                            
-                            // });
-                            //
+                         
 
 	// 즐겨찾기 기능
 	$(".right_star_image").click(function() {
@@ -432,6 +414,26 @@
 });
 });
 
+                        $("#send_img_btn").click(function() {
+
+                                alert("ddddfdfdfd");
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/mail/uploadFile',
+                                    data: { title : title,
+                                            message : message,
+                                            sender : sender,
+                                            receive_member : receive_member, 
+                                            cc : cc,
+                                            attach : files }
+                                    }).done(function(data) {
+                                        alert("dddd");
+                                        console.log("returnrrrrrrrr: ", data);
+                                });
+                            
+                            });
+
 
             // group 아이콘 클릭 기능
             $("span.round_icons_name").click(
@@ -460,6 +462,8 @@
                 }
             });
         });
+
+
     </script>
 </body>
 
