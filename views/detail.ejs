@@ -187,7 +187,7 @@
 					var user_info = [{
 						"name" : "윤정훈",
 						"link" : "/detail",
-						"img_link" : "/윤정훈.png"
+						"img_link" : ""
 					}];
 
 
@@ -214,39 +214,6 @@
 			.style("fill", "none")
 			.style("stroke","gray")
 			.style("stroke-dasharray", "5 5 5 5");
-
-
-			// user circle
-
-			var defs_user = svg_around.selectAll(".user_img")
-			.data(user_info)
-			.enter()
-			.append("defs")
-			.attr("id", "defs_u")
-			.append("pattern")
-			.attr("id", "catpattern_user")
-			.attr("height", 20)
-			.attr("width", 20)
-			.attr("x", 0)
-			.attr("y", 0)
-			.append("image")
-			.attr("x",  -20)
-			.attr("y",  -10)
-			.attr("height",150)
-			.attr("width", 150)
-			.attr("xlink:href", function (d){
-				return d.img_link;
-			});
-
-
-			var user_circle = svg_around.selectAll(".user_circle")
-			.data(user_info)
-			.enter()
-			.append("a")
-			.attr("xlink:href", function(d) { return d.link; })
-			.append("circle")
-			.attr("r",radii.user)
-			.style("fill", "url(#catpattern_user)");
 
 
 			var grandeOrbitPosition = d3.svg.arc()
@@ -402,7 +369,7 @@
 			var in_mail = data.sumMail;
 			document.getElementById("in_num").innerHTML = in_mail;
 			document.getElementById("msg_total_num").innerHTML = 3+3+in_mail;
-			});
+		});
 
 		$('#detail_close').click(function() {
    			 $('#cw_detail').toggle(); // or hide()
@@ -422,6 +389,9 @@
 					console.log(key +"=>"+ qsParm[key]);
 				}
 			}
+
+
+
 			var decoded_name = decodeURIComponent(qsParm["name"]);
 			document.getElementById("cw_name").innerHTML= decoded_name;
 
@@ -452,9 +422,41 @@
 
 
 
+			// user circle
+
+
+			var defs_user = svg_around.selectAll(".user_img")
+			.data(user_info)
+			.enter()
+			.append("defs")
+			.attr("id", "defs_u")
+			.append("pattern")
+			.attr("id", "catpattern_user")
+			.attr("height", 20)
+			.attr("width", 20)
+			.attr("x", 0)
+			.attr("y", 0)
+			.append("image")
+			.attr("x",  -20)
+			.attr("y",  -10)
+			.attr("height",150)
+			.attr("width", 150)
+			.attr("xlink:href", "/"+decoded_name+".png");
+
+
+			var user_circle = svg_around.selectAll(".user_circle")
+			.data(user_info)
+			.enter()
+			.append("a")
+			.attr("xlink:href", function(d) { return d.link; })
+			.append("circle")
+			.attr("r",radii.user)
+			.style("fill", "url(#catpattern_user)");
+
+
 		})
 
-	});
+});
 
 
 </script>
