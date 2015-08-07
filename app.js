@@ -240,9 +240,9 @@ app.get('/mail/MilLingking',function(req,res){
 });
 
 //해당링크 누르면 저장.
-app.get('/setCal',function(req,res){
-  var date = req.query.date;
-  var title = req.query.title;
+app.post('/setCal',function(req,res){
+  var date = req.params.date;
+  var title = req.params.title;
   console.log('title ',title);
           console.log('date',date);
 

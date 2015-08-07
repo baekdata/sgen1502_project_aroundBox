@@ -193,7 +193,31 @@
     </div>
 
     <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
+
+        $(document).on("click", ".hrefCal", function(){
+
+
+            console.log("hrefCal click");
+            var tempElement = document.getElementsByClassName(".hrefCal");
+            console.log("value"+$(this).val());
+            tempElement = $(this).val().split(",");
+
+            $.ajax({
+                type:"POST",
+                url:'./setCal',
+                data: { title : tempElement[0],
+                    date: tempElement[1]}
+                }).done(function(data){
+                    console.log("date done");
+                    alert("데이터가 추가되었습니다.");
+
+                });
+
+
+            });
+
+
             // 
 
             $.ajax({
@@ -204,7 +228,7 @@
                 $('.dropdown-text .in_count').html(data.length);
                 $("#maillist_in").empty();
                 $.each(data, function(i, v) {
-                    // overlay	
+                    // overlay  
                     var temp = '<div class="mail_left_content" val="' + v._id + '">';
                     temp += '<div class="mail_left_list_attr ">';
                     temp += '<div class="list_attr_img">';
@@ -245,99 +269,100 @@
                     $("#maillist_in").append(temp);
 
                 });
-                $(".mail_left_content").unbind("click");
-                $(".mail_left_content").bind("click", function() {
-                    var mail_id = $(this).attr('val');
-                    $.ajax({
-                        type: "POST",
-                        url: '/mail/getMail',
-                        data: {
-                            mail_id: mail_id
-                        }
-                    }).done(function(data) {
-                        $("#mail_right_view").empty();
-                        var star_on = (data.star_on == true) ? 'right_star_y.png' : 'right_star.png';
-                        var like_on = (data.like_on == true) ? 'right_like_y.png' : 'right_like.png';
-                        console.log('data', data);
-                        data = data.row[0];
-                        var temp = '<div id="mail_right_top">'
-                        if (data.attach.length > 0) {
-                            temp += '<img src="./images/right_clip.png" id="right_clip_image"/>'
-                        }
-                        temp += '<span class="right_clip_text"> ' + moment.unix(data.date).format('YYYY-MM-DD dddd HH:mm:ss') + '</span>'
-                        temp += '<input type="image" src="./images/' + star_on + '" class="right_star_image"></input>'
-                        temp += '<input type="image" src="./images/' + like_on + '" class="right_like_image"></input>'
-                        temp += '<form>'
-                        temp += '<input id="reply_btn" type="image" src="./images/right_left.png" class="right_left_image" val="' + data.sender.user_id + '"  val2="' + data.title + '"></input>'
-                        temp += '</form>'
-                        temp += '</div>'
-                        temp += '<div id="mail_right_content">'
-                        temp += '<div id="mail_right_content_top">'
-                        temp += '<div class="right_top_title">'
-                        temp += '<span class="right_top_title_text">' + data.title + '</span>'
-                        temp += '</div>'
-                        temp += '<div class="right_top_people">'
-                        temp += '<img src="./images/people/people1.png" class="right_top_people_img" />'
-                        temp += '<span class="right_top_sender">' + data.sender.name + ' ' + data.sender.user_id + '@sgenclub.org</span>'
-                        temp += '<span class="right_top_receiver">'
-                        $.each(data.receiveMember, function(i2, v2) {
-                            if (i2 > 3) return false;
-                            else {
-                                temp += v2.name;
-                                if (i2 != data.receiveMember.length - 1 && i2 !== 2) {
-                                    temp += ", ";
-                                }
-                            }
-                        });
+$(".mail_left_content").unbind("click");
+$(".mail_left_content").bind("click", function() {
+    var mail_id = $(this).attr('val');
+    $.ajax({
+        type: "POST",
+        url: '/mail/getMail',
+        data: {
+            mail_id: mail_id
+        }
+    }).done(function(data) {
+        $("#mail_right_view").empty();
+        var star_on = (data.star_on == true) ? 'right_star_y.png' : 'right_star.png';
+        var like_on = (data.like_on == true) ? 'right_like_y.png' : 'right_like.png';
+        console.log('data', data);
+        data = data.row[0];
+        var temp = '<div id="mail_right_top">'
+        if (data.attach.length > 0) {
+            temp += '<img src="./images/right_clip.png" id="right_clip_image"/>'
+        }
+        temp += '<span class="right_clip_text"> ' + moment.unix(data.date).format('YYYY-MM-DD dddd HH:mm:ss') + '</span>'
+        temp += '<input type="image" src="./images/' + star_on + '" class="right_star_image"></input>'
+        temp += '<input type="image" src="./images/' + like_on + '" class="right_like_image"></input>'
+        temp += '<form>'
+        temp += '<input id="reply_btn" type="image" src="./images/right_left.png" class="right_left_image" val="' + data.sender.user_id + '"  val2="' + data.title + '"></input>'
+        temp += '</form>'
+        temp += '</div>'
+        temp += '<div id="mail_right_content">'
+        temp += '<div id="mail_right_content_top">'
+        temp += '<div class="right_top_title">'
+        temp += '<span class="right_top_title_text">' + data.title + '</span>'
+        temp += '</div>'
+        temp += '<div class="right_top_people">'
+        temp += '<img src="./images/people/people1.png" class="right_top_people_img" />'
+        temp += '<span class="right_top_sender">' + data.sender.name + ' ' + data.sender.user_id + '@sgenclub.org</span>'
+        temp += '<span class="right_top_receiver">'
+        $.each(data.receiveMember, function(i2, v2) {
+            if (i2 > 3) return false;
+            else {
+                temp += v2.name;
+                if (i2 != data.receiveMember.length - 1 && i2 !== 2) {
+                    temp += ", ";
+                }
+            }
+        });
 
-                        if (data.receiveMember.length > 4) {
-                            temp += "외 " + (data.receiveMember.length - 3) + "명";
-                        }
-                        temp += ' 에게</span>'
-                        temp += '</div>'
-                        temp += '</div>'
-                        temp += '<hr class="mailview_hr">'
-                        temp += '<div id="mail_right_content_middle">'
-                        temp += '<div class="right_middle_text">'
-                        temp += data.message
-                        temp += '<div class="right_middle_files">'
-                        $.each(data.attach, function(i, v) {
-                            temp += '<div class="right_middle_file">'
-                            temp += '<div class="right_file_img">'
-                            temp += '<form>'
-                            temp += '<input type="image" class="right_file_img_btn" src="./images/file_download.png"/>'
-                            temp += '</form>'
-                            temp += '</div>'
-                            temp += '<div class="right_file_text">'
-                            temp += '<span class="right_file_text_value"><a href="./Download/' + v + '">' + (v.length > 24 ? v.substr(0, 23) + "..." : v) + '</a></span>'
-                            temp += '</div>'
-                            temp += '<div class="right_file_size">'
-                            temp += '<span class="right_file_size_value"></span>'
-                            temp += '</div>'
-                            temp += '</div>'
-                        });
+        if (data.receiveMember.length > 4) {
+            temp += "외 " + (data.receiveMember.length - 3) + "명";
+        }
+        temp += ' 에게</span>'
+        temp += '</div>'
+        temp += '</div>'
+        temp += '<hr class="mailview_hr">'
+        temp += '<div id="mail_right_content_middle">'
+        temp += '<div class="right_middle_text">'
+        temp += data.message
+        temp += '<div class="right_middle_files">'
+        $.each(data.attach, function(i, v) {
+            temp += '<div class="right_middle_file">'
+            temp += '<div class="right_file_img">'
+            temp += '<form>'
+            temp += '<input type="image" class="right_file_img_btn" src="./images/file_download.png"/>'
+            temp += '</form>'
+            temp += '</div>'
+            temp += '<div class="right_file_text">'
+            temp += '<span class="right_file_text_value"><a href="./Download/' + v + '">' + (v.length > 24 ? v.substr(0, 23) + "..." : v) + '</a></span>'
+            temp += '</div>'
+            temp += '<div class="right_file_size">'
+            temp += '<span class="right_file_size_value"></span>'
+            temp += '</div>'
+            temp += '</div>'
+        });
 
 
-                        temp += '<div id="mail_right_content_bottom">'
-                        temp += '<hr class="mailview_hr2">'
-                        temp += '<div class="mail_right_reply_box">'
-                        temp += '<img src="./images/people/people1.png" class="right_top_people_img_2" />'
-                        temp += '<textarea class="reply_box_tt" rows=8 cols=88 placeholder="답장하실려면 클릭하세요 "></textarea>'
-                        temp += '<form>'
-                        temp += '<input type="image" class="reply_img_btn" src="./images/reply_sendBtn.png">'
-                        temp += '</form>'
-                        temp += '</div>'
-                        temp += '</div>'
-                        temp += '</div>'
-                        temp += '</div>'
-                        temp += '</div>'
-                        temp += ' </div>'
+        temp += '<div id="mail_right_content_bottom">'
+        temp += '<hr class="mailview_hr2">'
+        temp += '<div class="mail_right_reply_box">'
+        temp += '<img src="./images/people/people1.png" class="right_top_people_img_2" />'
+        temp += '<textarea class="reply_box_tt" rows=8 cols=88 placeholder="답장하실려면 클릭하세요 "></textarea>'
+        temp += '<form>'
+        temp += '<input type="image" class="reply_img_btn" src="./images/reply_sendBtn.png">'
+        temp += '</form>'
+        temp += '</div>'
+        temp += '</div>'
+        temp += '</div>'
+        temp += '</div>'
+        temp += '</div>'
+        temp += ' </div>'
 
-                        $("#mail_right_view").append(temp);
-                        $("#reply_btn").unbind("click");
-                        $("#reply_btn").bind("click", function() {
+        $("#mail_right_view").append(temp);
+        $("#reply_btn").unbind("click");
+        $("#reply_btn").bind("click", function() {
 
-                            var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
+            var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
+                            // var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
                             temp += '<hr class="mailwrite_hr">'
                             temp += '<div id="sender_boxes">'
                             temp += '    <div class="sender_box">'
@@ -376,61 +401,44 @@
                         });
 
 
+    // 즐겨찾기 기능
+    $(".right_star_image").click(function() {
+        $.ajax({
+            type: "POST",
+            url: '/mail/setLike',
+            data: { mail_id : mail_id,
+                user_id : 'sgen3'}
+            }).done(function(data) {
+                if(data.row == -1) {
+                    $(".right_star_image").attr('src', './images/right_star_y.png');
+                } else {
+                    $(".right_star_image").attr('src', './images/right_star.png');
+                }
+            });
 
-                            //
-                            // $("#send_img_btn").click(function() {
-                            //     $.ajax({
-                            //         type: "POST",
-                            //         url: '/mail/uploadFile',
-                            //         data: { title : title,
-                            //                 message : message,
-                            //                 sender : sender,
-                            //                 receive_member : receive_member, 
-                            //                 cc : cc,
-                            //                 attach : files }
-                            //         }).done(function(data) {
-                            //             console.log("returnrrrrrrrr: ", data);
-                            //     });
-                            
-                            // });
-                            //
+        });
 
-	// 즐겨찾기 기능
-	$(".right_star_image").click(function() {
-		$.ajax({
-			type: "POST",
-			url: '/mail/setLike',
-			data: { mail_id : mail_id,
-				user_id : 'sgen3'}
-			}).done(function(data) {
-				if(data.row == -1) {
-					$(".right_star_image").attr('src', './images/right_star_y.png');
-				} else {
-					$(".right_star_image").attr('src', './images/right_star.png');
-				}
-		});
+    // 좋아요 기능
+    $(".right_like_image").click(function() {
+        $.ajax({
+            type: "POST",
+            url: '/mail/setFavorite',
+            data: { mail_id : mail_id,
+                user_id : 'sgen'}
+            }).done(function(data) {
+                if(data.arr_length == 0) {
+                    $(".right_like_image").attr('src', './images/right_like_y.png');
+                } else {
+                    $(".right_like_image").attr('src', './images/right_like.png');
+                }
+            }); 
 
-                        });
-
-	// 좋아요 기능
-	$(".right_like_image").click(function() {
-		$.ajax({
-			type: "POST",
-			url: '/mail/setFavorite',
-			data: { mail_id : mail_id,
-				user_id : 'sgen'}
-			}).done(function(data) {
-				if(data.arr_length == 0) {
-					$(".right_like_image").attr('src', './images/right_like_y.png');
-				} else {
-					$(".right_like_image").attr('src', './images/right_like.png');
-				}
-			}); 
-
-		});
-	});
+        });
 });
 });
+});
+
+
 
 
             // group 아이콘 클릭 기능
@@ -460,7 +468,9 @@
                 }
             });
         });
-    </script>
+
+
+</script>
 </body>
 
 </html>
