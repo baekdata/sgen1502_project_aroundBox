@@ -202,15 +202,19 @@
             console.log("hrefCal click");
             var tempElement = document.getElementsByClassName(".hrefCal");
             console.log("value"+$(this).val());
-            tempElement = $(this).val().split(",");
+            tempElement = ($(this).val()).split(",");
+
+
+
+            console.log("title"+tempElement[1]);
+            console.log("date"+tempElement[0]);
 
             $.ajax({
                 type:"POST",
                 url:'./setCal',
-                data: { title : tempElement[0],
-                    date: tempElement[1]}
+                data: { title : tempElement[1],
+                    date: tempElement[0]}
                 }).done(function(data){
-                    console.log("date done");
                     alert("데이터가 추가되었습니다.");
 
                 });
