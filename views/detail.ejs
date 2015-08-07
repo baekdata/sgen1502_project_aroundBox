@@ -419,7 +419,7 @@
 					console.log(key +"=>"+ qsParm[key]);
 				}
 			}
-			document.getElementById("cw_name").innerHTML= qsParm["name"];
+			document.getElementById("cw_name").innerHTML= decodeURIComponent(qsParm["name"]);
 
 		})
 
