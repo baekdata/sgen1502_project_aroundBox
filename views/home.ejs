@@ -75,7 +75,7 @@
 					<div id="noti_msg" class="in_noti">
 						<div id="msg_text">
 							<h1> 안읽은 메시지 </h1>
-							<h3> AM 14:00 </h3>
+							<h3 id="noti_time"></h3>
 						</div>
 						<div id="msg_drawing">
 							<div class="msg_info" id="msg_out">
@@ -124,8 +124,8 @@
 				<div id="home_around" class="in_container"> 
 					<div id="around_form">
 						<h2> 업무 흐름도 </h2>
-						<p id="around_cw_name"> 윤석호, 김동억, 백종수 외</p>
-						<h3 id="around_cw_num"> 5명 </h3>
+						<p id="around_cw_name"></p>
+						<h3 id="around_cw_num"></h3>
 					</div>
 					<div id="around">
 						<svg id="svg_around"></svg>
@@ -150,61 +150,6 @@
 				};
 
 				var jsonCircles = [
-				{
-					"name" : "Donguk",
-					"priority" : 1,
-					"alert_num" : 3,
-					"link" : "/detail",
-					"img_link" : "/test1.png"
-
-				},
-				{
-					"name" : "Lina",
-					"priority" : 1,
-					"alert_num" : 0,
-					"link" : "/detail",
-					"img_link" : "/test2.png"
-
-
-				},
-				{
-					"name" : "Penguin",
-					"priority" : 1,
-					"alert_num" : 2,
-					"link" : "/detail",
-					"img_link" : "/test3.jpg"
-
-				},
-				{
-					"name" : "Donguk",
-					"priority" : 2,
-					"alert_num" : 0,
-					"link" : "/detail",
-					"img_link" : "/test1.png"
-
-				},
-				{
-					"name" : "Donguk",
-					"priority" : 2,
-					"alert_num" : 9,
-					"link" : "/detail",
-					"img_link" : "/test1.png"
-
-				},{
-					"name" : "Donguk",
-					"priority" : 2,
-					"alert_num" : 4,
-					"link" : "/detail",
-					"img_link" : "/test1.png"
-
-				},{
-					"name" : "Donguk",
-					"priority" : 2,
-					"alert_num" : 4,
-					"link" : "/detail",
-					"img_link" : "/test1.png"
-
-				}
 				];
 
 				var user_info = [{
@@ -213,15 +158,15 @@
 					"img_link" : "/test4.png"
 				}];
 
+				var img_links = ["/test1.png", "/test2.png", "/test3.jpg", "/test4.png"];
+				var priorities = [1,2];
 
-			//var around = d3.select("#around");
-			//var svg_around = 
-			//d3.select("#around").append("svg")
-			var svg_around = d3.select("#svg_around")
-			.attr("width", width)
-			.attr("height", height)
-			.append("g")
-			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+				var svg_around = d3.select("#svg_around")
+				.attr("width", width)
+				.attr("height", height)
+				.append("g")
+				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 
 			// small orbit
@@ -290,14 +235,80 @@
 
 
 
-			
+			</script>
+
+		</div>
+
+		<div id="timeline2" style="display:none;">
+			<div class="wrap" style="display:none;">
+
+			</div>
+		</div>
+
+		<div id="timeline" style="background:#fff; display:none;">
+			<div class="wrap" style="display:none;">
+				<div class="calendar" style="padding: 5px; display:none">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+	$( document ).ready( function(){	
+		$('#home_search_input').selectize({
+			delimiter: ',',
+			persist: false,
+			create: function(input) {
+				return {
+					value: input,
+					text: input
+				}
+			}
+		});
+
+		$.ajax({
+			type:"POST",
+			url: './mail/getMailCnt'
+		}).done(function(data){
+			data = data.row;
+
+			for(var i=0; i<data.length; i++){
+				jsonCircles.push({"name" : data[i].name ,"priority" : priorities[i%2], "alert_num": data[i].cnt, "link":"/detail", "img_link" : img_links[i%4]});
+			}
+
+
+			var temp_cw_names = "";
+			var temp_cw_num = "";
+
+			console.log("data.length : " + data.length);
+			for(var i=0; i<data.length; i++){
+				if(i<2){
+
+					temp_cw_names += data[i].name;
+					temp_cw_names += ", ";
+				}
+				else if(i==2)
+				{
+					temp_cw_names += data[i].name
+				}else{
+					temp_cw_names += " 외 ";
+					temp_cw_num +=  (data.length-3) + "명";
+					break;
+				}
+			}
+
+			document.getElementById("around_cw_name").innerHTML = temp_cw_names;
+			document.getElementById("around_cw_num").innerHTML = temp_cw_num;
+
+
+
 			// coworker's circles
 			var cw_data = svg_around.selectAll(".co_workers")
 			.data(jsonCircles)
-			.enter()
-			.append("a")
-			.attr("xlink:href", function(d) { return d.link; });
-
+			.enter();
+			// .append("a")
+			// .attr("xlink:href", function(d) { return d.link; });
 
 			var defs = svg_around.selectAll(".cw_imgs")
 			.data(jsonCircles)
@@ -340,13 +351,11 @@
 
 				default_small.splice(temp_small,1);
 				default_big.splice(temp_big,1);
-
-				//console.log(pos_big);
 			}
 
 
-
 			var cw_circles = cw_data.append("circle")
+			.attr("class", "cw_circles")
 			.attr("r", function(d){
 				return (d.priority == 1 ? radii.cw_grande : radii.cw_tall);
 			})
@@ -364,7 +373,8 @@
 						;})
 			.style("fill", function (d,i) {
 				return "url(#catpatterns_" + i + ")";
-			});
+			})
+			.on("click", cw_click);
 			//.on("mouseover", nodeOver)
 			//.on("mouseout", nodeOut);
 
@@ -433,11 +443,22 @@
 			})
 			.attr("fill","white");
 
+		}); // close done
+
 			// get current date to show at noti.
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth()+1;
 			var yyyy= today.getFullYear();
+			var hours = today.getHours();
+			var mins = today.getMinutes();
+			var ampm = hours >= 12 ? "PM" : "AM";
+			hours = hours % 12;
+			hours = hours ? hours : 12;
+			mins = mins < 10 ? '0'+mins : mins;
+
+			var strTime = ampm + " " + hours + ":" + mins;
+			document.getElementById("noti_time").innerHTML = strTime;
 
 			if(dd<10)
 				dd='0'+dd;
@@ -446,7 +467,6 @@
 
 			today = yyyy + '.' + mm + '.'+ dd;
 			document.getElementById("noti_date").innerHTML = today;
-
 
 
 			function nodeOver(){
@@ -466,49 +486,28 @@
 						return radii.cw_tall;
 				})
 			}
-			</script>
 
-		</div>
 
-		<div id="timeline2" style="display:none;">
-			<div class="wrap" style="display:none;">
+			function cw_click(d) 
+			{
+				var url ="/detail?name=" + d.name; 
+				window.location = url;
+   			 //window.location = "/detail?somval+=" + d.name; //considering dot has a title attribute
+   			}
 
-			</div>
-		</div>
 
-		<div id="timeline" style="background:#fff; display:none;">
-			<div class="wrap" style="display:none;">
-				<div class="calendar" style="padding: 5px; display:none">
-				</div>
-			</div>
-		</div>
-	</div>
+// $(".cw_circles").click(function(){
+// 	console.log("are you working?");
+// 	window.location = "/detail";
 
-	<script>
-	$( document ).ready( function(){	
-		$('#home_search_input').selectize({
-			delimiter: ',',
-			persist: false,
-			create: function(input) {
-				return {
-					value: input,
-					text: input
-				}
-			}
-		});
+// });
 
-		$.ajax({
-			type:"POST",
-			url: './mail/getMailCnt'
-		}).done(function(data){
-			data = data.row;
-			console.log("data length: "+data.length);
-			console.log(Object.keys(data[0]));
-			var key = Object.keys(data[0][0]);
-			console.log(key);
-			// jsonCircles.push({"name": Object.key(data[0], "priority":1, "alert_num": Object.)})
-		});
-	});
-	</script>
+
+
+});
+
+
+
+</script>
 </body>
 </html>	
