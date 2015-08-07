@@ -130,7 +130,7 @@ filetype = filepoint;
 }
 
 //메일 보낼경우 
-app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
+app.post("/mail/uploadFile",function(req,res){
     
         var title  = req.param('title');
         var tmpMessage  = req.param('message');
@@ -140,25 +140,28 @@ app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
         var star = req.param('star');
         var like = req.param('like');
 
+
+        console.log("tmpMessage", tmpMessage);
       var files = new Array();
       var AttachID = new Array();
       var Attach = new Array();
+      // var files = req.param('files');
+      //   // files = req.files;
+      //   console.log(files);
 
-        files = req.files;
+      //   //파일의 갯수만큼 포맷팅을 예쁘게한다.
+      //   for(var i =0 ;i<files.length;i++){
+      //       console.log(files[i]);
+      //       //첨부 고유값저장
+      //       AttachID.push(files[i].filename);
+      //       //첨부 실제 저장 언어
+      //       Attach.push(files[i].originalname);
 
-        //파일의 갯수만큼 포맷팅을 예쁘게한다.
-        for(var i =0 ;i<files.length;i++){
-            console.log(files[i]);
-            //첨부 고유값저장
-            AttachID.push(files[i].filename);
-            //첨부 실제 저장 언어
-            Attach.push(files[i].originalname);
-
-              fs.rename('./uploads/'+req.files[i].filename, './uploads/'+req.files[i].originalname, function (err) {
-                if (err) throw err;
-                console.log('renamed complete');
-              });
-        }
+      //         fs.rename('./uploads/'+req.files[i].filename, './uploads/'+req.files[i].originalname, function (err) {
+      //           if (err) throw err;
+      //           console.log('renamed complete');
+      //         });
+      //   }
        
 
         console.log('searching END');
