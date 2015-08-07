@@ -70,7 +70,8 @@
 }
 #sender_content {
 	position: relative;
-	margin-top: 4px;
+    margin-top: 24px;
+    margin-left: 78px;
 
 }
 #sender_content_tt {
