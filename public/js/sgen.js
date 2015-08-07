@@ -279,87 +279,86 @@ $(document).ready(function() {
                     });
 
                 });
-<<<<<<< .mine=======
+                // 즐겨찾기 기능
+                $(".right_star_image").click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: '/mail/setLike',
+                        data: {
+                            mail_id: mail_id,
+                            user_id: 'sgen3'
+                        }
+                    }).done(function(data) {
+                        if (data.row == -1) {
+                            $(".right_star_image").attr('src', './images/right_star_y.png');
+                        } else {
+                            $(".right_star_image").attr('src', './images/right_star.png');
+                        }
+                    });
 
->>>>>>> .theirs// 즐겨찾기 기능
-    $(".right_star_image").click(function() {
-        $.ajax({
-            type: "POST",
-            url: '/mail/setLike',
-            data: { mail_id : mail_id,
-                user_id : 'sgen3'}
-            }).done(function(data) {
-                if(data.row == -1) {
-                    $(".right_star_image").attr('src', './images/right_star_y.png');
-                } else {
-                    $(".right_star_image").attr('src', './images/right_star.png');
-                }
-        });
+                });
 
-    });
+                // 좋아요 기능
+                $(".right_like_image").click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: '/mail/setFavorite',
+                        data: {
+                            mail_id: mail_id,
+                            user_id: 'sgen'
+                        }
+                    }).done(function(data) {
+                        if (data.arr_length == 0) {
+                            $(".right_like_image").attr('src', './images/right_like_y.png');
+                        } else {
+                            $(".right_like_image").attr('src', './images/right_like.png');
+                        }
+                    });
 
-    // 좋아요 기능
-    $(".right_like_image").click(function() {
-        $.ajax({
-            type: "POST",
-            url: '/mail/setFavorite',
-            data: { mail_id : mail_id,
-                user_id : 'sgen'}
-            }).done(function(data) {
-                if(data.arr_length == 0) {
-                    $(".right_like_image").attr('src', './images/right_like_y.png');
-                } else {
-                    $(".right_like_image").attr('src', './images/right_like.png');
-                }
-            }); 
-
-        });
-<<<<<<< .mine=======    
-
-                    
->>>>>>> .theirs                });
+                });
             });
         });
-
     });
 
+});
 
 
-    $("#writeBtn_image").click(function() {
-        $("#mail_right_view").empty();
-        var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
-        temp += '<hr class="mailwrite_hr">'
-        temp += '<div id="sender_boxes">'
-        temp += '    <div class="sender_box">'
-        temp += '        <span class="sender_box_text_1"> 받는 사람 </span>'
-        temp += '        <div id="sender_box_content_1">'
-        temp += '            <input type="text" id="sender_box_get_1" class="sender_box_input_0" />'
-        temp += '        </div>'
-        temp += '        <div id="sender_box_content_2">'
-        temp += '            <input type="image" class="sender_box_input_0_btn" src="./images/triBtn.png" />'
-        temp += '        </div>'
-        temp += '    </div>'
-        temp += '    <div class="sender_box">'
-        temp += '        <span class="sender_box_text_2"> 참조 </span>'
-        temp += '        <input type="text" id="sender_box_get_2" class="sender_box_input_1" />'
-        temp += '    </div>'
-        temp += '    <div class="sender_box">'
-        temp += '        <span class="sender_box_text_2"> 제목 </span>'
-        temp += '        <input type="text" id="sender_box_get_3" class="sender_box_input_1" />'
-        temp += '    </div>'
-        temp += '    <div class="sender_box">'
-        temp += '        <span class="sender_box_text_1"> 파일 첨부 </span>'
-        temp += '            <input id="input-2" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="true">'
-        temp += '    </div>'
-        temp += '</div>'
-        temp += '<div id="sender_content">'
-        temp += '    <textarea id="sender_content_tt" rows=11 cols=102></textarea>'
-        temp += '</div>'
 
-        $("#mail_right_view").append(temp);
+$("#writeBtn_image").click(function() {
+    $("#mail_right_view").empty();
+    var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
+    temp += '<hr class="mailwrite_hr">'
+    temp += '<div id="sender_boxes">'
+    temp += '    <div class="sender_box">'
+    temp += '        <span class="sender_box_text_1"> 받는 사람 </span>'
+    temp += '        <div id="sender_box_content_1">'
+    temp += '            <input type="text" id="sender_box_get_1" class="sender_box_input_0" />'
+    temp += '        </div>'
+    temp += '        <div id="sender_box_content_2">'
+    temp += '            <input type="image" class="sender_box_input_0_btn" src="./images/triBtn.png" />'
+    temp += '        </div>'
+    temp += '    </div>'
+    temp += '    <div class="sender_box">'
+    temp += '        <span class="sender_box_text_2"> 참조 </span>'
+    temp += '        <input type="text" id="sender_box_get_2" class="sender_box_input_1" />'
+    temp += '    </div>'
+    temp += '    <div class="sender_box">'
+    temp += '        <span class="sender_box_text_2"> 제목 </span>'
+    temp += '        <input type="text" id="sender_box_get_3" class="sender_box_input_1" />'
+    temp += '    </div>'
+    temp += '    <div class="sender_box">'
+    temp += '        <span class="sender_box_text_1"> 파일 첨부 </span>'
+    temp += '            <input id="input-2" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="true">'
+    temp += '    </div>'
+    temp += '</div>'
+    temp += '<div id="sender_content">'
+    temp += '    <textarea id="sender_content_tt" rows=11 cols=102></textarea>'
+    temp += '</div>'
 
-        $("#input-2").fileinput({
-            'showPreview': false
-        });
+    $("#mail_right_view").append(temp);
+
+    $("#input-2").fileinput({
+        'showPreview': false
     });
+    // });
 });
