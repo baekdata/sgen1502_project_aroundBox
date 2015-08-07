@@ -79,6 +79,7 @@ $(document).ready(function() {
 
         var html = $(this).html();
         var url = "";
+        var fuck  = $(this).attr('val');
         $("#maillist_in").empty();
 
         // $("#mail_left").find('.mail_left_content_list').css('display', 'none');
@@ -171,7 +172,7 @@ $(document).ready(function() {
                     temp += '<input type="image" src="./images/' + like_on + '" class="right_like_image"></input>'
                     temp += '</from>'
                     temp += '<from>'
-                    temp += '<input id="reply_btn" type="image" src="./images/right_left.png" class="right_left_image" val="' + data.sender.user_id + '" val2="' + data.title + '"></input>'
+                    if(fuck !== 'out') temp += '<input id="reply_btn" type="image" src="./images/right_left.png" class="right_left_image" val="' + data.sender.user_id + '" val2="' + data.title + '"></input>'
                     temp += '</from>'
                     temp += '</div>'
                     temp += '<div id="mail_right_content">'
@@ -324,6 +325,25 @@ $("#writeBtn_image").click(function() {
     $("#input-2").fileinput({
         'showPreview': false
     });
+
+                            // ay send mail
+                            $("#send_img_btn").click(function() {
+                                                     alert("ddd");
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/mail/uploadFile',
+                                    data: { title : title,
+                                            message : message,
+                                            sender : sender,
+                                            receive_member : receive_member, 
+                                            cc : cc,
+                                            attach : files }
+                                    }).done(function(data) {
+                                        console.log("returnrrrrrrrr: ", data);
+                                });
+                            
+                            });
+
 });
 
 
