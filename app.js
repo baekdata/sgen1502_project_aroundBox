@@ -32,8 +32,6 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes');
 var user = require('./routes/user')
-// var users = require('./routes/users');
-
 var app = express();
 var swig  = require('swig');
 // 파일 다운로드 라이브러
