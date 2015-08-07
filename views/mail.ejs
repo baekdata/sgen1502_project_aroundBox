@@ -73,10 +73,10 @@
 						<span class="round_icons_name"> sgen </span>
 					</div>
 					<div  class="round_icons_g" id="g2">
-						<span class="round_icons_name"> project </span>
+						<span class="round_icons_name"> 동국대 </span>
 					</div>
 					<div class="round_icons_g" id="g3">
-						<span class="round_icons_name"> 여의도 </span>
+						<span class="round_icons_name"> develop </span>
 					</div>
 					<div class="round_icons_g" id="g4">
 						<span class="round_icons_add"> + </span>
@@ -367,6 +367,26 @@ $(".mail_left_content").bind("click", function() {
 			$("#input-2").fileinput({
 				'showPreview' : false
 			});
+
+			// 답장 버튼
+			$("#send_img_btn").click(function() {
+				$.ajax({
+					type: "POST",
+					url: '/mail/uploadFile',
+					data: { title : title,
+							message : message,
+							sender : sender,
+							receive_member : receive_member, 
+							cc : cc,
+							attach : files }
+					}).done(function(data) {
+						console.log("returnrrrrrrrr: ", data);
+				});
+
+			});
+
+
+
 		});
 
 	// 즐겨찾기 기능
