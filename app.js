@@ -288,10 +288,15 @@ app.get('/setCal',function(req,res){
     String.prototype.splice = function( idx, rem, s ) {
         return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
     };
-    var lastMsg = message.splice(last,0,"</a>");
+    // var lastMsg = message.splice(last,0,"</a>");
+    var lastMsg = message.splice(last,0,"</button>");
     //앞에추가하고
+    
+    // var strUrl=  "<input type=\"sumit\" class=\"hrefCal\" value= date="+url+"&title="+title+"\">"
+    // <input type ="submit" class = "hrefCal" value = 2015,asdfd>
 
-    var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
+    var  strUrl = "<button class = \"hrefCal\" value = "+url +","+title+">";
+    // var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
     var firstMsg = lastMsg.splice(first,0,strUrl);
     
     return firstMsg;
