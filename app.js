@@ -241,11 +241,11 @@ app.get('/mail/MilLingking',function(req,res){
 });
 
 //해당링크 누르면 저장.
-app.get('/setCal',function(req,res){
+app.post('/setCal',function(req,res){
   // var date = req.body.title;
   // var title = req.body.date;
-  var date = req.query.date;
-  var title = req.query.title;
+  var date = req.body.date;
+  var title = req.body.title;
   // var date = new Date(title);
   // console.log(date);
   console.log('title ',title);
