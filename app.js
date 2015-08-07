@@ -9,7 +9,8 @@
   , http = require('http')
   , path = require('path')
   , calender = require('./routes/calendar')
-  , mail = require('./routes/mail');
+  , mail = require('./routes/mail')
+  , index = require('./routes/index');
 
 
 //WWARRING!!!
@@ -130,7 +131,7 @@ filetype = filepoint;
 }
 
 //메일 보낼경우 
-app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
+app.post("/mail/uploadFile",function(req,res){
     
         var title  = req.param('title');
         var tmpMessage  = req.param('message');
@@ -140,29 +141,32 @@ app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
         var star = req.param('star');
         var like = req.param('like');
 
+
+        console.log("tmpMessage", tmpMessage);
       var files = new Array();
       var AttachID = new Array();
       var Attach = new Array();
+      // var files = req.param('files');
+      //   // files = req.files;
+      //   console.log(files);
 
-        files = req.files;
+      //   //파일의 갯수만큼 포맷팅을 예쁘게한다.
+      //   for(var i =0 ;i<files.length;i++){
+      //       console.log(files[i]);
+      //       //첨부 고유값저장
+      //       AttachID.push(files[i].filename);
+      //       //첨부 실제 저장 언어
+      //       Attach.push(files[i].originalname);
 
-        //파일의 갯수만큼 포맷팅을 예쁘게한다.
-        for(var i =0 ;i<files.length;i++){
-            console.log(files[i]);
-            //첨부 고유값저장
-            AttachID.push(files[i].filename);
-            //첨부 실제 저장 언어
-            Attach.push(files[i].originalname);
-
-              fs.rename('./uploads/'+req.files[i].filename, './uploads/'+req.files[i].originalname, function (err) {
-                if (err) throw err;
-                console.log('renamed complete');
-              });
-        }
+      //         fs.rename('./uploads/'+req.files[i].filename, './uploads/'+req.files[i].originalname, function (err) {
+      //           if (err) throw err;
+      //           console.log('renamed complete');
+      //         });
+      //   }
        
 
         console.log('searching END');
-        console.log('vakye - ',getMailLinking(tmpMessage));
+        console.log('vakye - ',getMailLinking(tmpMessage,title));
         // console.log(arrCC);
 
         var date = Math.round(+new Date()/1000);
@@ -240,9 +244,13 @@ app.get('/mail/MilLingking',function(req,res){
 });
 
 //해당링크 누르면 저장.
-app.post('/setCal',function(req,res){
-  var date = req.params.date;
-  var title = req.params.title;
+app.get('/setCal',function(req,res){
+  // var date = req.body.title;
+  // var title = req.body.date;
+  var date = req.query.date;
+  var title = req.query.title;
+  // var date = new Date(title);
+  // console.log(date);
   console.log('title ',title);
           console.log('date',date);
 
@@ -265,6 +273,7 @@ app.post('/setCal',function(req,res){
   }, function(err, result) {
       if (err) throw err;
       if (result) {
+              
          res.send({
           code:200,
           result:result
@@ -289,14 +298,15 @@ app.post('/setCal',function(req,res){
         return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
     };
     // var lastMsg = message.splice(last,0,"</a>");
-    var lastMsg = message.splice(last,0,"</button>");
+    // var lastMsg = message.splice(last,0,"</button>");
+    var lastMsg = message.splice(last,0,"</a>");
     //앞에추가하고
     
     // var strUrl=  "<input type=\"sumit\" class=\"hrefCal\" value= date="+url+"&title="+title+"\">"
     // <input type ="submit" class = "hrefCal" value = 2015,asdfd>
 
-    var  strUrl = "<button class = \"hrefCal\" value = "+url +","+title+">";
-    // var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
+    // var  strUrl = "<button class = \"hrefCal\"z value = \""+url +title+"\">";
+    var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
     var firstMsg = lastMsg.splice(first,0,strUrl);
     
     return firstMsg;
@@ -305,10 +315,9 @@ app.post('/setCal',function(req,res){
 
 
 
-  function getMailLinking (message) {
+  function getMailLinking (message,title) {
 
   // exports.getMailLinking = function(req,res,err){
-                            var title = "이것 이즈 제목";
                              // message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
                             var lastDataPostion  = [];
                             var lastData = [];

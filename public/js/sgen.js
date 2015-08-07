@@ -242,13 +242,16 @@ $(document).ready(function() {
                     $("#reply_btn").bind("click", function() {
 
 
+                        
                         var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
+                        temp += '<form id="send_mail">'
                         temp += '<hr class="mailwrite_hr">'
+                        
                         temp += '<div id="sender_boxes">'
                         temp += '    <div class="sender_box">'
                         temp += '        <span class="sender_box_text_1"> 받는 사람 </span>'
                         temp += '        <div id="sender_box_content_1">'
-                        temp += '            <input type="text" id="sender_box_get_1" class="sender_box_input_0" value="' + $(this).attr('val') + '"/>'
+                        temp += '            <input type="text" id="receve_member" name="receve_member"  class="sender_box_input_0" value="' + $(this).attr('val') + '"/>'
                         temp += '        </div>'
                         temp += '        <div id="sender_box_content_2">'
                         temp += '            <input type="image" class="sender_box_input_0_btn" src="./images/triBtn.png" />'
@@ -256,11 +259,11 @@ $(document).ready(function() {
                         temp += '    </div>'
                         temp += '    <div class="sender_box">'
                         temp += '        <span class="sender_box_text_2"> 참조 </span>'
-                        temp += '        <input type="text" id="sender_box_get_2" class="sender_box_input_1" />'
+                        temp += '        <input type="text" id="cc" name="cc" class="sender_box_input_1" />'
                         temp += '    </div>'
                         temp += '    <div class="sender_box">'
                         temp += '        <span class="sender_box_text_2"> 제목 </span>'
-                        temp += '        <input type="text" id="sender_box_get_3" class="sender_box_input_1" value="Re: ' + $(this).attr('val2') + '" />'
+                        temp += '        <input type="text" id="title" name="title" class="sender_box_input_1" value="Re: ' + $(this).attr('val2') + '" />'
                         temp += '    </div>'
                         temp += '    <div class="sender_box">'
                         temp += '        <span class="sender_box_text_1"> 파일 첨부 </span>'
@@ -268,8 +271,9 @@ $(document).ready(function() {
                         temp += '    </div>'
                         temp += '</div>'
                         temp += '<div id="sender_content">'
-                        temp += '    <textarea id="sender_content_tt" rows=11 cols=102></textarea>'
+                        temp += '    <textarea id="message" name="message" rows=11 cols=102></textarea>'
                         temp += '</div>'
+                        temp += '</form>'
                         $("#mail_right_view").empty();
 
                         $("#mail_right_view").append(temp);
@@ -277,6 +281,22 @@ $(document).ready(function() {
                         $("#input-2").fileinput({
                             'showPreview': false
                         });
+
+                        $("#send_img_btn").click(function() {
+                            
+                                $.ajax({
+                                    type:"POST",
+                                    url: '/mail/uploadFile',
+                                    data:  { title : $("#title").val(),
+                                            message : $("#message").val(),
+                                            sender : 'sgen3',
+                                            receve_member : $("#receve_member").val(), 
+                                            cc : $("#cc").val(),
+                                    }
+                                }).done(function() {
+                                    location.href="/mail"
+                                });
+                            });
                     });
 
                 });
@@ -291,13 +311,15 @@ $(document).ready(function() {
 
 $("#writeBtn_image").click(function() {
     $("#mail_right_view").empty();
+    
     var temp = '<input type="image" id="send_img_btn" src="./images/reply_sendBtn.png">'
+    temp += '<form id="send_mail">'
     temp += '<hr class="mailwrite_hr">'
     temp += '<div id="sender_boxes">'
     temp += '    <div class="sender_box">'
     temp += '        <span class="sender_box_text_1"> 받는 사람 </span>'
     temp += '        <div id="sender_box_content_1">'
-    temp += '            <input type="text" id="sender_box_get_1" class="sender_box_input_0" />'
+    temp += '            <input type="text" id="receve_member" name="receve_member"  class="sender_box_input_0" />'
     temp += '        </div>'
     temp += '        <div id="sender_box_content_2">'
     temp += '            <input type="image" class="sender_box_input_0_btn" src="./images/triBtn.png" />'
@@ -305,11 +327,11 @@ $("#writeBtn_image").click(function() {
     temp += '    </div>'
     temp += '    <div class="sender_box">'
     temp += '        <span class="sender_box_text_2"> 참조 </span>'
-    temp += '        <input type="text" id="sender_box_get_2" class="sender_box_input_1" />'
+    temp += '        <input type="text" id="cc" name="cc"  class="sender_box_input_1" />'
     temp += '    </div>'
     temp += '    <div class="sender_box">'
     temp += '        <span class="sender_box_text_2"> 제목 </span>'
-    temp += '        <input type="text" id="sender_box_get_3" class="sender_box_input_1" />'
+    temp += '        <input type="text" id="title" name="title" class="sender_box_input_1" />'
     temp += '    </div>'
     temp += '    <div class="sender_box">'
     temp += '        <span class="sender_box_text_1"> 파일 첨부 </span>'
@@ -317,9 +339,9 @@ $("#writeBtn_image").click(function() {
     temp += '    </div>'
     temp += '</div>'
     temp += '<div id="sender_content">'
-    temp += '    <textarea id="sender_content_tt" rows=11 cols=102></textarea>'
+    temp += '    <textarea id="message" name="message" rows=11 cols=102></textarea>'
     temp += '</div>'
-
+    temp += '</form>'
     $("#mail_right_view").append(temp);
 
     $("#input-2").fileinput({
@@ -328,21 +350,21 @@ $("#writeBtn_image").click(function() {
 
                             // ay send mail
                             $("#send_img_btn").click(function() {
-                                                     alert("ddd");
-                                $.ajax({
-                                    type: "POST",
-                                    url: '/mail/uploadFile',
-                                    data: { title : title,
-                                            message : message,
-                                            sender : sender,
-                                            receive_member : receive_member, 
-                                            cc : cc,
-                                            attach : files }
-                                    }).done(function(data) {
-                                        console.log("returnrrrrrrrr: ", data);
-                                });
                             
+                                $.ajax({
+                                    type:"POST",
+                                    url: '/mail/uploadFile',
+                                    data:  { title : $("#title").val(),
+                                            message : $("#message").val(),
+                                            sender : 'sgen3',
+                                            receve_member : $("#receve_member").val(), 
+                                            cc : $("#cc").val(),
+                                    }
+                                }).done(function() {
+                                    location.href="/mail"
+                                });
                             });
+
 
 });
 
