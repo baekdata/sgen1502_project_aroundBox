@@ -378,48 +378,42 @@
                             });
                         });
 
-                        // 즐겨찾기 기능
-                        $(".right_star_image").unbind("click");
-                        $(".right_star_image").bind("click", function() {
-                            $.ajax({
-                                type: "POST",
-                                url: '/mail/setLike',
-                                data: {
-                                    mail_id: mail_id,
-                                    user_id: 'sgen3'
-                                }
-                            }).done(function(data) {
-                                if (data.row == -1) {
-                                    $(".right_star_image").attr('src', './images/right_star_y.png');
-                                } else {
-                                    $(".right_star_image").attr('src', './images/right_star.png');
-                                }
-                            });
+	// 즐겨찾기 기능
+	$(".right_star_image").click(function() {
+		$.ajax({
+			type: "POST",
+			url: '/mail/setLike',
+			data: { mail_id : mail_id,
+				user_id : 'sgen3'}
+			}).done(function(data) {
+				if(data.row == -1) {
+					$(".right_star_image").attr('src', './images/right_star_y.png');
+				} else {
+					$(".right_star_image").attr('src', './images/right_star.png');
+				}
+		});
 
                         });
 
-                        // 좋아요 기능
-                        $(".right_like_image").unbind("click");
-                        $(".right_like_image").bind("click", function() {
-                            $.ajax({
-                                type: "POST",
-                                url: '/mail/setFavorite',
-                                data: {
-                                    mail_id: mail_id,
-                                    user_id: 'sgen'
-                                }
-                            }).done(function(data) {
-                                if (data.arr_length == 0) {
-                                    $(".right_like_image").attr('src', './images/right_like_y.png');
-                                } else {
-                                    $(".right_like_image").attr('src', './images/right_like.png');
-                                }
-                            });
+	// 좋아요 기능
+	$(".right_like_image").click(function() {
+		$.ajax({
+			type: "POST",
+			url: '/mail/setFavorite',
+			data: { mail_id : mail_id,
+				user_id : 'sgen'}
+			}).done(function(data) {
+				if(data.arr_length == 0) {
+					$(".right_like_image").attr('src', './images/right_like_y.png');
+				} else {
+					$(".right_like_image").attr('src', './images/right_like.png');
+				}
+			}); 
 
-                        });
-                    });
-                });
-            });
+		});
+	});
+});
+});
 
 
             // group 아이콘 클릭 기능

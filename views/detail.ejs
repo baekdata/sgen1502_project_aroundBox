@@ -80,15 +80,15 @@
 						<div id="msg_drawing">
 							<div class="msg_info" id="msg_out">
 								<h4> 외부메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="out_num"> 3 </p>
 							</div>
 							<div class="msg_info" id="msg_in">
 								<h4> 내부메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="in_num"> </p>
 							</div>
 							<div class="msg_info" id="msg_team">
 								<h4> 팀메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="team_num"> 3 </p>
 							</div>
 							<div id="msg_circle"> </div>
 							<p id="msg_total_num">29 </p>
@@ -107,15 +107,15 @@
 						<div id="meeting_schedule">
 							<div class="meeting_info">
 								<p class="meeting_title"> 마게팅 미팅 </p>
-								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+								<h3 class="meeting_time"> 8월 10일 오후 3:00 </h3>
 							</div>
 							<div class="meeting_info">
-								<p class="meeting_title"> 마게팅 미팅 </p>
-								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+								<p class="meeting_title"> 디자인 회의 </p>
+								<h3 class="meeting_time"> 8월 12일 오전 10:00 </h3>
 							</div>
 							<div class="meeting_info">
-								<p class="meeting_title"> 마게팅 미팅 </p>
-								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+								<p class="meeting_title"> 팀장 회의 </p>
+								<h3 class="meeting_time"> 8월 9일 오후 4:00 </h3>
 							</div>
 						</div>
 					</div>
@@ -185,9 +185,9 @@
 					];
 
 					var user_info = [{
-						"name" : "JH",
-						"link" : "/home",
-						"img_link" : "/test4.png"
+						"name" : "윤정훈",
+						"link" : "/detail.ejs",
+						"img_link" : "/윤정훈.png"
 					}];
 
 
@@ -225,18 +225,19 @@
 			.attr("id", "defs_u")
 			.append("pattern")
 			.attr("id", "catpattern_user")
-			.attr("height", 64)
-			.attr("width", 64)
+			.attr("height", 20)
+			.attr("width", 20)
 			.attr("x", 0)
 			.attr("y", 0)
 			.append("image")
-			.attr("x",  -50)
-			.attr("y",  -50)
-			.attr("height",200)
-			.attr("width", 200)
+			.attr("x",  -20)
+			.attr("y",  -10)
+			.attr("height",150)
+			.attr("width", 150)
 			.attr("xlink:href", function (d){
 				return d.img_link;
 			});
+
 
 			var user_circle = svg_around.selectAll(".user_circle")
 			.data(user_info)
@@ -399,6 +400,15 @@
 			}
 		});
 
+		$.ajax({
+			type:"POST",
+			url: './mail/getMailCnt'
+		}).done(function(data){
+			var in_mail = data.sumMail;
+			document.getElementById("in_num").innerHTML = in_mail;
+			document.getElementById("msg_total_num").innerHTML = 3+3+in_mail;
+			});
+
 		$('#detail_close').click(function() {
    			 $('#cw_detail').toggle(); // or hide()
    			});
@@ -407,9 +417,7 @@
 		$( document ).ready(function(){
 			var qsParm = new Array();
 			var query = window.location.search.substring(1);
-			console.log("query :"+query);
 			var parms = query.split('&');
-			console.log("parms: " + parms);
 			for (var i=0; i < parms.length; i++) {
 				var pos = parms[i].indexOf('=');
 				if (pos > 0) {
@@ -426,6 +434,6 @@
 	});
 
 
-	</script>
+</script>
 </body>
 </html>
