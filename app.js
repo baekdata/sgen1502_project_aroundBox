@@ -297,15 +297,15 @@ app.post('/setCal',function(req,res){
     // var lastMsg = message.splice(last,0,"</a>");
     var lastMsg = message.splice(last,0,"</button>");
     
-<<<<<<< HEAD
+
     var  strUrl = "<button class = \"hrefCal\" value = \""+url+","+title+"\">";
-=======
+
     // var strUrl=  "<input type=\"sumit\" class=\"hrefCal\" value= date="+url+"&title="+title+"\">"
     // <input type ="submit" class = "hrefCal" value = 2015,asdfd>
 
-    var  strUrl = "<button class = \"hrefCal\" value = \""+url+","+title+"\""+">";
+    // var  strUrl = "<button class = \"hrefCal\" value = \""+url+","+title+"\""+">";
     // var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
->>>>>>> 5104c17e4dba281f813e77919593babdc1294a66
+// >>>>>>> 5104c17e4dba281f813e77919593babdc1294a66
     var firstMsg = lastMsg.splice(first,0,strUrl);
     console.log(firstMsg);    
     return firstMsg;
