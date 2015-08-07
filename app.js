@@ -224,7 +224,7 @@ app.post('/mail/setFavorite',mail.setFavorite);
 
 app.post('/mail/getMail',mail.getMail);
 
-app.get('/Downlaod/:id',function(req,res){
+app.get('/Download/:id',function(req,res){
 	var name = req.params.id;
 	console.log('down = name',name);
 	var filepath = __dirname + "/uploads/" +name;

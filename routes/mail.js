@@ -70,9 +70,11 @@ var async = require('async');
                           like_on:like_on,
                           star_on:star_on
                     });
+                });
             }
         });
     };
+
 
 exports.setFavorite = function(req,res,err){
     //별표 추가하는 부분 star에 내 링크 끄러넣으며좋아
