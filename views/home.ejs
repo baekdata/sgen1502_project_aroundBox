@@ -80,15 +80,15 @@
 						<div id="msg_drawing">
 							<div class="msg_info" id="msg_out">
 								<h4> 외부메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="out_num"> 3 </p>
 							</div>
 							<div class="msg_info" id="msg_in">
 								<h4> 내부메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="in_num"> </p>
 							</div>
 							<div class="msg_info" id="msg_team">
 								<h4> 팀메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="team_num"> 3 </p>
 							</div>
 							<div id="msg_circle"> </div>
 							<p id="msg_total_num">29 </p>
@@ -153,9 +153,9 @@
 				];
 
 				var user_info = [{
-					"name" : "JH",
+					"name" : "윤정훈",
 					"link" : "/home",
-					"img_link" : "/test4.png"
+					"img_link" : "/윤정훈.png"
 				}];
 
 				var img_links = ["/test1.png", "/test2.png", "/test3.jpg", "/test4.png"];
@@ -196,15 +196,15 @@
 			.attr("id", "defs_u")
 			.append("pattern")
 			.attr("id", "catpattern_user")
-			.attr("height", 64)
-			.attr("width", 64)
+			.attr("height", 20)
+			.attr("width", 20)
 			.attr("x", 0)
 			.attr("y", 0)
 			.append("image")
-			.attr("x",  -50)
-			.attr("y",  -50)
-			.attr("height",200)
-			.attr("width", 200)
+			.attr("x",  -20)
+			.attr("y",  -10)
+			.attr("height",150)
+			.attr("width", 150)
 			.attr("xlink:href", function (d){
 				return d.img_link;
 			});
@@ -271,17 +271,20 @@
 			type:"POST",
 			url: './mail/getMailCnt'
 		}).done(function(data){
+			var in_mail = data.sumMail;
+			document.getElementById("in_num").innerHTML = in_mail;
+			document.getElementById("msg_total_num").innerHTML = 3+3+in_mail;
 			data = data.row;
 
-			for(var i=0; i<data.length; i++){
-				jsonCircles.push({"name" : data[i].name ,"priority" : priorities[i%2], "alert_num": data[i].cnt, "link":"/detail", "img_link" : img_links[i%4]});
-			}
 
+
+			for(var i=0; i<data.length; i++){
+				jsonCircles.push({"name" : data[i].name ,"priority" : priorities[i%2], "alert_num": data[i].cnt, "link":"/detail", "img_link": "/"+data[i].name+".png"});
+			}
 
 			var temp_cw_names = "";
 			var temp_cw_num = "";
 
-			console.log("data.length : " + data.length);
 			for(var i=0; i<data.length; i++){
 				if(i<2){
 
@@ -321,15 +324,15 @@
 			.attr("id", function (d,i) {
 				return "catpatterns_" + i;
 			})
-			.attr("height", 64)
-			.attr("width", 64)
+			.attr("height", 10)
+			.attr("width", 10)
 			.attr("x", 0)
 			.attr("y", 0)
 			.append("image")
-			.attr("x",  -50)
-			.attr("y",  -50)
-			.attr("height",200)
-			.attr("width", 200)
+			.attr("x",  -10)
+			.attr("y",  -10)
+			.attr("height",90)
+			.attr("width", 90)
 			.attr("xlink:href", function (d){
 				return d.img_link;
 			});
