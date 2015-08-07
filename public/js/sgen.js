@@ -280,48 +280,12 @@ $(document).ready(function() {
                     });
 
                 });
-                // 즐겨찾기 기능
-                $(".right_star_image").click(function() {
-                    $.ajax({
-                        type: "POST",
-                        url: '/mail/setLike',
-                        data: {
-                            mail_id: mail_id,
-                            user_id: 'sgen3'
-                        }
-                    }).done(function(data) {
-                        if (data.row == -1) {
-                            $(".right_star_image").attr('src', './images/right_star_y.png');
-                        } else {
-                            $(".right_star_image").attr('src', './images/right_star.png');
-                        }
-                    });
 
-                });
-
-                // 좋아요 기능
-                $(".right_like_image").click(function() {
-                    $.ajax({
-                        type: "POST",
-                        url: '/mail/setFavorite',
-                        data: {
-                            mail_id: mail_id,
-                            user_id: 'sgen'
-                        }
-                    }).done(function(data) {
-                        if (data.arr_length == 0) {
-                            $(".right_like_image").attr('src', './images/right_like_y.png');
-                        } else {
-                            $(".right_like_image").attr('src', './images/right_like.png');
-                        }
-                    });
-
-                });
             });
         });
     });
 
-});
+// 
 
 
 
@@ -361,5 +325,29 @@ $("#writeBtn_image").click(function() {
     $("#input-2").fileinput({
         'showPreview': false
     });
-    // });
+
+                            // ay send mail
+                            $("#send_img_btn").click(function() {
+                                                     alert("ddd");
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/mail/uploadFile',
+                                    data: { title : title,
+                                            message : message,
+                                            sender : sender,
+                                            receive_member : receive_member, 
+                                            cc : cc,
+                                            attach : files }
+                                    }).done(function(data) {
+                                        console.log("returnrrrrrrrr: ", data);
+                                });
+                            
+                            });
+
 });
+
+
+
+});
+
+

@@ -734,6 +734,19 @@ div.round_icons_g{
 	direction: ltr;
 	cursor: pointer;
 }
+
+.hrefCal{
+	color: blue;
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+.hrefCal:hover{
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+
 /* Fixes for IE < 8 */
 @media screen\9 {
 	.fileinput-button input {

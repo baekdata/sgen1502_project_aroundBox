@@ -104,11 +104,11 @@ app.get("/mTest",function(req,res){
 });
 
 app.post("/pTest",function(req,res){
-	
-	var title  = req.param('title');
-	// var title1 [];
-	console.log('title =='+title[0]);
-	console.log('title =='+title[1]);
+    
+    var title  = req.param('title');
+    // var title1 [];
+    console.log('title =='+title[0]);
+    console.log('title =='+title[1]);
 });
 
 function checkTitleFileType(obj){ 
@@ -131,15 +131,15 @@ filetype = filepoint;
 
 //메일 보낼경우 
 app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
-  	
-		var title  = req.param('title');
-	    var tmpMessage  = req.param('message');
-	    var sender = req.param('sender');
-	    var receiveMember = req.param('receve_member');
-	    var cc = req.param('cc');
-	    var star = req.param('star');
-	    var like = req.param('like');
-      
+    
+        var title  = req.param('title');
+        var tmpMessage  = req.param('message');
+        var sender = req.param('sender');
+        var receiveMember = req.param('receve_member');
+        var cc = req.param('cc');
+        var star = req.param('star');
+        var like = req.param('like');
+
       var files = new Array();
       var AttachID = new Array();
       var Attach = new Array();
@@ -148,48 +148,48 @@ app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
 
         //파일의 갯수만큼 포맷팅을 예쁘게한다.
         for(var i =0 ;i<files.length;i++){
-        	console.log(files[i]);
-        	//첨부 고유값저장
-        	AttachID.push(files[i].filename);
-        	//첨부 실제 저장 언어
-        	Attach.push(files[i].originalname);
+            console.log(files[i]);
+            //첨부 고유값저장
+            AttachID.push(files[i].filename);
+            //첨부 실제 저장 언어
+            Attach.push(files[i].originalname);
 
-	          fs.rename('./uploads/'+req.files[i].filename, './uploads/'+req.files[i].originalname, function (err) {
-	            if (err) throw err;
-	            console.log('renamed complete');
-	          });
+              fs.rename('./uploads/'+req.files[i].filename, './uploads/'+req.files[i].originalname, function (err) {
+                if (err) throw err;
+                console.log('renamed complete');
+              });
         }
        
 
-		console.log('searching END');
-		console.log('vakye - ',getMailLinking(tmpMessage));
-		// console.log(arrCC);
+        console.log('searching END');
+        console.log('vakye - ',getMailLinking(tmpMessage));
+        // console.log(arrCC);
 
         var date = Math.round(+new Date()/1000);
 
-		db.mail.insert({
-	        title : title,
-	        message : getMailLinking(tmpMessage),
-	        sender : sender,
-	        receiveMember :receiveMember,
-	        cc:cc,
-	        star:star,
-	        like:like,
-	        attachid:AttachID,
-	        attach:Attach,
-	        date:date,
-	        isRead: 0
-		}, function(err, result) {
-		    if (err) throw err;
-		    if (result) {
-		    	console.log('Added!');
-		    	 res.send({
-		    	 	code:200,
-		    	 	result:result
-		    	 })
+        db.mail.insert({
+            title : title,
+            message : getMailLinking(tmpMessage),
+            sender : sender,
+            receiveMember :receiveMember,
+            cc:cc,
+            star:star,
+            like:like,
+            attachid:AttachID,
+            attach:Attach,
+            date:date,
+            isRead: 0
+        }, function(err, result) {
+            if (err) throw err;
+            if (result) {
+                console.log('Added!');
+                 res.send({
+                    code:200,
+                    result:result
+                 })
 
-		    }
-		});
+            }
+        });
 });
 
 
@@ -225,10 +225,10 @@ app.post('/mail/getMail',mail.getMail);
 app.post('/mail/getNoReadCnt',mail.getNoReadCnt); 
 
 app.get('/Download/:id',function(req,res){
-	var name = req.params.id;
-	console.log('down = name',name);
-	var filepath = __dirname + "/uploads/" +name;
-	res.download(filepath);
+    var name = req.params.id;
+    console.log('down = name',name);
+    var filepath = __dirname + "/uploads/" +name;
+    res.download(filepath);
 });
 
 //메일 에서 원하는 날자 정보를 챙겨서 링크까지만들어줌.
@@ -240,9 +240,9 @@ app.get('/mail/MilLingking',function(req,res){
 });
 
 //해당링크 누르면 저장.
-app.get('/setCal',function(req,res){
-  var date = req.query.date;
-  var title = req.query.title;
+app.post('/setCal',function(req,res){
+  var date = req.params.date;
+  var title = req.params.title;
   console.log('title ',title);
           console.log('date',date);
 
@@ -257,7 +257,7 @@ app.get('/setCal',function(req,res){
     // });
   db.event.insert({
          
-    text:"One more test event", 
+    text:title, 
     start_date: new Date(date),
     end_date:   new Date(date),
     color: "#0083D2"
@@ -272,12 +272,7 @@ app.get('/setCal',function(req,res){
 
       }
   });
-    // db.event.insert({
-    //   start_date : new Date(date),
-    //   end_date : new Date(date),
-    //   text : "n"
-
-    // });
+    
      res.send({
       code:200,
       row:{dates:date}
@@ -293,10 +288,15 @@ app.get('/setCal',function(req,res){
     String.prototype.splice = function( idx, rem, s ) {
         return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
     };
-    var lastMsg = message.splice(last,0,"</a>");
+    // var lastMsg = message.splice(last,0,"</a>");
+    var lastMsg = message.splice(last,0,"</button>");
     //앞에추가하고
+    
+    // var strUrl=  "<input type=\"sumit\" class=\"hrefCal\" value= date="+url+"&title="+title+"\">"
+    // <input type ="submit" class = "hrefCal" value = 2015,asdfd>
 
-    var strUrl=  "<a href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
+    var  strUrl = "<button class = \"hrefCal\" value = "+url +","+title+">";
+    // var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
     var firstMsg = lastMsg.splice(first,0,strUrl);
     
     return firstMsg;
@@ -309,7 +309,7 @@ app.get('/setCal',function(req,res){
 
   // exports.getMailLinking = function(req,res,err){
                             var title = "이것 이즈 제목";
-                             message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
+                             // message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
                             var lastDataPostion  = [];
                             var lastData = [];
                             var nextWeek = ["다음주","이번주"];
