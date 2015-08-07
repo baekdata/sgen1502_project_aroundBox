@@ -241,11 +241,11 @@ app.get('/mail/MilLingking',function(req,res){
 });
 
 //해당링크 누르면 저장.
-app.get('/setCal',function(req,res){
+app.post('/setCal',function(req,res){
   // var date = req.body.title;
   // var title = req.body.date;
-  var date = req.query.date;
-  var title = req.query.title;
+  var date = req.body.date;
+  var title = req.body.title;
   // var date = new Date(title);
   // console.log(date);
   console.log('title ',title);
@@ -296,20 +296,12 @@ app.get('/setCal',function(req,res){
     };
     // var lastMsg = message.splice(last,0,"</a>");
     var lastMsg = message.splice(last,0,"</button>");
-    // var lastMsg = message.splice(last,0,"</a>");
-    //앞에추가하고
     
-    // var strUrl=  "<input type=\"sumit\" class=\"hrefCal\" value= date="+url+"&title="+title+"\">"
-    // <input type ="submit" class = "hrefCal" value = 2015,asdfd>
-
-    var  strUrl = "<button class = \"hrefCal\"z value = \""+url+","title+"\">";
-    // var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
+    var  strUrl = "<button class = \"hrefCal\" value = \""+url+","+title+"\">";
     var firstMsg = lastMsg.splice(first,0,strUrl);
-    
+    console.log(firstMsg);    
     return firstMsg;
   }
-
-
 
 
   function getMailLinking (message,title) {
@@ -322,9 +314,6 @@ app.get('/setCal',function(req,res){
                             var day = ["월요일","화요일","수요일","목요일","금요일","토요일","일요일"];
                             var perid = ["오늘","내일","모레"];
                             var time = ["00시","01시","02시","03시","04시","05시","06시","07시","08시","09시","10시","11시","12시","13시","14시","15시","16시","17시","18시","19시","20시","21시","22시","23시","24시"];
-
-                            // var message = "내일 13시에 보아요";
-
 
                             var calData = [];
 
