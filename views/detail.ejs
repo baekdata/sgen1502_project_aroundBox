@@ -68,14 +68,14 @@
 			<div id="home_noti" class="in_container"> 
 				<div id="noti_form">
 					<h3 id="today"> TODAY </h3>
-					<p id="show_date"> Have to set the date </p>
+					<p id="noti_date"> </p>
 					<a href="/detail">
 						<input type="image" src="./images/refresh.png"id="img_refresh" ></input></a>
 					</div>
 					<div id="noti_msg" class="in_noti">
 						<div id="msg_text">
 							<h1> 안읽은 메시지 </h1>
-							<h3> AM 14:00 </h3>
+							<h3 id="noti_time"></h3>
 						</div>
 						<div id="msg_drawing">
 							<div class="msg_info" id="msg_out">
@@ -344,6 +344,31 @@
 			.style("fill","white");
 
 
+
+			// get current date to show at noti.
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1;
+			var yyyy= today.getFullYear();
+			var hours = today.getHours();
+			var mins = today.getMinutes();
+			var ampm = hours >= 12 ? "PM" : "AM";
+			hours = hours % 12;
+			hours = hours ? hours : 12;
+			mins = mins < 10 ? '0'+mins : mins;
+
+			var strTime = ampm + " " + hours + ":" + mins;
+			document.getElementById("noti_time").innerHTML = strTime;
+
+			if(dd<10)
+				dd='0'+dd;
+			if(mm<10)
+				mm = '0'+mm;
+
+			today = yyyy + '.' + mm + '.'+ dd;
+			document.getElementById("noti_date").innerHTML = today;
+
+
 			</script>
 
 
@@ -376,7 +401,28 @@
 
 		$('#detail_close').click(function() {
    			 $('#cw_detail').toggle(); // or hide()
-   		});
+   			});
+
+		//var queryString = new Array();
+		$( document ).ready(function(){
+			var qsParm = new Array();
+			var query = window.location.search.substring(1);
+			console.log("query :"+query);
+			var parms = query.split('&');
+			console.log("parms: " + parms);
+			for (var i=0; i < parms.length; i++) {
+				var pos = parms[i].indexOf('=');
+				if (pos > 0) {
+					var key = parms[i].substring(0, pos);
+					var val = parms[i].substring(pos + 1);
+					qsParm[key] = val;
+					console.log(key +"=>"+ qsParm[key]);
+				}
+			}
+			document.getElementById("cw_name").innerHTML= qsParm["name"];
+
+		})
+
 	});
 
 

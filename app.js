@@ -64,6 +64,8 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 // var app = express();
 var port = process.env.PORT || 3000;
+var request = require('request');
+
 app.set('port', port);
 // app.configure(function(){
 //   app.set('port', port);
@@ -109,9 +111,6 @@ app.post("/pTest",function(req,res){
 	// var title1 [];
 	console.log('title =='+title[0]);
 	console.log('title =='+title[1]);
-
-
-
 });
 
 function checkTitleFileType(obj){ 
@@ -220,7 +219,10 @@ app.post('/mail/getReceiveMailData',mail.getReceiveMailData);
 app.post('/mail/setLike',mail.setLike);
 app.post('/mail/getLike',mail.getLike);
 app.post('/mail/setFavorite',mail.setFavorite);
-
+app.post('/mail/getFavorteMailData',mail.getFavorteMailData);
+app.post('/mail/getFilterData',mail.getFilterData);
+app.post('/mail/getMailCnt',mail.getMailCnt);
+app.get('/mail/getMailLinking',mail.getMailLinking);
 
 app.post('/mail/getMail',mail.getMail);
 
@@ -229,6 +231,57 @@ app.get('/Download/:id',function(req,res){
 	console.log('down = name',name);
 	var filepath = __dirname + "/uploads/" +name;
 	res.download(filepath);
+});
+
+//메일 에서 원하는 날자 정보를 챙겨서 링크까지만들어줌.
+//메일보낼때 실행하면됨!!!
+app.get('/mail/MilLingking',function(req,res){
+    var time = req.params.time;
+    //date 타입으로 넣을수있
+     // data.start_date = new Date(time);
+});
+
+//해당링크 누르면 저장.
+app.get('/setCal',function(req,res){
+  var date = req.query.date;
+
+  // var data=[];
+    // data["start_date"] = new Date(date);
+    // data["end_date"] = new Date(date);
+    //     db.event.insert({ 
+    //     text:"One more test event", 
+    //     start_date: new Date(2013,8,3),
+    //     end_date:   new Date(2013,8,8),
+    //     color: "#DD8616"
+    // });
+  db.event.insert({
+         
+    text:"One more test event", 
+    start_date: new Date(date),
+    end_date:   new Date(date),
+    color: "#DD8616"
+
+  }, function(err, result) {
+      if (err) throw err;
+      if (result) {
+        console.log('Added!');
+         res.send({
+          code:200,
+          result:result
+         })
+
+      }
+  });
+    // db.event.insert({
+    //   start_date : new Date(date),
+    //   end_date : new Date(date),
+    //   text : "n"
+
+    // });
+     res.send({
+      code:200,
+      row:{dates:date}
+     })
 });
 
 
