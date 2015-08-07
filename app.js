@@ -302,8 +302,8 @@ app.get('/setCal',function(req,res){
     // var strUrl=  "<input type=\"sumit\" class=\"hrefCal\" value= date="+url+"&title="+title+"\">"
     // <input type ="submit" class = "hrefCal" value = 2015,asdfd>
 
-    // var  strUrl = "<button class = \"hrefCal\"z value = \""+url +title+"\">";
-    var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
+    var  strUrl = "<button class = \"hrefCal\"z value = \""+url +title+"\">";
+    // var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
     var firstMsg = lastMsg.splice(first,0,strUrl);
     
     return firstMsg;
