@@ -4,11 +4,12 @@ var mongo = require('mongoskin');
 var db = mongo.db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
 db.bind('mail');
 db.bind('user_info');
-    
 var async = require('async');
 
+  // exports.
+
   
-  exports.getNoReadCnt =function(req,res,err){
+  exports.getNoReadCnt = function(req,res,err){
     var arrSum = [];
     var sum =0;
       //하드코딩이 뭔지 보여주겟다.
@@ -517,7 +518,7 @@ exports.getReceiveMailData = function(req,res,err){
   var _id  = sess.userId;
   console.log('[session Data] id ===>' + _id);
 
-  db.mail.find({$or:[{receiveMember:"sgen3"},{cc:_id}]}).toArray(function (err, result) {
+  db.mail.find({$or:[{receiveMember:"sgen"},{cc:"sgen"}]}).toArray(function (err, result) {
     if (err) {
       console.log(err);
     } else if (result.length) {
