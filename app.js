@@ -139,7 +139,7 @@ app.post("/mail/uploadFile",upload.array('attach',12),function(req,res){
 	    var cc = req.param('cc');
 	    var star = req.param('star');
 	    var like = req.param('like');
-      
+
       var files = new Array();
       var AttachID = new Array();
       var Attach = new Array();
@@ -257,7 +257,7 @@ app.get('/setCal',function(req,res){
     // });
   db.event.insert({
          
-    text:"One more test event", 
+    text:title, 
     start_date: new Date(date),
     end_date:   new Date(date),
     color: "#0083D2"
@@ -272,12 +272,7 @@ app.get('/setCal',function(req,res){
 
       }
   });
-    // db.event.insert({
-    //   start_date : new Date(date),
-    //   end_date : new Date(date),
-    //   text : "n"
-
-    // });
+    
      res.send({
       code:200,
       row:{dates:date}
@@ -296,7 +291,7 @@ app.get('/setCal',function(req,res){
     var lastMsg = message.splice(last,0,"</a>");
     //앞에추가하고
 
-    var strUrl=  "<a href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
+    var strUrl=  "<a class=\"hrefCal\" href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
     var firstMsg = lastMsg.splice(first,0,strUrl);
     
     return firstMsg;
@@ -309,7 +304,7 @@ app.get('/setCal',function(req,res){
 
   // exports.getMailLinking = function(req,res,err){
                             var title = "이것 이즈 제목";
-                             message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
+                             // message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
                             var lastDataPostion  = [];
                             var lastData = [];
                             var nextWeek = ["다음주","이번주"];
