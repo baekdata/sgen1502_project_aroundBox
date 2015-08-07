@@ -186,7 +186,7 @@
 
 					var user_info = [{
 						"name" : "윤정훈",
-						"link" : "/detail.ejs",
+						"link" : "/detail",
 						"img_link" : "/윤정훈.png"
 					}];
 
@@ -337,12 +337,7 @@
 				return (d.priority == 1 ? "16px" : "14px");
 			});
 			
-			var detail_circle = d3.select("#detail_svg")
-			.append("circle")
-			.attr("r",40)
-			.attr("cx",50)
-			.attr("cy",50)
-			.style("fill","white");
+
 
 
 
@@ -427,7 +422,35 @@
 					console.log(key +"=>"+ qsParm[key]);
 				}
 			}
-			document.getElementById("cw_name").innerHTML= decodeURIComponent(qsParm["name"]);
+			var decoded_name = decodeURIComponent(qsParm["name"]);
+			document.getElementById("cw_name").innerHTML= decoded_name;
+
+
+			var defs_cw_detail = d3.select("#detail_svg")
+			.append("defs")
+			.attr("id", "defs_u")
+			.append("pattern")
+			.attr("id", "catpattern_cw_detail")
+			.attr("height", 20)
+			.attr("width", 20)
+			.attr("x", 0)
+			.attr("y", 0)
+			.append("image")
+			.attr("x",  -15)
+			.attr("y",  -10)
+			.attr("height",150)
+			.attr("width", 150)
+			.attr("xlink:href", "/"+decoded_name+".png");
+
+
+			var detail_circle = d3.select("#detail_svg")
+			.append("circle")
+			.attr("r", radii.user)
+			.attr("cx",50)
+			.attr("cy",50)
+			.style("fill","url(#catpattern_cw_detail)");
+
+
 
 		})
 
