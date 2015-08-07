@@ -1,5 +1,5 @@
 var mongo = require('mongoskin');
-var date = require('./date.js');
+
 
 var db = mongo.db("mongodb://sgen:sgen@119.205.252.51:27017/bandbox", { w: 0});
 db.bind('mail');
@@ -8,7 +8,7 @@ db.bind('user_info');
 var async = require('async');
 
   //날자검색해서 링크걸어주는
-  function insertWordMiddle (message,first,last,url){
+  function insertWordMiddle (message,first,last,url,title){
 
     String.prototype.splice = function( idx, rem, s ) {
         return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
@@ -16,7 +16,7 @@ var async = require('async');
     var lastMsg = message.splice(last,0,"</a>");
     //앞에추가하고
 
-    var strUrl=  "<a href=\"http://localhost:3000/setCal?"+"date="+url+"\">"
+    var strUrl=  "<a href=\"http://localhost:3000/setCal?"+"date="+url+"&title="+title+"\">"
     var firstMsg = lastMsg.splice(first,0,strUrl);
     
     return firstMsg;
@@ -24,6 +24,9 @@ var async = require('async');
 
   exports.getMailLinking = function(req,res,err){
   ///테스트코드                
+
+                            var title = "이것 이즈 제목";
+                            var message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
                             var lastDataPostion  = [];
                             var lastData = [];
                             var nextWeek = ["다음주","이번주"];
@@ -31,7 +34,6 @@ var async = require('async');
                             var perid = ["오늘","내일","모레"];
                             var time = ["00시","01시","02시","03시","04시","05시","06시","07시","08시","09시","10시","11시","12시","13시","14시","15시","16시","17시","18시","19시","20시","21시","22시","23시","24시"];
 
-                            var message = "김팀장님 저희 개발 미팅은 다음주 화요일 07시에 뵙죠";
                             // var message = "내일 13시에 보아요";
 
 
@@ -213,7 +215,7 @@ var async = require('async');
 
                             var lastCharPos = lastValuePos+lastDataValue.length;
                             //아웃풋최종 데이
-                            var output = insertWordMiddle(message,lastDataPostion[0],lastCharPos,now);
+                            var output = insertWordMiddle(message,lastDataPostion[0],lastCharPos,now,title);
                             
                             console.log(output);
                             

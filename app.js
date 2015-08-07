@@ -244,6 +244,9 @@ app.get('/mail/MilLingking',function(req,res){
 //해당링크 누르면 저장.
 app.get('/setCal',function(req,res){
   var date = req.query.date;
+  var title = req.query.title;
+  console.log('title ',title);
+          console.log('date',date);
 
   // var data=[];
     // data["start_date"] = new Date(date);
@@ -259,12 +262,11 @@ app.get('/setCal',function(req,res){
     text:"One more test event", 
     start_date: new Date(date),
     end_date:   new Date(date),
-    color: "#DD8616"
+    color: "#0083D2"
 
   }, function(err, result) {
       if (err) throw err;
       if (result) {
-        console.log('Added!');
          res.send({
           code:200,
           result:result
