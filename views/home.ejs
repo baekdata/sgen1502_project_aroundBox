@@ -80,15 +80,15 @@
 						<div id="msg_drawing">
 							<div class="msg_info" id="msg_out">
 								<h4> 외부메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="out_num"> 3 </p>
 							</div>
 							<div class="msg_info" id="msg_in">
 								<h4> 내부메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="in_num"> </p>
 							</div>
 							<div class="msg_info" id="msg_team">
 								<h4> 팀메시지 </h4>
-								<p class="msg_num"> 3 </p>
+								<p class="msg_num" id="team_num"> 3 </p>
 							</div>
 							<div id="msg_circle"> </div>
 							<p id="msg_total_num">29 </p>
@@ -271,19 +271,20 @@
 			type:"POST",
 			url: './mail/getMailCnt'
 		}).done(function(data){
+			var in_mail = data.sumMail;
+			document.getElementById("in_num").innerHTML = in_mail;
+			document.getElementById("msg_total_num").innerHTML = 3+3+in_mail;
 			data = data.row;
+
 
 
 			for(var i=0; i<data.length; i++){
 				jsonCircles.push({"name" : data[i].name ,"priority" : priorities[i%2], "alert_num": data[i].cnt, "link":"/detail", "img_link": "/"+data[i].name+".png"});
 			}
 
-			var in_mail = data.sumMail;
-			console.log("in_mail:"+in_mail);
 			var temp_cw_names = "";
 			var temp_cw_num = "";
 
-			console.log("data.length : " + data.length);
 			for(var i=0; i<data.length; i++){
 				if(i<2){
 
