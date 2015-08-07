@@ -324,6 +324,25 @@ $("#writeBtn_image").click(function() {
     $("#input-2").fileinput({
         'showPreview': false
     });
+
+                            // ay send mail
+                            $("#send_img_btn").click(function() {
+                                                     alert("ddd");
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/mail/uploadFile',
+                                    data: { title : title,
+                                            message : message,
+                                            sender : sender,
+                                            receive_member : receive_member, 
+                                            cc : cc,
+                                            attach : files }
+                                    }).done(function(data) {
+                                        console.log("returnrrrrrrrr: ", data);
+                                });
+                            
+                            });
+
 });
 
 
