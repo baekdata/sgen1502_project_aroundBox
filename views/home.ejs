@@ -107,15 +107,15 @@
 						<div id="meeting_schedule">
 							<div class="meeting_info">
 								<p class="meeting_title"> 마게팅 미팅 </p>
-								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+								<h3 class="meeting_time"> 8월 10일 오후 3:00 </h3>
 							</div>
 							<div class="meeting_info">
-								<p class="meeting_title"> 마게팅 미팅 </p>
-								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+								<p class="meeting_title"> 디자인 회의 </p>
+								<h3 class="meeting_time"> 8월 12일 오전 10:00 </h3>
 							</div>
 							<div class="meeting_info">
-								<p class="meeting_title"> 마게팅 미팅 </p>
-								<h3 class="meeting_time"> 5월 9일 오후 3:00 </h3>
+								<p class="meeting_title"> 팀장 회의 </p>
+								<h3 class="meeting_time"> 8월 9일 오후 4:00 </h3>
 							</div>
 						</div>
 					</div>
@@ -269,13 +269,19 @@
 
 		$.ajax({
 			type:"POST",
-			url: './mail/getMailCnt'
+			url:'./mail/getMailCnt'
 		}).done(function(data){
 			var in_mail = data.sumMail;
 			document.getElementById("in_num").innerHTML = in_mail;
 			document.getElementById("msg_total_num").innerHTML = 3+3+in_mail;
-			data = data.row;
+		});
 
+		$.ajax({
+			type:"POST",
+			url: './mail/getNoReadCnt'
+
+		}).done(function(data){
+			data = data.row;
 
 
 			for(var i=0; i<data.length; i++){
